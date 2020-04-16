@@ -2,10 +2,9 @@ package MyTestProg;
 
 public class SiebDesEratosthene implements ICommands{
 	
-	@Override
-	public void execute() {
+	public static void execute() {
 		Console cs = new Console();
-		int max = cs.readIntegerFromStdin();
+		int max = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		try {
 			boolean[] array = sieb(max);
@@ -22,7 +21,7 @@ public class SiebDesEratosthene implements ICommands{
 		
 	}
 	
-	private boolean[] sieb(int max) throws ArithmeticException{
+	private static boolean[] sieb(int max) throws ArithmeticException{
 		
 		if(max < 0 || max == 1) {
 			throw new ArithmeticException("Max darf nicht kleiner als sein : " + max);
@@ -35,7 +34,7 @@ public class SiebDesEratosthene implements ICommands{
 			array[i] = true;
 		}
 
-		// alle i % 2 != 1
+		// alle i % 2 != 1 == false
 		for (int i = 0; i < max; i++) {
 			// e.g (2%2 = 0) = (!= 1)
 			if (i % 2 != 1) {
@@ -57,7 +56,7 @@ public class SiebDesEratosthene implements ICommands{
 				while (k <= max) {
 					array[k] = false;
 					
-					// 2+2 = k(4) k+2=k(6) // 3+3 = k(6) k+3=k(9)
+					// 2+2 = k(4) k+2=k(6) // k+3 = k(6) k+3=k(9)
 					k += i;
 				}
 			}

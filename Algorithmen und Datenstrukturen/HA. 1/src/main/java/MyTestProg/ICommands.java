@@ -2,6 +2,6 @@ package MyTestProg;
 
 public interface ICommands {
 
-	public void execute();
+	public static void execute() {}
 	
 }

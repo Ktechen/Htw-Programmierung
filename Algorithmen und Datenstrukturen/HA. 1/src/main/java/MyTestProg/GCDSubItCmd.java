@@ -2,7 +2,7 @@ package MyTestProg;
 
 public class GCDSubItCmd implements ICommands {
 	
-	private int EuclidSubstractionIterative(int a, int b) {
+	private static int EuclidSubstractionIterative(int a, int b) {
 		
 		if(a == 0) {
 			return b;
@@ -19,11 +19,10 @@ public class GCDSubItCmd implements ICommands {
 		return a;
 	}
 
-	@Override
-	public void execute() {
+	public static void execute() {
 		Console cs = new Console();
-		int a = cs.readIntegerFromStdin();
-		int b = cs.readIntegerFromStdin();
+		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
+		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		System.out.println("Ergebnis: " + EuclidSubstractionIterative(a, b));
 	}

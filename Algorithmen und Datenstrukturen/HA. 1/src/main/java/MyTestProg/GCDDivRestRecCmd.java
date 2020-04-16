@@ -2,7 +2,7 @@ package MyTestProg;
 
 public class GCDDivRestRecCmd implements ICommands {
 	
-	private int EuclidDivisionRestRecursive(int a, int b) {
+	private static int EuclidDivisionRestRecursive(int a, int b) {
 		if(b == 0) {
 			return a;
 		}
@@ -10,11 +10,10 @@ public class GCDDivRestRecCmd implements ICommands {
 		return EuclidDivisionRestRecursive(b, a % b);
 	}
 
-	@Override
-	public void execute() {
+	public static void execute() {
 		Console cs = new Console();
-		int a = cs.readIntegerFromStdin();
-		int b = cs.readIntegerFromStdin();
+		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
+		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		System.out.println("Ergebnis: " + EuclidDivisionRestRecursive(a, b));
 	}
