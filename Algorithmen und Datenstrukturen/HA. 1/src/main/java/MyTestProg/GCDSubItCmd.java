@@ -1,8 +1,13 @@
+//@Author Kevin Techen
+
 package MyTestProg;
 
 public class GCDSubItCmd implements ICommands {
 	
-	private static int EuclidSubstractionIterative(int a, int b) {
+	/*
+	 * @return ggt
+	 */
+	public static int EuclidSubstractionIterative(int a, int b) {
 		
 		if(a == 0) {
 			return b;

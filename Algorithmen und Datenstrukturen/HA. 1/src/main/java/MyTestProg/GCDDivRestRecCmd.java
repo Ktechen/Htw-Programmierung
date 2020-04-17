@@ -1,8 +1,13 @@
+//@Author Kevin Techen
+
 package MyTestProg;
 
 public class GCDDivRestRecCmd implements ICommands {
 	
-	private static int EuclidDivisionRestRecursive(int a, int b) {
+	/*
+	 * @return ggt
+	 */
+	public static int EuclidDivisionRestRecursive(int a, int b) {
 		if(b == 0) {
 			return a;
 		}

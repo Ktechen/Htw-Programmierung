@@ -7,7 +7,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    @Test public void testAppHasAGreeting() {
-
-    }
+	public void main(String[] args){
+		ConsoleTest cst = new ConsoleTest();
+		cst.testConsoleInteger();
+	}
 }

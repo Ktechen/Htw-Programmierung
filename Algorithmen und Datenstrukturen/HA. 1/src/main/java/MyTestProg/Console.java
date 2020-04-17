@@ -1,3 +1,5 @@
+//@Author Kevin Techen
+
 package MyTestProg;
 
 import java.util.Scanner;
@@ -11,12 +13,13 @@ class Console {
 		
 		int value = 0;
 		
+		//if input == integer
 		while(sc.hasNextInt()) {
 			value = sc.nextInt();
-
 			return value;
 		}
 		
+		//else return methode 
 		return readIntegerFromStdin(text);
 	}
 
@@ -25,7 +28,6 @@ class Console {
 
 		System.out.print("Enter "+text+": ");
 		String value = sc.next();
-
 
 		return value;
 	}

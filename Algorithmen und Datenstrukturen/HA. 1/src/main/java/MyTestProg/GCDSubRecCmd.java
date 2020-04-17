@@ -1,7 +1,12 @@
 package MyTestProg;
 
+//@Author Kevin Techen
 public class GCDSubRecCmd implements ICommands{
 	
+
+	/*
+	 * @return ggt
+	 */
 	private static int EuclidSubstractionRecursive(int a, int b) {
 		if(b == 0) {
 			return a;
@@ -22,7 +27,6 @@ public class GCDSubRecCmd implements ICommands{
 		Console cs = new Console();
 		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
-		
 		
 		System.out.println("Ergebnis: " + EuclidSubstractionRecursive(a, b));
 	}

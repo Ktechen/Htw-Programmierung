@@ -1,5 +1,7 @@
+
 package MyTestProg;
 
+//@Author Kevin Techen
 public class SiebDesEratosthene implements ICommands{
 	
 	public static void execute() {
@@ -21,9 +23,13 @@ public class SiebDesEratosthene implements ICommands{
 		
 	}
 	
+	/*
+	 * return SiebDesEratosthene
+	 * url: https://www.mathe-lexikon.at/arithmetik/natuerliche-zahlen/teilbarkeit/primzahlen/sieb-des-eratosthenes.html
+	 */
 	private static boolean[] sieb(int max) throws ArithmeticException{
 		
-		if(max < 0 || max == 1) {
+		if(max < 0) {
 			throw new ArithmeticException("Max darf nicht kleiner als sein : " + max);
 		}
 		
@@ -51,7 +57,7 @@ public class SiebDesEratosthene implements ICommands{
 			if (array[i] == true) {
 				
 				// 2+2 = k(4) // 3+3 = k(6) // 4+4 = k(8) // 5+5 = k(10)
-				int k = i + i;
+				int k = i + i; //vielfaches
 				
 				while (k <= max) {
 					array[k] = false;

@@ -1,7 +1,12 @@
+//@Author Kevin Techen
+
 package MyTestProg;
 
 public class GCDDivRestItCmd implements ICommands {
-	
+
+	/*
+	 * @return ggt
+	 */
 	private static int EuclidDivisionRestIterative(int a, int b) {
 
 		while (b != 0) {
@@ -14,11 +19,15 @@ public class GCDDivRestItCmd implements ICommands {
 
 	public static void execute() {
 		Console cs = new Console();
-		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
-		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
-		
-		System.out.println("Ergebnis: " + EuclidDivisionRestIterative(a, b));
+		int a = cs.readIntegerFromStdin("Bitte geben Sie die Zahl 1. ein:");
+		int b = cs.readIntegerFromStdin("Bitte geben Sie die Zahl 2. ein:");
+		int result = EuclidDivisionRestIterative(a, b);
+
+		System.out.println("Ergebnis: " + result);
 	}
 
+	public String toString() {
+		return "ggt von A: ";
+	}
 
 }

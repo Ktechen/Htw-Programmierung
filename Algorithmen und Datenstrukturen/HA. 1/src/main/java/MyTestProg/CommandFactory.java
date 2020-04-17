@@ -1,3 +1,5 @@
+//@Author Kevin Techen
+
 package MyTestProg;
 
 import java.util.Scanner;
@@ -11,6 +13,8 @@ public class CommandFactory {
 
 		Scanner sc = new Scanner(System.in);
 
+		
+		//Call all Commands
 		while (sc.hasNextInt()) {
 			option = sc.nextInt();
 			switch (option) {
@@ -39,18 +43,20 @@ public class CommandFactory {
 				menu();
 				break;
 			default:
-				System.out.println("\nTry Again");
+				System.out.println("\nTry Again ");
 				menu();
 				break;
 			}
 		}
 		
+		//if input != int call methode again
+		System.out.println("\nPlease try again");
 		consoleMenu();
 
 	}
 
 	private void menu() {
-		System.out.println("\n");
+		System.out.println("");
 		System.out.println("Console-Application: Exercise-1\n");
 		System.out.println("1. Greatest Common Divisor (GCD) - (Recursive) Euclid's algorithm subtraction");
 		System.out.println("2. Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm subtraction");
