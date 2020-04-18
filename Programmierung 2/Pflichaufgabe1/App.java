@@ -1,9 +1,5 @@
 package Pflichaufgabe1;
 
-/*
- * @author Kevin Techen
- * @m-nr: 573111
- */
 public class App {
 
 	public static void main(String[] args) {
