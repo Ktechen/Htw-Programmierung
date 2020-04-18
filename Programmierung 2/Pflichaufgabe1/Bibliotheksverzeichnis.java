@@ -1,15 +1,11 @@
 package Pflichaufgabe1;
 
-/*
- * @author Kevin Techen
- * @m-nr: 573111
- */
 public class Bibliotheksverzeichnis {
 
 	// Aufgabe b
 
 	private Buch[] array = null;
-	private String nameOflist = "Bücherliste:";
+	private String nameOflist = "BÃ¼cherliste:";
 
 	public Bibliotheksverzeichnis(Buch[] array) {
 		this.array = array;
@@ -56,8 +52,8 @@ public class Bibliotheksverzeichnis {
 			return liste;
 		}
 		
-		System.out.println("Gesuchter Nachname: „" + search + "“");
-		System.out.println("Gefundene Bücher:");
+		System.out.println("Gesuchter Nachname: â€ž" + search + "â€œ");
+		System.out.println("Gefundene BÃ¼cher:");
 
 		for (int i = 0; i < array.length; i++) {
 			if (search == array[i].getSurname()) {
@@ -69,7 +65,7 @@ public class Bibliotheksverzeichnis {
 	}
 
 	/*
-	 * Sucht nach Stichwörtern im title
+	 * Sucht nach StichwÃ¶rtern im title
 	 */
 	public String deepSearch(String search) {
 		
@@ -79,8 +75,8 @@ public class Bibliotheksverzeichnis {
 			return liste;
 		}
 		
-		System.out.println("Gesuchtes Stichwort: „" + search + "“");
-		System.out.println("Gefundene Bücher:");
+		System.out.println("Gesuchtes Stichwort: â€ž" + search + "â€œ");
+		System.out.println("Gefundene BÃ¼cher:");
 
 		for (int i = 0; i < array.length; i++) {
 			String title = array[i].getTitle();
