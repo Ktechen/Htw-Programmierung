@@ -4,11 +4,11 @@ public class Bibliotheksverzeichnis {
 
 	// Aufgabe b
 
-	private Buch[] array = null;
-	private String nameOflist = "BÃ¼cherliste:";
+	private Buch[] buchArray = null;
+	private String nameOflist = "Bücherliste:";
 
-	public Bibliotheksverzeichnis(Buch[] array) {
-		this.array = array;
+	public Bibliotheksverzeichnis(Buch[] buchArray) {
+		this.buchArray = buchArray;
 	}
 
 	/*
@@ -17,20 +17,28 @@ public class Bibliotheksverzeichnis {
 	public void printList() {
 		System.out.println(nameOflist);
 
-		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i]);
+		for (int i = 0; i < buchArray.length; i++) {
+			System.out.println(buchArray[i]);
 		}
 	}
 
 	/*
 	 * Convert das Buch array in eine String
+	 * 
+	 * @return liste for toString()
 	 */
 	private String printAsString() {
 
 		String liste = "";
 
-		for (int i = 0; i < array.length; i++) {
-			liste += array[i] + "\n";
+		// System.out.println(buchArray[5].getPrenameArray()[0]);
+
+		for (int i = 0; i < buchArray.length; i++) {
+			if (buchArray[i].getSurnameArray() != null) {
+				liste += listOfMoreAuthor(i) + "\n";
+			} else {
+				liste += buchArray[i] + "\n";
+			}
 		}
 
 		return liste;
@@ -43,21 +51,83 @@ public class Bibliotheksverzeichnis {
 
 	/*
 	 * Sucht nach Nachname im Surname
+	 * 
+	 * @return liste nach dem Nachname von Authoren
 	 */
 	public String search(String search) {
-		
-		String liste = "";
-		
-		if(search == null || search == "") {
+
+		String liste = null;
+
+		if (search == null || search == "") {
 			return liste;
+		} else {
+			// remove isEmpty
+			liste = "";
+		}
+
+		System.out.println("Gesuchter Nachname: „" + search + "“");
+		System.out.println("Gefundene Bücher:");
+		
+		for (int i = 0; i < buchArray.length; i++) {
+			String surname = buchArray[i].getSurname();
+	
+			// suche von ein Authorennamen
+			if (search == surname) {
+				liste += buchArray[i] + "\n";
+			}
+			
+			// suche von mehren Authorennamen
+			if (buchArray[i].getSurnameArray() != null) {
+				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
+
+					String surnameArr = buchArray[i].getSurnameArray()[j];
+
+					if (search == surnameArr) {
+						liste += listOfMoreAuthor(i) + "\n";
+					}
+				}
+			}
+
 		}
 		
-		System.out.println("Gesuchter Nachname: â€ž" + search + "â€œ");
-		System.out.println("Gefundene BÃ¼cher:");
+		return liste;
+	}
 
-		for (int i = 0; i < array.length; i++) {
-			if (search == array[i].getSurname()) {
-				liste += array[i] + "\n";
+	/*
+	 * Sucht nach Stichwörtern im title
+	 * 
+	 * @return String list von allen Büchern wo die suche nach dem Titel korrekt ist
+	 */
+	public String deepSearch(String search) {
+
+		String liste = null;
+
+		if (search == null || search == "") {
+			return liste;
+		} else {
+			// remove isEmpty
+			liste = "";
+		}
+
+		System.out.println("Gesuchtes Stichwort: „" + search + "“");
+		System.out.println("Gefundene Bücher:");
+
+		for (int i = 0; i < buchArray.length; i++) {
+
+			String title = buchArray[i].getTitle();
+
+			// return int 0 = gefunden -1 == nicht gefunden
+			int searchResult = title.toLowerCase().indexOf(search.toLowerCase());
+
+			if (searchResult == 0) {
+				// prüfen ob mehrere Authoren vorhanden sind
+				if (buchArray[i].getSurnameArray() != null) {
+					liste += listOfMoreAuthor(i) + "\n";
+
+				} else {
+					// add to liste
+					liste += buchArray[i] + "\n";
+				}
 			}
 		}
 
@@ -65,29 +135,18 @@ public class Bibliotheksverzeichnis {
 	}
 
 	/*
-	 * Sucht nach StichwÃ¶rtern im title
+	 * Hilfsmethode
+	 * @return alle Authoren, title und date
 	 */
-	public String deepSearch(String search) {
-		
+	private String listOfMoreAuthor(int i) {
+
+		String names = "";
 		String liste = "";
-		
-		if(search == null || search == "") {
-			return liste;
+
+		for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
+			names += buchArray[i].getPrenameArray()[j] + " " + buchArray[i].getSurnameArray()[j] + " : ";
 		}
-		
-		System.out.println("Gesuchtes Stichwort: â€ž" + search + "â€œ");
-		System.out.println("Gefundene BÃ¼cher:");
-
-		for (int i = 0; i < array.length; i++) {
-			String title = array[i].getTitle();
-
-			// return int 0 = gefunden -1 == nicht gefunden
-			int searchResult = title.indexOf(search);
-			if (searchResult == 0) {
-				liste += array[i] + "\n";
-			}
-		}
-
-		return liste;
+		// add to liste mehrere Authoren
+		return liste += names + buchArray[i].getTitle() + " : " + buchArray[i].getDate();
 	}
 }

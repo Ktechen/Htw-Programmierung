@@ -4,12 +4,36 @@ public class Buch {
 
 	// Aufgabe a
 
-	private String title;
+	private String title = null;
 	private int date;
-	private String prename; 
-	private String surname;
-	private String[] prenameArray; 
-	private String[] surnameArray;
+	private String prename = null; 
+	private String surname = null;
+	private String[] prenameArray = null; 
+	private String[] surnameArray = null;
+	
+	public int getPrenameArrayLength() {
+		return prenameArray.length;
+	}
+	
+	public int getSurnameArrayLength() {
+		return surnameArray.length;
+	}
+	
+	public String[] getPrenameArray() {
+		return prenameArray;
+	}
+
+	public void setPrenameArray(String[] prenameArray) {
+		this.prenameArray = prenameArray;
+	}
+
+	public String[] getSurnameArray() {
+		return surnameArray;
+	}
+
+	public void setSurnameArray(String[] surnameArray) {
+		this.surnameArray = surnameArray;
+	}
 
 	public String getPrename() {
 		return prename;
@@ -58,8 +82,9 @@ public class Buch {
 		this.surnameArray = surnameArray;
 		this.date = date;
 	}
-	
+
 	public String toString() {
+
 		return this.prename + " " + this.surname + " : " + this.title + " : " + this.date;
 	}
 
