@@ -9,6 +9,5 @@ import static org.junit.Assert.*;
 public class AppTest {
 	public void main(String[] args){
 		ConsoleTest cst = new ConsoleTest();
-		cst.testConsoleInteger();
 	}
 }

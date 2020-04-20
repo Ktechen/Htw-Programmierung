@@ -10,18 +10,26 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class ConsoleTest {
-
-	@Test public void testConsoleInteger() {
-
-		
-       
-    }
 	
-	@Test public void testConsoleString() {
-	       Console cs = new Console(); 
-	       Scanner sc = new Scanner(System.in);
-	       
-	}
-
+	private int a = 30;
+	private int b = 20;
+	private int result = 10;
+	
+	 @Test public void testGCDDivRestItCmd() {
+		 assertTrue(GCDDivRestItCmd.EuclidDivisionRestIterative(a, b) == result);
+	 }
+	 
+	 @Test public void testGCDDivRestRecCmd() {
+		 assertTrue(GCDDivRestRecCmd.EuclidDivisionRestRecursive(a, b) == result);
+	 }
+	 
+	 @Test public void testGCDSubItCmd() {
+		 assertTrue(GCDSubItCmd.EuclidSubstractionIterative(a, b) == result);
+	 }
+	 
+	 @Test public void testGCDSubRecCmd() {
+		 assertTrue(GCDSubRecCmd.EuclidSubstractionRecursive(a, b) == result);
+	 }
+	 
 }
 

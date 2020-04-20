@@ -24,13 +24,13 @@ public class SiebDesEratosthene implements ICommands{
 	}
 	
 	/*
-	 * return SiebDesEratosthene
+	 * @return SiebDesEratosthene
 	 * url: https://www.mathe-lexikon.at/arithmetik/natuerliche-zahlen/teilbarkeit/primzahlen/sieb-des-eratosthenes.html
 	 */
 	private static boolean[] sieb(int max) throws ArithmeticException{
 		
-		if(max < 0) {
-			throw new ArithmeticException("Max darf nicht kleiner als sein : " + max);
+		if(max <= 1) {
+			throw new ArithmeticException("Max darf nicht <= (kleiner gleich) als 1 sein. result : " + max);
 		}
 		
 		boolean[] array = new boolean[max + 1];

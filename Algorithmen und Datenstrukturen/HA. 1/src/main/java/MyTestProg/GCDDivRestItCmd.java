@@ -7,7 +7,7 @@ public class GCDDivRestItCmd implements ICommands {
 	/*
 	 * @return ggt
 	 */
-	private static int EuclidDivisionRestIterative(int a, int b) {
+	public static int EuclidDivisionRestIterative(int a, int b) {
 
 		while (b != 0) {
 			int h = a % b;
@@ -24,10 +24,6 @@ public class GCDDivRestItCmd implements ICommands {
 		int result = EuclidDivisionRestIterative(a, b);
 
 		System.out.println("Ergebnis: " + result);
-	}
-
-	public String toString() {
-		return "ggt von A: ";
 	}
 
 }

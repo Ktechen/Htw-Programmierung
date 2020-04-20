@@ -7,7 +7,7 @@ public class GCDSubRecCmd implements ICommands{
 	/*
 	 * @return ggt
 	 */
-	private static int EuclidSubstractionRecursive(int a, int b) {
+	public static int EuclidSubstractionRecursive(int a, int b) {
 		if(b == 0) {
 			return a;
 		}

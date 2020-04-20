@@ -12,7 +12,6 @@ public class CommandFactory {
 		menu();
 
 		Scanner sc = new Scanner(System.in);
-
 		
 		//Call all Commands
 		while (sc.hasNextInt()) {
