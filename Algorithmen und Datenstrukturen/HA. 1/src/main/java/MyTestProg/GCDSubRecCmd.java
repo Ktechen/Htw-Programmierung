@@ -1,8 +1,6 @@
 package MyTestProg;
 
-//@Author Kevin Techen
 public class GCDSubRecCmd implements ICommands{
-	
 
 	/*
 	 * @return ggt
