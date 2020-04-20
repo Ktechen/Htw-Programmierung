@@ -30,12 +30,23 @@ public class App {
 		String liste = bioVer.search(search);
 		System.out.println(liste);
 		
+		
 		//Aufgabe e
 		String deepSearch = "Theoretisch";
 		String deepListe = bioVer.deepSearch(deepSearch);
 		System.out.println(deepListe);
 
 		// System.out.println(buch0.toString());
+		
+		System.out.println(buch2.toString());
+		System.out.println(buch6.toString());
+		
+		//Spelling
+		System.out.println();
+		String searchSpelling = "SUlT";
+		String listeSpelling = bioVer.search(searchSpelling);
+		System.out.println(listeSpelling);
+		
 
 	}
 

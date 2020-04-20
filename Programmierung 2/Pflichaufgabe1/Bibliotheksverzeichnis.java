@@ -65,31 +65,44 @@ public class Bibliotheksverzeichnis {
 			liste = "";
 		}
 
+		String surname = null;
+
 		System.out.println("Gesuchter Nachname: „" + search + "“");
 		System.out.println("Gefundene Bücher:");
+
+		System.out.print("Search : " + search.toLowerCase() + " \n");
 		
 		for (int i = 0; i < buchArray.length; i++) {
-			String surname = buchArray[i].getSurname();
-	
-			// suche von ein Authorennamen
-			if (search == surname) {
+
+			//fix bug add String != null
+			if(buchArray[i].getSurname() != null) {
+				surname = buchArray[i].getSurname();
+			}
+		
+			System.out.print(surname.toLowerCase() + " ");
+			
+			if (search.toLowerCase() == surname.toLowerCase()) {
 				liste += buchArray[i] + "\n";
 			}
 			
 			// suche von mehren Authorennamen
 			if (buchArray[i].getSurnameArray() != null) {
-				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
 
+				System.out.println();
+				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
+					
 					String surnameArr = buchArray[i].getSurnameArray()[j];
 
-					if (search == surnameArr) {
+					System.out.print(surnameArr.toLowerCase() + " ");
+					
+					if (search.toLowerCase() == surnameArr.toLowerCase()) {
 						liste += listOfMoreAuthor(i) + "\n";
 					}
 				}
 			}
 
 		}
-		
+
 		return liste;
 	}
 
@@ -136,6 +149,7 @@ public class Bibliotheksverzeichnis {
 
 	/*
 	 * Hilfsmethode
+	 * 
 	 * @return alle Authoren, title und date
 	 */
 	private String listOfMoreAuthor(int i) {

@@ -23,17 +23,22 @@ public class BibliothekTest {
 	Buch[] array = { buch0, buch2, buch3, buch4, buch5, buch6 };
 
 	Bibliotheksverzeichnis bioVer = new Bibliotheksverzeichnis(array);
+	
+	
+	private String border = "------------------------------------------------------------------------------------------------------";
+	
 	/*
 	 * Normalfall
 	 */
 	@Test 
 	public void testSearch() {
 		System.out.println("testSearch()");
+		System.out.println(border);
 		String search = "Sult";
 		String liste = bioVer.search(search);
-		System.out.println(liste + "\n");
+		System.out.println(liste);
+		assertNotNull(liste);
 	}
-	
 	
 	/*
 	 * Null Grenzfall
@@ -41,9 +46,10 @@ public class BibliothekTest {
 	@Test 
 	public void testSearchIsNull() {
 		System.out.println("testSearchIsNull()");
+		System.out.println(border);
 		String search = "";
 		String liste = bioVer.search(search);
-		System.out.println(liste + "\n");
+		System.out.println(liste);
 		assertNull(liste);
 	}
 	
@@ -54,22 +60,25 @@ public class BibliothekTest {
 	public void testDeepSearch() {
 		//Aufgabe d
 		System.out.println("testDeepSearch()");
+		System.out.println(border);
 		String search = "Theoretisch";
 		String liste = bioVer.deepSearch(search);
-		System.out.println(liste + "\n");
+		System.out.println(liste);
+		assertNotNull(liste);
 	}
 	
 	/*
-	 * Grenzfall
+	 * Null Grenzfall
 	 */
 	@Test 
 	public void testDeepSearchIsNull() {
 		//Aufgabe d
 		System.out.println("testDeepSearchIsNull()");
+		System.out.println(border);
 		String search = "";
 		String liste = bioVer.deepSearch(search);
+		System.out.println(liste);
 		assertNull(liste);
-		System.out.println(liste + "\n");
 	}
 	
 	/*
@@ -79,7 +88,7 @@ public class BibliothekTest {
 	public void testDeepSearchSpelling() {
 		
 		System.out.println("testDeepSearchSpelling()");
-		
+		System.out.println(border);
 		String search = "Theoretisch";
 		String liste = bioVer.deepSearch(search);
 		System.out.println(liste);
