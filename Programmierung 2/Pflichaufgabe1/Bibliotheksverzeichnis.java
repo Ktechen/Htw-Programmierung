@@ -48,7 +48,7 @@ public class Bibliotheksverzeichnis {
 		System.out.println(nameOflist);
 		return printAsString();
 	}
-
+	
 	/*
 	 * Sucht nach Nachname im Surname
 	 * 
@@ -65,44 +65,42 @@ public class Bibliotheksverzeichnis {
 			liste = "";
 		}
 
-		String surname = null;
-
 		System.out.println("Gesuchter Nachname: „" + search + "“");
 		System.out.println("Gefundene Bücher:");
 
-		System.out.print("Search : " + search.toLowerCase() + " \n");
+		System.out.print("Search : " + search + " \n");
+		
+		String surname = null;
+		String surnameArr = null;
+		String searchValue = search.toLowerCase();
 		
 		for (int i = 0; i < buchArray.length; i++) {
-
-			//fix bug add String != null
-			if(buchArray[i].getSurname() != null) {
-				surname = buchArray[i].getSurname();
-			}
-		
-			System.out.print(surname.toLowerCase() + " ");
 			
-			if (search.toLowerCase() == surname.toLowerCase()) {
+			//fix bug filter String != null
+			if(buchArray[i].getSurname() != null) {
+				surname = buchArray[i].getSurname().toLowerCase();
+			}
+			
+			//check if value surname.toLowerCase() == searchValue.toLowerCase()
+			if (surname.compareTo(searchValue) == 0) {
 				liste += buchArray[i] + "\n";
 			}
 			
 			// suche von mehren Authorennamen
 			if (buchArray[i].getSurnameArray() != null) {
-
-				System.out.println();
 				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
-					
-					String surnameArr = buchArray[i].getSurnameArray()[j];
+					surnameArr = buchArray[i].getSurnameArray()[j];
 
-					System.out.print(surnameArr.toLowerCase() + " ");
-					
-					if (search.toLowerCase() == surnameArr.toLowerCase()) {
+					//check if value surname.toLowerCase() == searchValue.toLowerCase()
+					if (surnameArr.compareTo(searchValue) == 0) {
 						liste += listOfMoreAuthor(i) + "\n";
 					}
 				}
 			}
+			
+
 
 		}
-
 		return liste;
 	}
 

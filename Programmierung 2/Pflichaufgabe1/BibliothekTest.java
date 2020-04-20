@@ -54,6 +54,25 @@ public class BibliothekTest {
 	}
 	
 	/*
+	 * Normalfall groﬂ und klein Schreibung
+	 */
+	@Test 
+	public void testSearchSpelling() {
+		
+		System.out.println("testSearchSpelling()");
+		System.out.println(border);
+		String search = "sult";
+		String liste = bioVer.search(search);
+		System.out.println(liste);
+
+		String searchSpelling = "SUlT";
+		String listeSpelling = bioVer.search(searchSpelling);
+		System.out.println(listeSpelling);
+		
+		assertTrue(liste.compareTo(listeSpelling) == 0);
+	}
+	
+	/*
 	 * Normalfall
 	 */
 	@Test 
