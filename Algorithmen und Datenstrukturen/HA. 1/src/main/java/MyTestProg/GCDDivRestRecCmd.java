@@ -1,4 +1,4 @@
-//@Author Kevin Techen
+
 
 package MyTestProg;
 
