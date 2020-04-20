@@ -1,7 +1,5 @@
-
 package MyTestProg;
 
-//@Author Kevin Techen
 public class SiebDesEratosthene implements ICommands{
 	
 	public static void execute() {
