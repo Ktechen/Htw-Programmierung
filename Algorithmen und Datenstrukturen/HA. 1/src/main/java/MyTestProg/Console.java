@@ -1,5 +1,3 @@
-//@Author Kevin Techen
-
 package MyTestProg;
 
 import java.io.BufferedReader;
