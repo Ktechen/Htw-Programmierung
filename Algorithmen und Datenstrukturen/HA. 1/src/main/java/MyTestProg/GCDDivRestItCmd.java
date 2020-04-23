@@ -1,5 +1,3 @@
-//@Author Kevin Techen
-
 package MyTestProg;
 
 public class GCDDivRestItCmd implements ICommands {
