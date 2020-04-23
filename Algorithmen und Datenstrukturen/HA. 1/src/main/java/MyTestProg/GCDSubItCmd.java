@@ -1,3 +1,4 @@
+//@Author Kevin Techen
 
 package MyTestProg;
 
@@ -23,11 +24,17 @@ public class GCDSubItCmd implements ICommands {
 		return a;
 	}
 
-	public static void execute() {
+	public void execute() {
 		Console cs = new Console();
 		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		System.out.println("Ergebnis: " + EuclidSubstractionIterative(a, b));
 	}
+	
+	public String toString() {
+		return "Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm subtraction";
+	}
 }
+
+

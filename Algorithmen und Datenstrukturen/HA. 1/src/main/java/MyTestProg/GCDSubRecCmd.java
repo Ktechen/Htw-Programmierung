@@ -1,6 +1,8 @@
 package MyTestProg;
 
+//@Author Kevin Techen
 public class GCDSubRecCmd implements ICommands{
+	
 
 	/*
 	 * @return ggt
@@ -21,12 +23,16 @@ public class GCDSubRecCmd implements ICommands{
 		
 	}
 	
-	public static void execute() {
+	public void execute() {
 		Console cs = new Console();
 		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		System.out.println("Ergebnis: " + EuclidSubstractionRecursive(a, b));
+	}
+	
+	public String toString() {
+		return "Greatest Common Divisor (GCD) - (Recursive) Euclid's algorithm subtraction";
 	}
 	
 }

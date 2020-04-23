@@ -1,4 +1,4 @@
-
+//@Author Kevin Techen
 
 package MyTestProg;
 
@@ -15,11 +15,17 @@ public class GCDDivRestRecCmd implements ICommands {
 		return EuclidDivisionRestRecursive(b, a % b);
 	}
 
-	public static void execute() {
+	public void execute() {
 		Console cs = new Console();
 		int a = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		int b = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
 		System.out.println("Ergebnis: " + EuclidDivisionRestRecursive(a, b));
 	}
+	
+	public String toString() {
+		return "Greatest Common Divisor (GCD) - (Recursive) Euclid's algorithm division rest";
+	}
 }
+
+

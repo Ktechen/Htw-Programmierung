@@ -1,8 +1,10 @@
+
 package MyTestProg;
 
+//@Author Kevin Techen
 public class SiebDesEratosthene implements ICommands{
 	
-	public static void execute() {
+	public void execute() {
 		Console cs = new Console();
 		int max = cs.readIntegerFromStdin("Bitte geben Sie eine Zahl ein:");
 		
@@ -67,5 +69,9 @@ public class SiebDesEratosthene implements ICommands{
 		}
 
 		return array;
+	}
+	
+	public String toString() {
+		return "Sieve of Eratosthanes";
 	}
 }

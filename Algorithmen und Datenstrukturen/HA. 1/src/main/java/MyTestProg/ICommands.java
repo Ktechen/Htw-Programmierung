@@ -1,8 +1,9 @@
 
 package MyTestProg;
 
+//@Author Kevin Techen
 public interface ICommands {
 
-	public static void execute() {}
+	public void execute();
 	
 }

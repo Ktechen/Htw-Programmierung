@@ -3,9 +3,46 @@
  */
 package MyTestProg;
 
+import java.util.LinkedList;
+
 public class App {
-    public static void main(String[] args) {
-        CommandFactory commandFactory = new CommandFactory();
-        commandFactory.consoleMenu();
-    }
+
+	private static CommandFactory commandFactory = new CommandFactory();
+	private static LinkedList<ICommands> commands = new LinkedList<ICommands>();
+
+	public static void main(String[] args) {
+
+		Console cs = new Console();
+
+		System.out.println("Console-Application: Exercise-1\n");
+
+		commands.add(commandFactory.createGCDDivRestItCmd());
+		commands.add(commandFactory.createGCDDivRestRecCmd());
+		commands.add(commandFactory.createGCDSubItCmd());
+		commands.add(commandFactory.createGCDSubRecCmd());
+		commands.add(commandFactory.createSieveOfEratosthanesCmd());
+
+		// print Option form interface
+		for (int i = 0; i < commands.size(); i++) {
+			System.out.println(i + ". " + commands.get(i).toString());
+		}
+
+		System.out.println(commands.size() + ". Exit\n");
+
+		int index;
+		int limit = -1;
+
+		do {
+			index = cs.readIntegerFromStdin("Please enter a number for an option:");
+
+			if (index == commands.size()) {
+				System.out.println("System closed");
+				System.exit(0);
+			}
+
+		} while (index < limit || index > commands.size());
+
+		commands.get(index).execute();
+
+	}
 }

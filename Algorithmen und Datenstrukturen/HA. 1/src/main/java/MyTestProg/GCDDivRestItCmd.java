@@ -1,4 +1,4 @@
-
+//@Author Kevin Techen
 
 package MyTestProg;
 
@@ -17,13 +17,17 @@ public class GCDDivRestItCmd implements ICommands {
 		return a;
 	}
 
-	public static void execute() {
+	public void execute() {
 		Console cs = new Console();
 		int a = cs.readIntegerFromStdin("Bitte geben Sie die Zahl 1. ein:");
 		int b = cs.readIntegerFromStdin("Bitte geben Sie die Zahl 2. ein:");
 		int result = EuclidDivisionRestIterative(a, b);
 
 		System.out.println("Ergebnis: " + result);
+	}
+	
+	public String toString() {
+		return "Greatest Common Divisor (GCD) - (Iterative) Euclid's algorithm division rest";
 	}
 
 }
