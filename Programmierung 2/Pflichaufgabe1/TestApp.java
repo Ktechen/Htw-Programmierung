@@ -1,10 +1,8 @@
 package HA2;
 
-public class App {
+public class TestApp {
 
 	public static void main(String[] args) {
-		Konto konto = new Konto();
-
+		TestKonto testKonto = new TestKonto(); 
 	}
-
 }
