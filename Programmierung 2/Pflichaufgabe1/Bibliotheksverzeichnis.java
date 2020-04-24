@@ -1,5 +1,6 @@
 package Pflichaufgabe1;
 
+
 public class Bibliotheksverzeichnis {
 
 	// Aufgabe b
@@ -61,7 +62,7 @@ public class Bibliotheksverzeichnis {
 		if (search == null || search == "") {
 			return liste;
 		} else {
-			// remove isEmpty
+			// remove null;
 			liste = "";
 		}
 
@@ -72,7 +73,12 @@ public class Bibliotheksverzeichnis {
 		
 		String surname = null;
 		String surnameArr = null;
-		String searchValue = search.toLowerCase();
+		
+		//remove Whitespace
+		String clearSearch = search.replaceAll("\\s","");
+		
+		//convert toLowerCase
+		String searchValue = clearSearch.toLowerCase();
 		
 		for (int i = 0; i < buchArray.length; i++) {
 			
@@ -97,10 +103,8 @@ public class Bibliotheksverzeichnis {
 					}
 				}
 			}
-			
-
-
 		}
+		
 		return liste;
 	}
 
@@ -116,7 +120,8 @@ public class Bibliotheksverzeichnis {
 		if (search == null || search == "") {
 			return liste;
 		} else {
-			// remove isEmpty
+			
+			// remove null
 			liste = "";
 		}
 
@@ -127,7 +132,7 @@ public class Bibliotheksverzeichnis {
 
 			String title = buchArray[i].getTitle();
 
-			// return int 0 = gefunden -1 == nicht gefunden
+			// return int 0 = gefunden | -1 = nicht gefunden
 			int searchResult = title.toLowerCase().indexOf(search.toLowerCase());
 
 			if (searchResult == 0) {
@@ -151,7 +156,7 @@ public class Bibliotheksverzeichnis {
 	 * @return alle Authoren, title und date
 	 */
 	private String listOfMoreAuthor(int i) {
-
+		
 		String names = "";
 		String liste = "";
 
