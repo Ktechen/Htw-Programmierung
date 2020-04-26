@@ -1,6 +1,5 @@
 package Pflichaufgabe1;
 
-
 public class Bibliotheksverzeichnis {
 
 	// Aufgabe b
@@ -49,7 +48,7 @@ public class Bibliotheksverzeichnis {
 		System.out.println(nameOflist);
 		return printAsString();
 	}
-	
+
 	/*
 	 * Sucht nach Nachname im Surname
 	 * 
@@ -70,41 +69,41 @@ public class Bibliotheksverzeichnis {
 		System.out.println("Gefundene Bücher:");
 
 		System.out.print("Search : " + search + " \n");
-		
+
 		String surname = null;
 		String surnameArr = null;
-		
-		//remove Whitespace
-		String clearSearch = search.replaceAll("\\s","");
-		
-		//convert toLowerCase
+
+		// remove Whitespace
+		String clearSearch = search.replaceAll("\\s", "");
+
+		// convert toLowerCase
 		String searchValue = clearSearch.toLowerCase();
-		
+
 		for (int i = 0; i < buchArray.length; i++) {
-			
-			//fix bug filter String != null
-			if(buchArray[i].getSurname() != null) {
+
+			// fix bug filter String != null
+			if (buchArray[i].getSurname() != null) {
 				surname = buchArray[i].getSurname().toLowerCase();
 			}
-			
-			//check if value surname.toLowerCase() == searchValue.toLowerCase()
+
+			// check if value surname.toLowerCase() == searchValue.toLowerCase()
 			if (surname.compareTo(searchValue) == 0) {
 				liste += buchArray[i] + "\n";
 			}
-			
+
 			// suche von mehren Authorennamen
 			if (buchArray[i].getSurnameArray() != null) {
 				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
 					surnameArr = buchArray[i].getSurnameArray()[j];
 
-					//check if value surname.toLowerCase() == searchValue.toLowerCase()
+					// check if value surname.toLowerCase() == searchValue.toLowerCase()
 					if (surnameArr.compareTo(searchValue) == 0) {
 						liste += listOfMoreAuthor(i) + "\n";
 					}
 				}
 			}
 		}
-		
+
 		return liste;
 	}
 
@@ -120,7 +119,7 @@ public class Bibliotheksverzeichnis {
 		if (search == null || search == "") {
 			return liste;
 		} else {
-			
+
 			// remove null
 			liste = "";
 		}
@@ -131,9 +130,13 @@ public class Bibliotheksverzeichnis {
 		for (int i = 0; i < buchArray.length; i++) {
 
 			String title = buchArray[i].getTitle();
+			int searchResult = -1;
+			
+			if (title != null) {
+				searchResult = title.toLowerCase().indexOf(search.toLowerCase());
+			}
 
 			// return int 0 = gefunden | -1 = nicht gefunden
-			int searchResult = title.toLowerCase().indexOf(search.toLowerCase());
 
 			if (searchResult == 0) {
 				// prüfen ob mehrere Authoren vorhanden sind
@@ -156,7 +159,7 @@ public class Bibliotheksverzeichnis {
 	 * @return alle Authoren, title und date
 	 */
 	private String listOfMoreAuthor(int i) {
-		
+
 		String names = "";
 		String liste = "";
 
@@ -164,6 +167,8 @@ public class Bibliotheksverzeichnis {
 			names += buchArray[i].getPrenameArray()[j] + " " + buchArray[i].getSurnameArray()[j] + " : ";
 		}
 		// add to liste mehrere Authoren
-		return liste += names + buchArray[i].getTitle() + " : " + buchArray[i].getDate();
+		liste += names + buchArray[i].getTitle() + " : " + buchArray[i].getDate();
+
+		return liste;
 	}
 }
