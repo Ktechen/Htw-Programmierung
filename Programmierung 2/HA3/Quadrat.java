@@ -1,8 +1,12 @@
 package HA3;
 
-public class Quadrat extends Figur{
+public class Quadrat extends Figur implements GeometrieMath{
 
 	private int breite;
+	
+	public int getBreite() {
+		return breite;
+	}
 
 	public Quadrat(int breite, Punkt anker) {
 		super(anker);
@@ -10,11 +14,10 @@ public class Quadrat extends Figur{
 	}
 
 	public double berechneFlaeche() {
-		return (double) Math.sqrt(breite);
+		return (double) Math.pow(breite, 2);
 	}
-
-	public int getBreite() {
-		return breite;
+	
+	public double berechneUmfang() {
+		return 4 * breite;
 	}
-
 }

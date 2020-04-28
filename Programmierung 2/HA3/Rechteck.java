@@ -1,6 +1,6 @@
 package HA3;
 
-public class Rechteck extends Quadrat {
+public class Rechteck extends Quadrat implements GeometrieMath{
 
 	private int laenge;
 
@@ -13,4 +13,7 @@ public class Rechteck extends Quadrat {
 		return (double) laenge * getBreite();
 	}
 	
+	public double berechneUmfang() {
+		return 2 * (laenge + getBreite());
+	}
 }
