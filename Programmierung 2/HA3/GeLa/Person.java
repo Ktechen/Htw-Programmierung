@@ -7,16 +7,14 @@ public class Person {
 	private int seniority; // Betriebszugehörigkeit
 	private boolean leader; // chef ja/Nein
 	private double salary; // Gehalt
-	private double bonus;
-	private boolean trainee;
 
-	public Person(String surname, String prename, int seniority, boolean leader, double salary, boolean trainee) {
+
+	public Person(String surname, String prename, int seniority, boolean leader, double salary) {
 		this.surname = surname;
 		this.prename = prename;
 		this.seniority = seniority;
 		this.leader = leader;
 		this.salary = salary;
-		this.trainee = trainee;
 	}
 
 	public void addSalary(double summe) throws IllegalArgumentException {
@@ -66,22 +64,6 @@ public class Person {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public double getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(double bonus) {
-		this.bonus = bonus;
-	}
-
-	public boolean isTrainee() {
-		return trainee;
-	}
-
-	public void setTrainee(boolean trainee) {
-		this.trainee = trainee;
 	}
 
 	public String toString() {

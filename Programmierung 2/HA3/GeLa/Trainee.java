@@ -4,22 +4,19 @@ public class Trainee extends Person {
 
 	private String titleOfTrainee;
 	private int age;
-	private double bonusTrainee = 10 * age;
+	private double bonus = 10 * getAge();
+	private int yearsOfTrainiee;
 
 	public Trainee(String surname, String prename, int seniority, double salary, String titleOfTrainee, int age) {
-		super(surname, prename, seniority, false, salary, true);
+		super(surname, prename, seniority, false, salary);
 		this.titleOfTrainee = titleOfTrainee;
 		this.setAge(age);
 	}
 
-	public void addBonus(Trainee trainee) {
-		try {
-			trainee.addSalary(bonusTrainee);
-		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		}
+	public double getTraineeBonus() {
+		return bonus;
 	}
-
+	
 	public String getTitleOfTrainee() {
 		return titleOfTrainee;
 	}
@@ -37,7 +34,15 @@ public class Trainee extends Person {
 	}
 
 	public double getbonusTrainee() {
-		return bonusTrainee;
+		return bonus;
+	}
+	
+	public int getYearsOfTrainiee() {
+		return yearsOfTrainiee;
+	}
+
+	public void setYearsOfTrainiee(int yearsOfTrainiee) {
+		this.yearsOfTrainiee = yearsOfTrainiee;
 	}
 
 	public String toString() {

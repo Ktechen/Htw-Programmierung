@@ -6,33 +6,14 @@ public class Mitarbeiter extends Person {
 	private double bonusLeader = 50 * getSeniority() + 200;
 
 	public Mitarbeiter(String surname, String prename, int seniority, boolean leader, double salary) {
-		super(surname, prename, seniority, leader, salary, false);
+		super(surname, prename, seniority, leader, salary);
 	}
 
-	public double getBonusLeader() {
-		return bonusLeader;
-	}
-
-	public double getBonus() {
-		return bonus;
-	}
-
-	public void addBonus(Mitarbeiter mitarbeiter) {
-
+	public double getMitarbeiterBonus() {
 		if (isLeader()) {
-			try {
-				mitarbeiter.addSalary(bonusLeader);
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
-		} else {
-			try {
-				mitarbeiter.addSalary(bonus);
-			} catch (IllegalArgumentException e) {
-				System.out.println(e.getMessage());
-			}
+			return bonusLeader;
 		}
-
+		return bonus;
 	}
 
 	public String toString() {
