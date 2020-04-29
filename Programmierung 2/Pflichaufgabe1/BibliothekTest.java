@@ -157,8 +157,8 @@ public class BibliothekTest {
 		assertNull(liste);
 	}
 
-	/* WorseCase
-	 * 5. Test Title is null 
+	/* 5. WorseCase
+	 * Test Title is null 
 	 */
 	@Test
 	public void testDeepSearchIsTitleNull() {
