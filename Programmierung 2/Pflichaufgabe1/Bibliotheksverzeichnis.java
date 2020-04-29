@@ -66,11 +66,6 @@ public class Bibliotheksverzeichnis {
 		// create Array with max length
 		String[] array = new String[buchArray.length];
 
-		// Dialog
-		System.out.println("Gesuchter Nachname: „" + search + "“");
-		System.out.println("Gefundene Bücher:");
-		System.out.print("Search : " + search + " \n");
-
 		// Surname als String und String[]
 		String surname = null;
 		String surnameArr = null;
@@ -131,10 +126,6 @@ public class Bibliotheksverzeichnis {
 
 		String[] array = new String[buchArray.length];
 
-		// Dialog
-		System.out.println("Gesuchtes Stichwort: „" + search + "“");
-		System.out.println("Gefundene Bücher:");
-
 		for (int i = 0; i < buchArray.length; i++) {
 
 			String title = buchArray[i].getTitle();
@@ -145,7 +136,6 @@ public class Bibliotheksverzeichnis {
 			}
 
 			// return int 0 = gefunden | -1 = nicht gefunden
-
 			if (searchResult == 0) {
 				// prüfen ob mehrere Authoren vorhanden sind
 				if (buchArray[i].getSurnameArray() != null) {
@@ -164,6 +154,14 @@ public class Bibliotheksverzeichnis {
 		return array;
 	}
 
+	/*
+	 * gibt ein Dialog aus von Gefundene Bücher
+	 */
+	public void dialog(String search) {
+		System.out.println("Gesuchtes Wort: „" + search + "“");
+		System.out.println("Gefundene Bücher:");
+	}
+	
 	/*
 	 * Hilfemethode
 	 * 

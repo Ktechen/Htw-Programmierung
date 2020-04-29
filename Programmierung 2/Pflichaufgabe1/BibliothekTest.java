@@ -39,6 +39,13 @@ public class BibliothekTest {
 	public void testSearch() {
 		String search = "Sult";
 		String[] liste = bioVer.search(search);
+
+		bioVer.dialog(search);
+		for (int i = 0; i < liste.length; i++) {
+			System.out.println(liste[i]);
+		}
+		System.out.println();
+
 		assertNotNull(liste);
 	}
 
@@ -50,6 +57,15 @@ public class BibliothekTest {
 	public void testIsNullSearch() {
 		String search = "";
 		String liste[] = bioVer.search(search);
+
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
+
 		assertNull(liste);
 	}
 
@@ -66,6 +82,17 @@ public class BibliothekTest {
 		String searchSpelling = "SUlT";
 		String listeSpelling[] = bioVer.search(searchSpelling);
 
+		bioVer.dialog(searchSpelling);
+		for (int i = 0; i < listeSpelling.length; i++) {
+			System.out.println(listeSpelling[i]);
+		}
+		
+		bioVer.dialog(search);
+		for (int i = 0; i < liste.length; i++) {
+			System.out.println(liste[i]);
+		}
+		System.out.println();
+		
 		assertArrayEquals(liste, listeSpelling);
 	}
 
@@ -78,7 +105,21 @@ public class BibliothekTest {
 		String search = "su  L  t   ";
 		String liste[] = bioVer.search(search);
 
-		assertNotEquals(liste, null);
+		String searchSpelling = "SUlT";
+		String listeSpelling[] = bioVer.search(searchSpelling);
+		
+		bioVer.dialog(searchSpelling);
+		for (int i = 0; i < listeSpelling.length; i++) {
+			System.out.println(listeSpelling[i]);
+		}
+		
+		bioVer.dialog(search);
+		for (int i = 0; i < liste.length; i++) {
+			System.out.println(liste[i]);
+		}
+		System.out.println();
+		
+		assertArrayEquals(liste, listeSpelling);
 	}
 
 	/*
@@ -94,6 +135,14 @@ public class BibliothekTest {
 
 		String search = "Müller";
 		String liste[] = bioVerIsNull.search(search);
+		
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
 
 		assertNull(liste);
 	}
@@ -106,6 +155,15 @@ public class BibliothekTest {
 	public void testNotfoundSearch() {
 		String search = "456";
 		String liste[] = bioVer.search(search);
+		
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
+		
 		assertNull(liste);
 	}
 
@@ -116,6 +174,13 @@ public class BibliothekTest {
 	public void testDeepSearch() {
 		String search = "Theoretisch";
 		String liste[] = bioVer.deepSearch(search);
+
+		bioVer.dialog(search);
+		for (int i = 0; i < liste.length; i++) {
+			System.out.println(liste[i]);
+		}
+		System.out.println();
+		
 		assertNotNull(liste);
 	}
 
@@ -127,6 +192,14 @@ public class BibliothekTest {
 		String search = "";
 		String liste[] = bioVer.deepSearch(search);
 
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
+		
 		assertNull(liste);
 	}
 
@@ -142,11 +215,22 @@ public class BibliothekTest {
 		String searchSpelling = "ThEoReTisch";
 		String listeSpelling[] = bioVer.deepSearch(searchSpelling);
 
+		bioVer.dialog(searchSpelling);
+		for (int i = 0; i < listeSpelling.length; i++) {
+			System.out.println(listeSpelling[i]);
+		}
+		
+		bioVer.dialog(search);
+		for (int i = 0; i < liste.length; i++) {
+			System.out.println(liste[i]);
+		}
+		System.out.println();
+		
 		assertArrayEquals(liste, listeSpelling);
 	}
 
-	/* Normalfall
-	 * 4. Test ob return = ""; NotFound eine nicht vorhandene Datensatz
+	/*
+	 * Normalfall 4. Test ob return = null; NotFound eine nicht vorhandene Datensatz
 	 * suchen
 	 */
 	@Test
@@ -154,11 +238,19 @@ public class BibliothekTest {
 		String search = "123";
 		String liste[] = bioVer.deepSearch(search);
 
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
+		
 		assertNull(liste);
 	}
 
-	/* 5. WorseCase
-	 * Test Title is null 
+	/*
+	 * 5. WorseCase Test Title is null
 	 */
 	@Test
 	public void testDeepSearchIsTitleNull() {
@@ -170,6 +262,14 @@ public class BibliothekTest {
 
 		String search = "123";
 		String liste[] = bioVerIsNull.deepSearch(search);
+		
+		if (liste != null) {
+			bioVer.dialog(search);
+			for (int i = 0; i < liste.length; i++) {
+				System.out.println(liste[i]);
+			}
+			System.out.println();
+		}
 
 		assertNull(liste);
 	}
@@ -187,7 +287,7 @@ public class BibliothekTest {
 		String[] array = { "Kevin", null, null, "hört", null, "J.B.O" };
 
 		String[] testArray = Bibliotheksverzeichnis.copyOfArray(array);
-		
+
 		assertArrayEquals(testArray, CheckArray);
 	}
 

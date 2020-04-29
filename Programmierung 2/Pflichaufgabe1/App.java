@@ -27,6 +27,7 @@ public class App {
 
 		// Aufgabe d
 		String search = "Sult";
+		bioVer.dialog(search);
 		String[] liste = bioVer.search(search);
 		for (int i = 0; i < liste.length; i++) {
 			System.out.println(liste[i]);
@@ -35,6 +36,7 @@ public class App {
 		System.out.println();
 		// Aufgabe e
 		String deepSearch = "Theoretisch";
+		bioVer.dialog(deepSearch);
 		String deepListe[] = bioVer.deepSearch(deepSearch);
 		for (int i = 0; i < deepListe.length; i++) {
 			System.out.println(deepListe[i]);
@@ -48,6 +50,7 @@ public class App {
 		// Spelling
 		System.out.println();
 		String searchSpelling = "SUlT";
+		bioVer.dialog(searchSpelling);
 		String[] listeSpelling = bioVer.search(searchSpelling);
 		for (int i = 0; i < listeSpelling.length; i++) {
 			System.out.println(listeSpelling[i]);
