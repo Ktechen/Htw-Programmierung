@@ -53,46 +53,6 @@ public class Bibliotheksverzeichnis {
 	}
 
 	/*
-	 * Hilfemethode
-	 * 
-	 * return String[] array without null
-	 */
-	private String[] copyOfArray(String[] array) {
-
-		if (array == null || array.length == 0) {
-			return null;
-		}
-
-		int counter = 0;
-		int postion = 0;
-
-		// Zähl != null für die Array größe
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) {
-				counter++;
-			}
-		}
-
-		// return null if counter == 0
-		if(counter == 0) {
-			return null;
-		}
-		
-		// neuen String[] erstellen ohne null
-		String[] newArray = new String[counter];
-
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != null) {
-				newArray[postion] = array[i];
-				postion++;
-			}
-		}
-
-		return newArray;
-
-	}
-
-	/*
 	 * Sucht nach Nachname im Surname
 	 * 
 	 * @return liste nach dem Nachname von Authoren
@@ -127,7 +87,7 @@ public class Bibliotheksverzeichnis {
 			if (buchArray[i].getSurnameArray() != null) {
 				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
 
-					//convert toLowerCase
+					// convert toLowerCase
 					surnameArr = buchArray[i].getSurnameArray()[j].toLowerCase();
 
 					// check surnameArray[i] == null
@@ -202,6 +162,45 @@ public class Bibliotheksverzeichnis {
 		array = copyOfArray(array);
 
 		return array;
+	}
+
+	/*
+	 * Hilfemethode
+	 * 
+	 * return String[] array without null
+	 */
+	public static String[] copyOfArray(String[] array) {
+
+		if (array == null || array.length == 0) {
+			return null;
+		}
+
+		int counter = 0;
+		int postion = 0;
+
+		// Zähl != null für die Array größe
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != null) {
+				counter++;
+			}
+		}
+
+		// return null if counter == 0
+		if (counter == 0) {
+			return null;
+		}
+
+		// neuen String[] erstellen ohne null
+		String[] newArray = new String[counter];
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != null) {
+				newArray[postion] = array[i];
+				postion++;
+			}
+		}
+
+		return newArray;
 	}
 
 	/*

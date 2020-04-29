@@ -28,9 +28,12 @@ public class BibliothekTest {
 
 	private Bibliotheksverzeichnis bioVer = new Bibliotheksverzeichnis(array);
 
+	//////////////////////////////////////////////////////////////
+	// Search Methoden
+	/////////////////////////////////////////////////////////////
+
 	/*
-	 * 1. Normalfall
-	 * BestCase die Eingabe ist perfekt
+	 * 1. Normalfall BestCase die Eingabe ist perfekt
 	 */
 	@Test
 	public void testSearch() {
@@ -40,8 +43,8 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * 2.WorseCase Check return null
-	 * Es wird nichts sucht und die Methode return null;
+	 * 2.WorseCase Check return null Es wird nichts sucht und die Methode return
+	 * null;
 	 */
 	@Test
 	public void testIsNullSearch() {
@@ -67,8 +70,8 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * 4. WorstCase whitespace problem 
-	 * Testen ob auch mit Whitespace das Ergebnis gefunden wird
+	 * 4. WorstCase whitespace problem Testen ob auch mit Whitespace das Ergebnis
+	 * gefunden wird
 	 */
 	@Test
 	public void testWhitespaceSearch() {
@@ -79,8 +82,7 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * WorseCase
-	 * 5. Bibliotheksverzeichnis isEmpty
+	 * WorseCase 5. Bibliotheksverzeichnis isEmpty
 	 * 
 	 * Ein Buch ohne Daten wird übergeben wird ohne probleme bearbeitet
 	 */
@@ -92,14 +94,13 @@ public class BibliothekTest {
 
 		String search = "Müller";
 		String liste[] = bioVerIsNull.search(search);
-		
+
 		assertNull(liste);
 	}
 
 	/*
-	 *  Normalfall testen, ob kein Ergebnis gefunden wurde
-	 * 6. Not found return ""; 
-	 *  
+	 * Normalfall testen, ob kein Ergebnis gefunden wurde 6. Not found return "";
+	 * 
 	 */
 	@Test
 	public void testNotfoundSearch() {
@@ -109,8 +110,7 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * 1. Normalfall != null
-	 * Eine BestCase suche ohne fehler
+	 * 1. Normalfall != null Eine BestCase suche ohne fehler
 	 */
 	@Test
 	public void testDeepSearch() {
@@ -120,8 +120,7 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * 2. WorseCase
-	 * Suche ist leer dann return null
+	 * 2. WorseCase Suche ist leer dann return null
 	 */
 	@Test
 	public void testDeepSearchIsNull() {
@@ -132,9 +131,8 @@ public class BibliothekTest {
 	}
 
 	/*
-	 * 3. Worstcase groß und klein Schreibung
-	 * Testen ob die Eingabe toLower convert wurde.
-	 * Danach prüfen ob die Eingabe identisch sind
+	 * 3. Worstcase groß und klein Schreibung Testen ob die Eingabe toLower convert
+	 * wurde. Danach prüfen ob die Eingabe identisch sind
 	 */
 	@Test
 	public void testDeepSearchSpelling() {
@@ -147,9 +145,9 @@ public class BibliothekTest {
 		assertArrayEquals(liste, listeSpelling);
 	}
 
-	/*
-	 * 4. Test ob return = ""; NotFound
-	 * Normalfall eine nicht vorhandene Datensatz suchen
+	/* Normalfall
+	 * 4. Test ob return = ""; NotFound eine nicht vorhandene Datensatz
+	 * suchen
 	 */
 	@Test
 	public void testDeepSearchNotFound() {
@@ -159,9 +157,8 @@ public class BibliothekTest {
 		assertNull(liste);
 	}
 
-	/*
-	 * 5. Test Title is null
-	 * WorseCase der Title wurde mit Null erstellt und wird abgerufen
+	/* WorseCase
+	 * 5. Test Title is null 
 	 */
 	@Test
 	public void testDeepSearchIsTitleNull() {
@@ -175,6 +172,23 @@ public class BibliothekTest {
 		String liste[] = bioVerIsNull.deepSearch(search);
 
 		assertNull(liste);
+	}
+
+	//////////////////////////////////////////////////////////////
+	// CopyOfArray
+	/////////////////////////////////////////////////////////////
+
+	/*
+	 * Testen ob null remove wird
+	 */
+	@Test
+	public void testCopyOfArray() {
+		String[] CheckArray = { "Kevin", "hört", "J.B.O" };
+		String[] array = { "Kevin", null, null, "hört", null, "J.B.O" };
+
+		String[] testArray = Bibliotheksverzeichnis.copyOfArray(array);
+		
+		assertArrayEquals(testArray, CheckArray);
 	}
 
 }
