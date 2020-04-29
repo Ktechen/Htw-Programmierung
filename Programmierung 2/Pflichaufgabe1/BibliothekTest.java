@@ -30,187 +30,141 @@ public class BibliothekTest {
 
 	/*
 	 * 1. Normalfall
+	 * BestCase die Eingabe ist perfekt
 	 */
 	@Test
 	public void testSearch() {
-		System.out.println("testSearch()");
-		System.out.println();
-
 		String search = "Sult";
-		String liste = bioVer.search(search);
-
-		System.out.println(liste);
-
+		String[] liste = bioVer.search(search);
 		assertNotNull(liste);
 	}
 
 	/*
-	 * 2. Check if return null
+	 * 2.WorseCase Check return null
+	 * Es wird nichts sucht und die Methode return null;
 	 */
 	@Test
 	public void testIsNullSearch() {
-		System.out.println("testSearchIsNull()");
-		System.out.println();
-
 		String search = "";
-		String liste = bioVer.search(search);
-
-		System.out.println(liste);
-
+		String liste[] = bioVer.search(search);
 		assertNull(liste);
 	}
 
 	/*
-	 * 3. Normalfall groß und klein Schreibung
+	 * 3. Testen groß und klein Schreibung egal ist
+	 * 
 	 */
 	@Test
 	public void testSpellingSearch() {
-
-		System.out.println("testSearchSpelling()");
-		System.out.println();
-
 		String search = "sult";
 
-		String liste = bioVer.search(search);
-		System.out.println(liste);
+		String liste[] = bioVer.search(search);
 
 		String searchSpelling = "SUlT";
-		String listeSpelling = bioVer.search(searchSpelling);
+		String listeSpelling[] = bioVer.search(searchSpelling);
 
-		System.out.println(listeSpelling);
-
-		assertTrue(liste.compareTo(listeSpelling) == 0);
+		assertArrayEquals(liste, listeSpelling);
 	}
 
 	/*
-	 * 4. WorstCase whitespace
+	 * 4. WorstCase whitespace problem 
+	 * Testen ob auch mit Whitespace das Ergebnis gefunden wird
 	 */
 	@Test
 	public void testWhitespaceSearch() {
-
-		System.out.println("testWorstSearch()");
-		System.out.println();
-
 		String search = "su  L  t   ";
-		String liste = bioVer.search(search);
+		String liste[] = bioVer.search(search);
 
-		System.out.println(liste);
-
-		String actual = "";
-
-		assertNotEquals(liste, actual);
+		assertNotEquals(liste, null);
 	}
 
 	/*
+	 * WorseCase
 	 * 5. Bibliotheksverzeichnis isEmpty
+	 * 
+	 * Ein Buch ohne Daten wird übergeben wird ohne probleme bearbeitet
 	 */
 	@Test
 	public void testAllEmptySearch() {
-		System.out.println("testAllEmptySearch()");
-		System.out.println();
-
 		Buch book = new Buch("", "", "", 0);
 		Buch[] books = { book };
 		Bibliotheksverzeichnis bioVerIsNull = new Bibliotheksverzeichnis(books);
 
 		String search = "Müller";
-		String liste = bioVerIsNull.search(search);
-
-		assertNotNull(liste);
-	}
-
-	/*
-	 * 6. Notfound
-	 */
-	@Test
-	public void testNotfoundSearch() {
-		System.out.println("testNotfoundSearch()");
-		System.out.println();
-
-		String search = "456";
-		String liste = bioVer.search(search);
-
-		assertEquals(liste, "");
-	}
-
-	/*
-	 * 1. Normalfall != null
-	 */
-	@Test
-	public void testDeepSearch() {
-		// Aufgabe d
-		System.out.println("testDeepSearch()");
-		System.out.println();
-
-		String search = "Theoretisch";
-		String liste = bioVer.deepSearch(search);
-
-		System.out.println(liste);
-		assertNotNull(liste);
-	}
-
-	/*
-	 * 2. Grenzfall == null
-	 */
-	@Test
-	public void testDeepSearchIsNull() {
-		// Aufgabe d
-		System.out.println("testDeepSearchIsNull()");
-		System.out.println();
-
-		String search = "";
-		String liste = bioVer.deepSearch(search);
-
-		System.out.println(liste);
+		String liste[] = bioVerIsNull.search(search);
+		
 		assertNull(liste);
 	}
 
 	/*
-	 * 3. Normalfall groß und klein Schreibung
+	 *  Normalfall testen, ob kein Ergebnis gefunden wurde
+	 * 6. Not found return ""; 
+	 *  
+	 */
+	@Test
+	public void testNotfoundSearch() {
+		String search = "456";
+		String liste[] = bioVer.search(search);
+		assertNull(liste);
+	}
+
+	/*
+	 * 1. Normalfall != null
+	 * Eine BestCase suche ohne fehler
+	 */
+	@Test
+	public void testDeepSearch() {
+		String search = "Theoretisch";
+		String liste[] = bioVer.deepSearch(search);
+		assertNotNull(liste);
+	}
+
+	/*
+	 * 2. WorseCase
+	 * Suche ist leer dann return null
+	 */
+	@Test
+	public void testDeepSearchIsNull() {
+		String search = "";
+		String liste[] = bioVer.deepSearch(search);
+
+		assertNull(liste);
+	}
+
+	/*
+	 * 3. Worstcase groß und klein Schreibung
+	 * Testen ob die Eingabe toLower convert wurde.
+	 * Danach prüfen ob die Eingabe identisch sind
 	 */
 	@Test
 	public void testDeepSearchSpelling() {
-
-		System.out.println("testDeepSearchSpelling()");
-		System.out.println();
-
 		String search = "Theoretisch";
-		String liste = bioVer.deepSearch(search);
-
-		System.out.println(liste);
+		String liste[] = bioVer.deepSearch(search);
 
 		String searchSpelling = "ThEoReTisch";
-		String listeSpelling = bioVer.deepSearch(searchSpelling);
-		System.out.println(listeSpelling);
+		String listeSpelling[] = bioVer.deepSearch(searchSpelling);
 
-		assertTrue(liste.compareTo(listeSpelling) == 0);
+		assertArrayEquals(liste, listeSpelling);
 	}
 
 	/*
 	 * 4. Test ob return = ""; NotFound
+	 * Normalfall eine nicht vorhandene Datensatz suchen
 	 */
 	@Test
 	public void testDeepSearchNotFound() {
-
-		System.out.println("testDeepSearchNotFound()");
-		System.out.println();
-
 		String search = "123";
-		String liste = bioVer.deepSearch(search);
+		String liste[] = bioVer.deepSearch(search);
 
-		assertEquals(liste, "");
-
+		assertNull(liste);
 	}
 
 	/*
 	 * 5. Test Title is null
+	 * WorseCase der Title wurde mit Null erstellt und wird abgerufen
 	 */
 	@Test
 	public void testDeepSearchIsTitleNull() {
-
-		System.out.println("testDeepSearchIsTitleNull()");
-		System.out.println();
-
 		Buch book = new Buch(null, prenameArr, surnameArr, 2011);
 
 		Buch[] arrayBook = { book };
@@ -218,10 +172,9 @@ public class BibliothekTest {
 		Bibliotheksverzeichnis bioVerIsNull = new Bibliotheksverzeichnis(arrayBook);
 
 		String search = "123";
-		String liste = bioVerIsNull.deepSearch(search);
+		String liste[] = bioVerIsNull.deepSearch(search);
 
-		assertEquals(liste, "");
-
+		assertNull(liste);
 	}
 
 }

@@ -44,9 +44,52 @@ public class Bibliotheksverzeichnis {
 		return liste;
 	}
 
+	/*
+	 * toString
+	 */
 	public String toString() {
 		System.out.println(nameOflist);
 		return printAsString();
+	}
+
+	/*
+	 * Hilfemethode
+	 * 
+	 * return String[] array without null
+	 */
+	private String[] copyOfArray(String[] array) {
+
+		if (array == null || array.length == 0) {
+			return null;
+		}
+
+		int counter = 0;
+		int postion = 0;
+
+		// Zähl != null für die Array größe
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != null) {
+				counter++;
+			}
+		}
+
+		// return null if counter == 0
+		if(counter == 0) {
+			return null;
+		}
+		
+		// neuen String[] erstellen ohne null
+		String[] newArray = new String[counter];
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != null) {
+				newArray[postion] = array[i];
+				postion++;
+			}
+		}
+
+		return newArray;
+
 	}
 
 	/*
@@ -54,22 +97,21 @@ public class Bibliotheksverzeichnis {
 	 * 
 	 * @return liste nach dem Nachname von Authoren
 	 */
-	public String search(String search) {
-
-		String liste = null;
+	public String[] search(String search) {
 
 		if (search == null || search == "") {
-			return liste;
-		} else {
-			// remove null;
-			liste = "";
+			return null;
 		}
 
+		// create Array with max length
+		String[] array = new String[buchArray.length];
+
+		// Dialog
 		System.out.println("Gesuchter Nachname: „" + search + "“");
 		System.out.println("Gefundene Bücher:");
-
 		System.out.print("Search : " + search + " \n");
 
+		// Surname als String und String[]
 		String surname = null;
 		String surnameArr = null;
 
@@ -81,30 +123,39 @@ public class Bibliotheksverzeichnis {
 
 		for (int i = 0; i < buchArray.length; i++) {
 
-			// fix bug filter String != null
-			if (buchArray[i].getSurname() != null) {
-				surname = buchArray[i].getSurname().toLowerCase();
-			}
-
-			// check if value surname.toLowerCase() == searchValue.toLowerCase()
-			if (surname.compareTo(searchValue) == 0) {
-				liste += buchArray[i] + "\n";
-			}
-
 			// suche von mehren Authorennamen
 			if (buchArray[i].getSurnameArray() != null) {
 				for (int j = 0; j < buchArray[i].getSurnameArrayLength(); j++) {
-					surnameArr = buchArray[i].getSurnameArray()[j];
 
-					// check if value surname.toLowerCase() == searchValue.toLowerCase()
-					if (surnameArr.compareTo(searchValue) == 0) {
-						liste += listOfMoreAuthor(i) + "\n";
+					//convert toLowerCase
+					surnameArr = buchArray[i].getSurnameArray()[j].toLowerCase();
+
+					// check surnameArray[i] == null
+					if (surnameArr != null) {
+
+						// check if value surname.toLowerCase() == searchValue.toLowerCase()
+						if (surnameArr.compareTo(searchValue) == 0) {
+							array[i] = buchArray[i].toString();
+						}
 					}
+				}
+			}
+
+			// fix bug filter String != null
+			if (buchArray[i].getSurname() != null) {
+				surname = buchArray[i].getSurname().toLowerCase();
+
+				// check if value surname.toLowerCase() == searchValue.toLowerCase()
+				if (surname.compareTo(searchValue) == 0) {
+					array[i] = buchArray[i].toString();
 				}
 			}
 		}
 
-		return liste;
+		// remove null
+		array = copyOfArray(array);
+
+		return array;
 	}
 
 	/*
@@ -112,18 +163,15 @@ public class Bibliotheksverzeichnis {
 	 * 
 	 * @return String list von allen Büchern wo die suche nach dem Titel korrekt ist
 	 */
-	public String deepSearch(String search) {
-
-		String liste = null;
+	public String[] deepSearch(String search) {
 
 		if (search == null || search == "") {
-			return liste;
-		} else {
-
-			// remove null
-			liste = "";
+			return null;
 		}
 
+		String[] array = new String[buchArray.length];
+
+		// Dialog
 		System.out.println("Gesuchtes Stichwort: „" + search + "“");
 		System.out.println("Gefundene Bücher:");
 
@@ -131,7 +179,7 @@ public class Bibliotheksverzeichnis {
 
 			String title = buchArray[i].getTitle();
 			int searchResult = -1;
-			
+
 			if (title != null) {
 				searchResult = title.toLowerCase().indexOf(search.toLowerCase());
 			}
@@ -141,16 +189,19 @@ public class Bibliotheksverzeichnis {
 			if (searchResult == 0) {
 				// prüfen ob mehrere Authoren vorhanden sind
 				if (buchArray[i].getSurnameArray() != null) {
-					liste += listOfMoreAuthor(i) + "\n";
+					array[i] = buchArray[i].toString();
 
 				} else {
 					// add to liste
-					liste += buchArray[i] + "\n";
+					array[i] = buchArray[i].toString();
 				}
 			}
 		}
 
-		return liste;
+		// remove null
+		array = copyOfArray(array);
+
+		return array;
 	}
 
 	/*

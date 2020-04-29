@@ -85,6 +85,7 @@ public class Buch {
 
 	/*
 	 * Hilfsmethode für toString()
+	 * 
 	 * @return list of one Book
 	 */
 	private String printToStringArray() {
@@ -95,10 +96,13 @@ public class Buch {
 		}
 
 		liste += getTitle() + " : " + getDate();
-		
+
 		return liste;
 	}
 
+	/*
+	 * toString
+	 */
 	public String toString() {
 
 		if (getPrenameArray() != null) {
