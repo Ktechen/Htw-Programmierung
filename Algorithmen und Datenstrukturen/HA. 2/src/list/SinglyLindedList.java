@@ -2,7 +2,7 @@ package list;
 
 public class SinglyLindedList<T> implements Listable<T> {
 
-	Node head = null;
+	private Node head = null;
 
 	private class Node {
 		T data;
@@ -11,20 +11,51 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void add(T data) {
-		// TODO Auto-generated method stub
+		Node node = new Node();
+		node.data = data;
 
+		/*
+		 * If list null
+		 */
+		if (head == null) {
+			head = node;
+		} else {
+			addLast(data);
+		}
 	}
 
 	@Override
 	public void add(int index, T data) {
-		// TODO Auto-generated method stub
+		if (data != null) {
+			Node temp = new Node();
+			int counter = size();
 
+			if (index == 0) {
+				addFirst(data);
+			} else if (counter - 1 == index) {
+				addLast(data);
+			} else {
+
+			}
+
+		}
 	}
 
 	@Override
 	public void addFirst(T data) {
-		// TODO Auto-generated method stub
+		if (data != null) {
+			// create temp Object
+			Node temp = new Node();
 
+			// pick data
+			temp.data = data;
+
+			// head is first element
+			temp.next = head;
+
+			// temp add to head
+			head = temp;
+		}
 	}
 
 	@Override
@@ -33,6 +64,9 @@ public class SinglyLindedList<T> implements Listable<T> {
 		node.data = data;
 		node.next = null;
 
+		/*
+		 * If list null
+		 */
 		if (head == null) {
 			head = node;
 		} else {
@@ -48,18 +82,30 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void set(int index, T data) {
+		Node node = new Node();
+		node.data = data;
 
 	}
 
 	@Override
 	public T get(int index) {
-		// TODO Auto-generated method stub
+		int counter = 0;
+		Node temp = head;
+
+		while (temp != null) {
+			if (counter == index) {
+				return temp.data;
+			}
+			counter++;
+			temp = temp.next;
+		}
+
 		return null;
 	}
 
 	@Override
 	public void remove(int index) {
-		// TODO Auto-generated method stub
+		Node node = new Node();
 
 	}
 
@@ -77,19 +123,19 @@ public class SinglyLindedList<T> implements Listable<T> {
 			counter++;
 			temp = temp.next;
 		}
-		
+
 		return counter;
 	}
 
 	@Override
 	public void printAll() {
 		Node temp = head;
-		
-		while(temp != null) {
+
+		while (temp != null) {
 			System.out.println(temp.data);
 			temp = temp.next;
 		}
-		
+
 	}
 
 	@Override

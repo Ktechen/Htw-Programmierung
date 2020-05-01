@@ -2,8 +2,8 @@ package list;
 
 public class DoublyLinkedList<T> implements Listable<T>{
 
-	Node head = null;
-	Node tail = null;
+	private Node head = null;
+	private Node tail = null;
 	
 	private class Node{
 		T data;
