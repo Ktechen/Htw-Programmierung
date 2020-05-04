@@ -1,7 +1,7 @@
 package list;
 
+import comparator.Comparator;
 import data.Student;
-import sort.Comparator;
 
 public class PrenameComparator implements Comparator<Student>{
 

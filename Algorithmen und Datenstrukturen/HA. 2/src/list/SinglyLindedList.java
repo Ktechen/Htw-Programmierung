@@ -29,12 +29,7 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void add(int index, T data) {
-		if (data != null) {
-
-			if (index < 0 || index > size()) {
-				return;
-			}
-
+		if (data != null && index > 0) {
 			if (index == 0) {
 				addFirst(data);
 			} else if ((size()) == index) {
@@ -104,10 +99,15 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void set(int index, T data) {
-		if (data != null) {
-			Node node = new Node();
-			node.data = data;
+		if (data != null && index > -1) {
+			
+			Node node = head;
 
+			for (int i = 0; i < index; i++) {
+				node = node.next;
+			}
+
+			node.data = data;
 		}
 	}
 
@@ -135,8 +135,15 @@ public class SinglyLindedList<T> implements Listable<T> {
 	 */
 	@Override
 	public void remove(int index) {
-		Node node = new Node();
+		if (index > -1) {
+			Node node = head;
 
+			for (int i = 0; i < index; i++) {
+				node = node.next;
+			}
+
+			node.data = null;
+		}
 	}
 
 	/*

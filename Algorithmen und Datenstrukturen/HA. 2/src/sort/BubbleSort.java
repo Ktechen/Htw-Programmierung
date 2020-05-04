@@ -2,6 +2,8 @@ package sort;
 
 import java.util.List;
 
+import comparator.Comparator;
+
 public class BubbleSort<T> extends Swapper<T> implements Sortable<T> {
 
 	@Override
