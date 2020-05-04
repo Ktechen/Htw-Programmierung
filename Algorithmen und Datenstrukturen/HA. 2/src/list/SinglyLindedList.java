@@ -9,6 +9,9 @@ public class SinglyLindedList<T> implements Listable<T> {
 		Node next;
 	}
 
+	/*
+	 * @Aufgabe a Add Element to list at the last position
+	 */
 	@Override
 	public void add(T data) {
 		Node node = new Node();
@@ -27,37 +30,56 @@ public class SinglyLindedList<T> implements Listable<T> {
 	@Override
 	public void add(int index, T data) {
 		if (data != null) {
-			Node temp = new Node();
-			int counter = size();
+
+			if (index < 0 || index > size()) {
+				return;
+			}
 
 			if (index == 0) {
 				addFirst(data);
-			} else if (counter - 1 == index) {
+			} else if ((size()) == index) {
 				addLast(data);
 			} else {
+				Node node = new Node();
+				Node temp = head;
+
+				for (int i = 0; i < index - 1; i++) {
+					temp = temp.next;
+				}
+
+				node.next = temp.next;
+				node.data = data;
+				temp.next = node;
 
 			}
 
 		}
 	}
 
+	/*
+	 * @Aufgabe b
+	 */
 	@Override
 	public void addFirst(T data) {
 		if (data != null) {
 			// create temp Object
-			Node temp = new Node();
+			Node node = new Node();
 
 			// pick data
-			temp.data = data;
+			node.data = data;
 
 			// head is first element
-			temp.next = head;
+			node.next = head;
 
 			// temp add to head
-			head = temp;
+			head = node;
 		}
 	}
 
+	/*
+	 * @Aufgabe c
+	 * 
+	 */
 	@Override
 	public void addLast(T data) {
 		Node node = new Node();
@@ -82,11 +104,16 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void set(int index, T data) {
-		Node node = new Node();
-		node.data = data;
+		if (data != null) {
+			Node node = new Node();
+			node.data = data;
 
+		}
 	}
 
+	/*
+	 * @Aufgabe d
+	 */
 	@Override
 	public T get(int index) {
 		int counter = 0;
@@ -103,17 +130,26 @@ public class SinglyLindedList<T> implements Listable<T> {
 		return null;
 	}
 
+	/*
+	 * @Aufgabe g
+	 */
 	@Override
 	public void remove(int index) {
 		Node node = new Node();
 
 	}
 
+	/*
+	 * @Aufgabe h
+	 */
 	@Override
 	public void clear() {
 		head = null;
 	}
 
+	/*
+	 * @Aufgabe f
+	 */
 	@Override
 	public int size() {
 		int counter = 0;
@@ -127,6 +163,9 @@ public class SinglyLindedList<T> implements Listable<T> {
 		return counter;
 	}
 
+	/*
+	 * @Aufgabe e
+	 */
 	@Override
 	public void printAll() {
 		Node temp = head;
