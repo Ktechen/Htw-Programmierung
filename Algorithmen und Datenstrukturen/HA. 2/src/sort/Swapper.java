@@ -1,10 +1,9 @@
 package sort;
 
-import java.util.List;
+import list.Listable;
+public class Swapper<T>{
 
-public class Swapper<T> {
-
-	protected void swap(List<T> list, int i, int j) {
+	protected void swap(Listable<T> list, int i, int j) {
 		T memorizedObject = list.get(i);
 		list.set(i, list.get(j));
 		list.set(j,  memorizedObject);

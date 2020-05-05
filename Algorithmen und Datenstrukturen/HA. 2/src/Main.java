@@ -1,12 +1,11 @@
-import java.util.Arrays;
-
-import java.util.List;
-
 import comparator.Comparator;
+import comparator.CourseNumberComparator;
+import comparator.MatriculationNumberComparator;
+import comparator.PrenameComparator;
+import comparator.SurnameComparator;
 import data.Student;
+import list.DoublyLinkedList;
 import list.Listable;
-import list.MatriculationNumberComparator;
-import list.PrenameComparator;
 import list.SinglyLindedList;
 import sort.BubbleSort;
 import sort.SelectionSort;
@@ -20,20 +19,31 @@ class Main {
 		Student s2 = new Student("Donald", "Duck", 56, 55);
 		Student s3 = new Student("Cooper", "Shelden", 1, 999);
 		Student s4 = new Student("Alice", "Cooper", 56, 11);
+
+		SinglyLindedList<Student> SinglyList = new SinglyLindedList<Student>();
+		SinglyList.add(s1);
+		SinglyList.add(s2);
+		SinglyList.add(s3);
+		SinglyList.add(s4);
+
+		sortAndPrint(SinglyList, new BubbleSort<Student>(), new PrenameComparator());
+		sortAndPrint(SinglyList, new BubbleSort<Student>(), new SurnameComparator());
+		sortAndPrint(SinglyList, new BubbleSort<Student>(), new CourseNumberComparator());
+		sortAndPrint(SinglyList, new BubbleSort<Student>(), new MatriculationNumberComparator());
 		
-		List<Student> list = Arrays.asList(s1, s2, s3, s4);
+		sortAndPrint(SinglyList, new SelectionSort<Student>(), new PrenameComparator());
+		sortAndPrint(SinglyList, new SelectionSort<Student>(), new SurnameComparator());
+		sortAndPrint(SinglyList, new SelectionSort<Student>(), new CourseNumberComparator());
+		sortAndPrint(SinglyList, new SelectionSort<Student>(), new MatriculationNumberComparator());
 
-		sortAndPrint(list, new BubbleSort<Student>(), new MatriculationNumberComparator());
-		sortAndPrint(list, new BubbleSort<Student>(), new PrenameComparator());
-
-		sortAndPrint(list, new SelectionSort<Student>(), new MatriculationNumberComparator());
-		sortAndPrint(list, new SelectionSort<Student>(), new PrenameComparator());
 		
 		run(new SinglyLindedList<Student>());
+		System.out.println();
+		run(new DoublyLinkedList<Student>());
 
 	}
 
-	private static void sortAndPrint(List<Student> list, Sortable<Student> algorithm, Comparator<Student> comparator) {
+	private static void sortAndPrint(Listable<Student> list, Sortable<Student> algorithm, Comparator<Student> comparator) {
 		System.out.println("Sort Algorithm " + algorithm.getClass().getSimpleName() + " Comparator: "
 				+ comparator.getClass().getSimpleName());
 

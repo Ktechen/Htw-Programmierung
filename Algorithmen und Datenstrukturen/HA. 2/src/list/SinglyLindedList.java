@@ -29,7 +29,7 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void add(int index, T data) {
-		if (data != null && index > 0) {
+		if (data != null && index > -1) {
 			if (index == 0) {
 				addFirst(data);
 			} else if ((size()) == index) {

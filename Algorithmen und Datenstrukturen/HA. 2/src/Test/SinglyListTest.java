@@ -1,6 +1,7 @@
 package Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
@@ -23,7 +24,7 @@ public class SinglyListTest {
 		singlyLindedList.add(s3);
 		singlyLindedList.add(s4);
 
-		System.out.println();
+		System.out.println("PrintAll");
 
 		singlyLindedList.printAll();
 
@@ -40,6 +41,10 @@ public class SinglyListTest {
 		SinglyLindedList<Student> singlyLindedList = new SinglyLindedList<Student>();
 		singlyLindedList.add(s1);
 
+		System.out.println("addElement");
+		
+		singlyLindedList.printAll();
+		
 		assertNotNull(singlyLindedList.get(0));
 	}
 
@@ -58,7 +63,7 @@ public class SinglyListTest {
 		list.add(s3);
 		list.add(s4);
 
-		System.out.println();
+		System.out.println("addFirst");
 
 		list.addFirst(s0);
 
@@ -136,5 +141,30 @@ public class SinglyListTest {
 		System.out.println();
 		
 		assertEquals(list.get(0), null);
+	}
+	
+	@Test
+	public void clear() {
+		Student s1 = new Student("Mosby", "Ted", 1, 100);
+		Student s2 = new Student("Donald", "Duck", 56, 55);
+		Student s3 = new Student("Cooper", "Shelden", 1, 999);
+		Student s4 = new Student("Alice", "Cooper", 56, 11);
+
+		SinglyLindedList<Student> list = new SinglyLindedList<Student>();
+		list.add(s1);
+		list.add(s2);
+		list.add(s3);
+		list.add(s4);
+		
+		System.out.println("clear");
+		list.printAll();
+		
+		list.clear();
+		
+		list.printAll();
+		
+		System.out.println();
+		
+		assertTrue(list.isEmpty());
 	}
 }

@@ -3,11 +3,13 @@ package sort;
 import java.util.List;
 
 import comparator.Comparator;
+import list.Listable;
+
 
 public class SelectionSort<T> extends Swapper<T> implements Sortable<T>  {
 
 	@Override
-	public void sort(List<T> list, Comparator<T> comparator) {
+	public void sort(Listable<T> list, Comparator<T> comparator) {
 		int minimun = 0;
 		for (int i = 0; i < list.size(); i++) {
 			minimun = i;
@@ -20,3 +22,4 @@ public class SelectionSort<T> extends Swapper<T> implements Sortable<T>  {
 		}
 	}
 }
+

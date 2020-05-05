@@ -13,7 +13,18 @@ public class DoublyLinkedList<T> implements Listable<T>{
 	
 	@Override
 	public void add(T data) {
-		// TODO Auto-generated method stub
+		Node node = new Node();
+		node.data = data;
+
+		/*
+		 * If list null
+		 */
+		if (head == null) {
+			head = node;
+			node.prev = null;
+		} else {
+			addLast(data);
+		}
 		
 	}
 
@@ -25,13 +36,44 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
 	@Override
 	public void addFirst(T data) {
-		// TODO Auto-generated method stub
+		if (data != null) {
+			// create temp Object
+			Node node = new Node();
+
+			// no prev object
+			node.prev = null;
+			
+			// pick data
+			node.data = data;
+
+			// head is first element
+			node.next = head;
+
+			// temp add to head
+			head = node;
+		}
 		
 	}
 
 	@Override
 	public void addLast(T data) {
-		// TODO Auto-generated method stub
+		Node node = new Node();
+		node.data = data;
+		node.next = null;
+
+		/*
+		 * If list null
+		 */
+		if (head == null) {
+			head = node;
+		} else {
+			Node temp = head;
+
+			while (temp.next != null) {
+				temp = temp.next;
+			}
+			temp.next = node;
+		}
 		
 	}
 
@@ -55,8 +97,7 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		head = null;
 	}
 
 	@Override
@@ -74,14 +115,17 @@ public class DoublyLinkedList<T> implements Listable<T>{
 
 	@Override
 	public void printAll() {
-		// TODO Auto-generated method stub
-		
+		Node node = head;
+
+		while (node != null) {
+			System.out.println(node.data);
+			node = node.next;
+		}
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return head == null;
 	}
 
 }
