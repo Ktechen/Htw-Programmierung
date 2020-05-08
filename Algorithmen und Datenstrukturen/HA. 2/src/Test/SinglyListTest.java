@@ -98,6 +98,31 @@ public class SinglyListTest {
 	}
 	
 	@Test
+	public void addOutOfRange() {
+
+		Student s1 = new Student("Mosby", "Ted", 1, 100);
+		Student s2 = new Student("Donald", "Duck", 56, 55);
+		Student s3 = new Student("Cooper", "Shelden", 1, 999);
+		Student s4 = new Student("Alice", "Cooper", 56, 11);
+
+		SinglyLindedList<Student> list = new SinglyLindedList<Student>();
+		list.add(s1);
+		list.add(s2);
+		list.add(s3);
+		list.add(s4);
+
+		System.out.println("addOutOfRange");
+
+		list.add(7, new Student("Bobs", "Burger", 2000, 4));
+
+		list.printAll();
+
+		System.out.println();
+
+		assertEquals(list.get(2).toString(), "Student [surname=Bobs, prename=Burger, course=2000, matriculationNumber=4]");
+	}
+	
+	@Test
 	public void set() {
 		Student s1 = new Student("Mosby", "Ted", 1, 100);
 		Student s2 = new Student("Donald", "Duck", 56, 55);
@@ -166,5 +191,26 @@ public class SinglyListTest {
 		System.out.println();
 		
 		assertTrue(list.isEmpty());
+	}
+	
+	@Test
+	public void get() {
+		Student s1 = new Student("Mosby", "Ted", 1, 100);
+		Student s2 = new Student("Donald", "Duck", 56, 55);
+		Student s3 = new Student("Cooper", "Shelden", 1, 999);
+		Student s4 = new Student("Alice", "Cooper", 56, 11);
+
+		SinglyLindedList<Student> list = new SinglyLindedList<Student>();
+		list.add(s1);
+		list.add(s2);
+		list.add(s3);
+		list.add(s4);
+		
+		System.out.println("get");
+		
+		
+		System.out.println(list.get(2));
+		
+		assertNotNull(list.get(2));
 	}
 }

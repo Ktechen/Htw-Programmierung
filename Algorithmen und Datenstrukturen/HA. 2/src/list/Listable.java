@@ -23,5 +23,7 @@ public interface Listable<T> {
 	public void printAll();
 
 	public boolean isEmpty();
+	
+	public String toString();
 
 }

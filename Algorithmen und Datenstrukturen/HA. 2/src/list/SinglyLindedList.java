@@ -29,23 +29,28 @@ public class SinglyLindedList<T> implements Listable<T> {
 
 	@Override
 	public void add(int index, T data) {
-		if (data != null && index > -1) {
+		if (data != null && index >= 0) {
 			if (index == 0) {
 				addFirst(data);
 			} else if ((size()) == index) {
 				addLast(data);
 			} else {
-				Node node = new Node();
-				Node temp = head;
+				
+				/*
+				 * Inside of list
+				 */
+				if(index < size()) {
+					Node node = new Node();
+					Node temp = head;
 
-				for (int i = 0; i < index - 1; i++) {
-					temp = temp.next;
+					for (int i = 0; i < index - 1; i++) {
+						temp = temp.next;
+					}
+
+					node.next = temp.next;
+					node.data = data;
+					temp.next = node;
 				}
-
-				node.next = temp.next;
-				node.data = data;
-				temp.next = node;
-
 			}
 
 		}
@@ -100,7 +105,7 @@ public class SinglyLindedList<T> implements Listable<T> {
 	@Override
 	public void set(int index, T data) {
 		if (data != null && index > -1) {
-			
+
 			Node node = head;
 
 			for (int i = 0; i < index; i++) {
@@ -116,15 +121,17 @@ public class SinglyLindedList<T> implements Listable<T> {
 	 */
 	@Override
 	public T get(int index) {
-		int counter = 0;
-		Node temp = head;
+		if (index > -1) {
+			int counter = 0;
+			Node temp = head;
 
-		while (temp != null) {
-			if (counter == index) {
-				return temp.data;
+			while (temp != null) {
+				if (counter == index) {
+					return temp.data;
+				}
+				counter++;
+				temp = temp.next;
 			}
-			counter++;
-			temp = temp.next;
 		}
 
 		return null;
@@ -188,6 +195,11 @@ public class SinglyLindedList<T> implements Listable<T> {
 	public boolean isEmpty() {
 		// TODO Auto-generated method stub
 		return head == null;
+	}
+
+	@Override
+	public String toString() {
+		return "SinglyLindedList";
 	}
 
 }

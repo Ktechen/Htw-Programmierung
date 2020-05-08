@@ -1,10 +1,7 @@
 package sort;
 
-import java.util.List;
-
 import comparator.Comparator;
 import list.Listable;
-import list.SinglyLindedList;
 
 public class BubbleSort<T> extends Swapper<T> implements Sortable<T> {
 

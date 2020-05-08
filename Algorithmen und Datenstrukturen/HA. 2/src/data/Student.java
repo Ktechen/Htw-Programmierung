@@ -2,9 +2,18 @@ package data;
 
 public class Student {
 
-	private String surname;
-	private String prename;
-	private int course;
+	/* @Aufgabe 1.b
+	 * Grund der Auswahl 
+	 */
+	private String surname; //weil Namen Zeichketten sind.
+	private String prename; //weil Vornamen Zeichketten sind.
+	
+	/*
+	 * Ein INT ist besser als ein String da dieser Eindeutiger ist.
+	 * Für z.B die Suche nach einen Course X 
+	 * z.B Angewandte Informatik = 1, BWL = 2 usw. 
+	 */
+	private int course; 
 	private int matriculationNumber;
 
 	public Student(String surname, String prename, int course, int matriculationNumber) {

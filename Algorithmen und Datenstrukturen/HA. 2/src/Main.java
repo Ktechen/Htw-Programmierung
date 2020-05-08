@@ -36,6 +36,23 @@ class Main {
 		sortAndPrint(SinglyList, new SelectionSort<Student>(), new CourseNumberComparator());
 		sortAndPrint(SinglyList, new SelectionSort<Student>(), new MatriculationNumberComparator());
 
+		/*
+		DoublyLinkedList<Student> doubLindedList = new DoublyLinkedList<Student>();
+		doubLindedList.add(s1);
+		doubLindedList.add(s2);
+		doubLindedList.add(s3);
+		doubLindedList.add(s4);
+		
+		sortAndPrint(doubLindedList, new BubbleSort<Student>(), new PrenameComparator());
+		sortAndPrint(doubLindedList, new BubbleSort<Student>(), new SurnameComparator());
+		sortAndPrint(doubLindedList, new BubbleSort<Student>(), new CourseNumberComparator());
+		sortAndPrint(doubLindedList, new BubbleSort<Student>(), new MatriculationNumberComparator());
+		
+		sortAndPrint(doubLindedList, new SelectionSort<Student>(), new PrenameComparator());
+		sortAndPrint(doubLindedList, new SelectionSort<Student>(), new SurnameComparator());
+		sortAndPrint(doubLindedList, new SelectionSort<Student>(), new CourseNumberComparator());
+		sortAndPrint(doubLindedList, new SelectionSort<Student>(), new MatriculationNumberComparator());
+		*/
 		
 		run(new SinglyLindedList<Student>());
 		System.out.println();
