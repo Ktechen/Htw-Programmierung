@@ -10,18 +10,14 @@ import list.Listable;
 public class App {
 
 	public static void main(String[] args) {
-		run("Console-Application: Exercise-2", "Select list type before starting the main menu:",
+		run("Console-Application: Exercise-2  ", "Select list type before starting the main menu:",
 				"Please enter a number for an option:");
 	}
 
 	private static void run(String headline, String title, String footer) {
 		Console console = new Console();
-		LinkedList<ICommand> commands = CommandFactory.createCommandList(console);
+		LinkedList<ICommand> commands = CommandFactory.createCommandList();
 		CommandInvoker invoker = new CommandInvoker(commands, console, headline, title, footer);
 		invoker.run();
-	}
-	
-	private static void run(Listable<Student> students) {
-
 	}
 }

@@ -1,5 +1,7 @@
 package list;
 
+import org.w3c.dom.ranges.RangeException;
+
 public class SinglyLindedList<T> implements Listable<T> {
 
 	private Node head = null;
@@ -28,7 +30,7 @@ public class SinglyLindedList<T> implements Listable<T> {
 	}
 
 	@Override
-	public void add(int index, T data) {
+	public void add(int index, T data) throws IllegalArgumentException{
 		if (data != null && index >= 0) {
 			if (index == 0) {
 				addFirst(data);
@@ -50,6 +52,8 @@ public class SinglyLindedList<T> implements Listable<T> {
 					node.next = temp.next;
 					node.data = data;
 					temp.next = node;
+				}else {
+					throw new IllegalArgumentException("Index out of Range");
 				}
 			}
 
