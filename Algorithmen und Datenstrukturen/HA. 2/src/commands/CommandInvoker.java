@@ -9,7 +9,7 @@ public class CommandInvoker {
 	private final transient LinkedList<ICommand> commands;
 	private final transient Console console;
 
-	private String headline = "Select list type before starting the main menu:  <Techen> <Kevin> <S0573111>";
+	private String headline = "Select list type before starting the main menu:  ";
 	private String footer = "Please enter an option: ";
 	private final String errorMessage = "Input is not valid !";
 
