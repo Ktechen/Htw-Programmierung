@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
+import org.junit.experimental.categories.Categories.ExcludeCategory;
 
 import data.Student;
 import list.SinglyLindedList;
@@ -97,7 +98,7 @@ public class SinglyListTest {
 		assertEquals(list.get(3).toString(), "Student [surname=Bobs, prename=Burger, course=2000, matriculationNumber=4]");
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void addOutOfRange() {
 
 		Student s1 = new Student("Mosby", "Ted", 1, 100);
@@ -118,8 +119,6 @@ public class SinglyListTest {
 		list.printAll();
 
 		System.out.println();
-
-		assertEquals(list.get(2).toString(), "Student [surname=Bobs, prename=Burger, course=2000, matriculationNumber=4]");
 	}
 	
 	@Test

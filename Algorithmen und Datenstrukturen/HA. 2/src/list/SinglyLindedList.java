@@ -1,7 +1,5 @@
 package list;
 
-import org.w3c.dom.ranges.RangeException;
-
 public class SinglyLindedList<T> implements Listable<T> {
 
 	private Node head = null;

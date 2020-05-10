@@ -1,7 +1,5 @@
 package sort;
 
-import java.util.List;
-
 import comparator.Comparator;
 import list.Listable;
 

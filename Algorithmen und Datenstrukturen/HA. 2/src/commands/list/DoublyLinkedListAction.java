@@ -8,16 +8,18 @@ import commands.CommandInvoker;
 import commands.ICommand;
 import data.Student;
 import list.DoublyLinkedList;
+import list.Listable;
 
 public class DoublyLinkedListAction implements ICommand {
 
+	//selfmade Doubly linked list
 	public static DoublyLinkedList<Student> list = new DoublyLinkedList<Student>();;
 	
 	@Override
 	public void execute() {
 		Console console = new Console();
 		LinkedList<ICommand> commands = CommandFactory.createCommandDoublyList();
-		CommandInvoker invoker = new CommandInvoker(commands, console, headline, "You selected DoublyLinkedList:", footer);
+		CommandInvoker invoker = new CommandInvoker(commands, console, "You selected DoublyLinkedList:");
 		invoker.run();
 	}
 

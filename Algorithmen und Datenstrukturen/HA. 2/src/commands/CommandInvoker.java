@@ -9,10 +9,9 @@ public class CommandInvoker {
 	private final transient LinkedList<ICommand> commands;
 	private final transient Console console;
 
-	private String headline = "Select list type before starting the main menu: ";
+	private String headline = "Select list type before starting the main menu:  <Techen> <Kevin> <S0573111>";
 	private String footer = "Please enter an option: ";
 	private final String errorMessage = "Input is not valid !";
-	private String title = null;
 
 	public String getHeadline() {
 		return headline;
@@ -30,14 +29,11 @@ public class CommandInvoker {
 		this.footer = footer;
 	}
 
-	public CommandInvoker(LinkedList<ICommand> commands, Console console, String headline, String title,
-			String footer) {
+	public CommandInvoker(LinkedList<ICommand> commands, Console console, String headline) {
 		super();
 		this.commands = commands;
 		this.console = console;
 		this.headline = headline;
-		this.title = title;
-		this.footer = footer;
 	}
 
 	public CommandInvoker() {
@@ -46,7 +42,6 @@ public class CommandInvoker {
 		this.console = null;
 		this.headline = null;
 		this.footer = null;
-		this.title = null;
 	}
 
 	/*
@@ -56,7 +51,6 @@ public class CommandInvoker {
 		do {
 			// header
 			System.out.println(headline + "\n");
-			System.out.println(title + "\n");
 
 			// body
 

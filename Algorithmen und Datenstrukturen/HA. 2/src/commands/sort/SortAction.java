@@ -13,7 +13,7 @@ public class SortAction implements ICommand{
 	public void execute() {
 		Console console = new Console();
 		LinkedList<ICommand> commands = CommandFactory.createCommandSort();
-		CommandInvoker invoker = new CommandInvoker(commands, console, headline, "Select a sorting method for sorting: ", footer);
+		CommandInvoker invoker = new CommandInvoker(commands, console, "Select a sorting method for sorting: ");
 		invoker.run();
 	}
 

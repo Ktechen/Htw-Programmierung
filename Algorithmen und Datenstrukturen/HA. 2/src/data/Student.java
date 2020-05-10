@@ -16,6 +16,14 @@ public class Student {
 	private int course; 
 	private int matriculationNumber;
 
+	public Student() {
+		super();
+		this.surname = null;
+		this.prename = null;
+		this.course = -1;
+		this.matriculationNumber = -1;
+	}
+	
 	public Student(String surname, String prename, int course, int matriculationNumber) {
 		super();
 		this.surname = surname;
