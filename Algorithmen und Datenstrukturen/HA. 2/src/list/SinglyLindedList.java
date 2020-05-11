@@ -32,7 +32,7 @@ public class SinglyLindedList<T> implements Listable<T> {
 		if (data != null && index >= 0) {
 			if (index == 0) {
 				addFirst(data);
-			} else if ((size()) == index) {
+			} else if (size() == index) {
 				addLast(data);
 			} else {
 				

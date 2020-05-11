@@ -12,6 +12,8 @@ public class Student {
 	 * Ein INT ist besser als ein String da dieser Eindeutiger ist.
 	 * Für z.B die Suche nach einen Course X 
 	 * z.B Angewandte Informatik = 1, BWL = 2 usw. 
+	 * 
+	 * Die MatricuationNumber könnte ein String oder Int sein beides währe optimal
 	 */
 	private int course; 
 	private int matriculationNumber;
@@ -37,6 +39,14 @@ public class Student {
 		return "Student [surname=" + surname + ", prename=" + prename + ", course=" + course + ", matriculationNumber="
 				+ matriculationNumber + "]";
 	}
+	
+	public String getPrename() {
+		return prename;
+	}
+
+	public void setPrename(String prename) {
+		this.prename = prename;
+	}
 
 	public String getSurname() {
 		return surname;
@@ -44,14 +54,6 @@ public class Student {
 
 	public void setSurname(String surname) {
 		this.surname = surname;
-	}
-
-	public String getPrename() {
-		return prename;
-	}
-
-	public void setPrename(String prename) {
-		this.prename = prename;
 	}
 
 	public int getCourse() {

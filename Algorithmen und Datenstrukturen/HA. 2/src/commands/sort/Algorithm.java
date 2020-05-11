@@ -7,6 +7,9 @@ import sort.Sortable;
 
 public class Algorithm {
 
+	/*
+	 * print sort algorithm and sorted list 
+	 */
 	public static void sortAndPrint(Listable<Student> list, Sortable<Student> algorithm,
 			Comparator<Student> comparator) {
 

@@ -1,6 +1,5 @@
 package list;
 
-
 public class DoublyLinkedList<T> implements Listable<T> {
 
 	private Node head = null; // Listenanfang
@@ -12,6 +11,9 @@ public class DoublyLinkedList<T> implements Listable<T> {
 		Node prev; // vorgänger
 	}
 
+	/*
+	 * add
+	 */
 	@Override
 	public void add(T data) {
 		Node node = new Node();
@@ -32,10 +34,31 @@ public class DoublyLinkedList<T> implements Listable<T> {
 
 	@Override
 	public void add(int index, T data) {
-		// TODO Auto-generated method stub
+
+		if (data != null && index >= 0) {
+
+			if (index <= 0) {
+				addFirst(data);
+
+			} else if (index == size()) {
+				addLast(data);
+
+			} else {
+				Node node = new Node();
+				Node temp = head;
+
+				while (temp.next != null) {
+					temp = temp.next;
+				}
+
+			}
+		}
 
 	}
 
+	/*
+	 * Put the data to first postion of DLL
+	 */
 	@Override
 	public void addFirst(T data) {
 		if (data != null) {
@@ -57,6 +80,9 @@ public class DoublyLinkedList<T> implements Listable<T> {
 
 	}
 
+	/*
+	 * Put the data to last postion of DLL
+	 */
 	@Override
 	public void addLast(T data) {
 		Node node = new Node();
@@ -70,17 +96,19 @@ public class DoublyLinkedList<T> implements Listable<T> {
 			node.prev = null;
 			head = node;
 		} else {
-			Node temp = tail;
 
-			temp.next = node;
+			node.prev = tail;
+			tail.next = node;
+			tail = node;
 
 		}
 
 	}
 
+	//!! fix to tail
 	@Override
 	public void set(int index, T data) {
-		if (data != null && index > -1) {
+		if (data != null && index >= 0) {
 
 			Node node = head;
 
@@ -93,9 +121,11 @@ public class DoublyLinkedList<T> implements Listable<T> {
 		}
 	}
 
+	
+	//!! fix to tail
 	@Override
 	public T get(int index) {
-		if (index > -1) {
+		if (index >= 0) {
 			int counter = 0;
 			Node temp = head;
 
@@ -157,7 +187,7 @@ public class DoublyLinkedList<T> implements Listable<T> {
 	public boolean isEmpty() {
 		return head == null && tail == null;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "DoublyLindedList";

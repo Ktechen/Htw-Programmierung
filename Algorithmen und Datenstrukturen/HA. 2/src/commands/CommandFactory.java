@@ -5,30 +5,31 @@ import java.util.LinkedList;
 import commands.list.DoublyLinkedListAction;
 
 import commands.list.SinglyLinkedListAction;
-import commands.list.Actions.AddAction;
-import commands.list.Actions.AddFirstAction;
-import commands.list.Actions.AddIndexAction;
-import commands.list.Actions.AddLastAction;
-import commands.list.Actions.ClearAction;
-import commands.list.Actions.GetAction;
-import commands.list.Actions.PrintAllAction;
-import commands.list.Actions.RemoveAction;
-import commands.list.Actions.SizeAction;
+import commands.list.actions.AddAction;
+import commands.list.actions.AddFirstAction;
+import commands.list.actions.AddIndexAction;
+import commands.list.actions.AddLastAction;
+import commands.list.actions.ClearAction;
+import commands.list.actions.GetAction;
+import commands.list.actions.PrintAllAction;
+import commands.list.actions.RemoveAction;
+import commands.list.actions.SizeAction;
 import commands.search.SearchAction;
 
 import commands.sort.BubbleSortAction;
 import commands.sort.SelectionSortAction;
 import commands.sort.SortAction;
-import commands.sort.property.CourseSort;
-import commands.sort.property.MatriculationNumberSort;
-import commands.sort.property.PrenameSort;
-import commands.sort.property.SurnameSort;
+import commands.sort.action.CourseSort;
+import commands.sort.action.MatriculationNumberSort;
+import commands.sort.action.PrenameSort;
+import commands.sort.action.SurnameSort;
 import commands.system.ExitCmd;
 
 public class CommandFactory {
 
 	/*
 	 * Start Options
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandList() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
@@ -40,9 +41,9 @@ public class CommandFactory {
 
 	/*
 	 * Option for SinglyList
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSinglyList() {
-		CommandOption.setWhichList(false);
 
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
 		list.add(new AddAction());
@@ -62,6 +63,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for DoublyList
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandDoublyList() {
 		CommandOption.setWhichList(true);
@@ -84,6 +86,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for sort
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSort() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
@@ -95,6 +98,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for propertOfSort
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandPropertOfSortFromBubbleSort() {
 		CommandOption.setWhichSort(false);
@@ -110,6 +114,7 @@ public class CommandFactory {
 	
 	/*
 	 * Option for propertOfSort
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandPropertOfSortFromSelectionSort() {
 		CommandOption.setWhichSort(true);
@@ -125,9 +130,11 @@ public class CommandFactory {
 
 	/*
 	 * Option for search
+	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSearch() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		
 		return list;
 	}
 
