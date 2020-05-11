@@ -13,7 +13,7 @@ public class SearchAction implements ICommand{
 	public void execute() {
 		Console console = new Console();
 		LinkedList<ICommand> commands = CommandFactory.createCommandSearch();
-		CommandInvoker invoker = new CommandInvoker(commands, console, "Select a property to search for the student:");
+		CommandInvoker invoker = new CommandInvoker(commands, console, "Select a property to search for the student: ");
 		invoker.run();
 	}
 

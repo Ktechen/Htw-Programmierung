@@ -15,7 +15,10 @@ import commands.list.actions.PrintAllAction;
 import commands.list.actions.RemoveAction;
 import commands.list.actions.SizeAction;
 import commands.search.SearchAction;
-
+import commands.search.action.CourseSearch;
+import commands.search.action.MatriculationNumberSearch;
+import commands.search.action.PrenameSearch;
+import commands.search.action.SurnameSearch;
 import commands.sort.BubbleSortAction;
 import commands.sort.SelectionSortAction;
 import commands.sort.SortAction;
@@ -29,6 +32,7 @@ public class CommandFactory {
 
 	/*
 	 * Start Options
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandList() {
@@ -41,6 +45,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for SinglyList
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSinglyList() {
@@ -63,6 +68,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for DoublyList
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandDoublyList() {
@@ -86,6 +92,7 @@ public class CommandFactory {
 
 	/*
 	 * Option for sort
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSort() {
@@ -98,11 +105,12 @@ public class CommandFactory {
 
 	/*
 	 * Option for propertOfSort
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandPropertOfSortFromBubbleSort() {
 		CommandOption.setWhichSort(false);
-		
+
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
 		list.add(new PrenameSort());
 		list.add(new SurnameSort());
@@ -111,14 +119,15 @@ public class CommandFactory {
 		list.add(new ExitCmd());
 		return list;
 	}
-	
+
 	/*
 	 * Option for propertOfSort
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandPropertOfSortFromSelectionSort() {
 		CommandOption.setWhichSort(true);
-		
+
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
 		list.add(new PrenameSort());
 		list.add(new SurnameSort());
@@ -130,11 +139,15 @@ public class CommandFactory {
 
 	/*
 	 * Option for search
+	 * 
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSearch() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
-		
+		list.add(new PrenameSearch());
+		list.add(new SurnameSearch());
+		list.add(new CourseSearch());
+		list.add(new MatriculationNumberSearch());
 		return list;
 	}
 

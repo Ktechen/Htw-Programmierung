@@ -9,11 +9,12 @@ public class Search implements ISearchable<Student> {
 	private String NotFound = "No result pls try again :(";
 
 	/*
-	 *  Search a String inside of List
-	 *  @return LinkedList
+	 * Search a String inside of List
+	 * 
+	 * @return LinkedList
 	 */
 	@Override
-	public Listable<Student> searchString(Listable<Student> list, String search, Options option) {
+	public Listable<Student> search(Listable<Student> list, String search, SearchOptions option) {
 
 		Listable<Student> newList = new SinglyLindedList<Student>();
 		int counter = 0;
@@ -27,11 +28,12 @@ public class Search implements ISearchable<Student> {
 			switch (option) {
 			case prename:
 				String prename = student.getPrename().toLowerCase().trim();
-
-				if (value.equals(prename)) {
-					System.out.println("prename:" + list.get(i));
-					newList.set(counter, list.get(i));
-					counter++;
+				if (prename != null && student != null) {
+					if (value.equals(prename)) {
+						// System.out.println("prename:" + list.get(i));
+						newList.add(counter, list.get(i));
+						counter++;
+					}
 				}
 
 				break;
@@ -39,8 +41,8 @@ public class Search implements ISearchable<Student> {
 				String surname = student.getSurname().toLowerCase().trim();
 
 				if (value.equals(surname)) {
-					System.out.println("surname:" + list.get(i));
-					newList.set(counter, list.get(i));
+					// System.out.println("surname:" + list.get(i));
+					newList.add(counter, list.get(i));
 					counter++;
 				}
 
@@ -55,11 +57,12 @@ public class Search implements ISearchable<Student> {
 	}
 
 	/*
-	 *  Search a Integer inside of List
-	 *  @return LinkedList
+	 * Search a Integer inside of List
+	 * 
+	 * @return LinkedList
 	 */
 	@Override
-	public Listable<Student> searchInteger(Listable<Student> list, int search, Options option) {
+	public Listable<Student> search(Listable<Student> list, int search, SearchOptions option) {
 
 		Listable<Student> newList = new SinglyLindedList<Student>();
 		int counter = 0;
@@ -75,8 +78,8 @@ public class Search implements ISearchable<Student> {
 				int course = student.getCourse();
 
 				if (value == course) {
-					System.out.println("course:" + list.get(i));
-					newList.set(counter, list.get(i));
+					// System.out.println("course:" + list.get(i));
+					newList.add(counter, list.get(i));
 					counter++;
 				}
 
@@ -85,15 +88,14 @@ public class Search implements ISearchable<Student> {
 				int matriculationNumber = student.getCourse();
 
 				if (value == matriculationNumber) {
-					System.out.println("matriculationNumber:" + list.get(i));
-					newList.set(counter, list.get(i));
+					// System.out.println("matriculationNumber:" + list.get(i));
+					newList.add(counter, list.get(i));
 					counter++;
 				}
 
 				break;
 
 			default:
-				System.out.println(NotFound);
 				break;
 			}
 		}
