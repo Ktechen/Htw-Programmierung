@@ -31,6 +31,6 @@ public class RemoveAction implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Removes the Student at the specified position in this list.";
+		return "Removes the Student at the specified position in this list. (Tested? [x])";
 	}
 }

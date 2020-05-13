@@ -26,6 +26,6 @@ public class AddAction extends InputAction implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Add Student to the end of this list";
+		return "Add Student to the end of this list  (Tested? [x])";
 	}
 }

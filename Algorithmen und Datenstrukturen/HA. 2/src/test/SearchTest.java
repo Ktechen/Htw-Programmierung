@@ -2,6 +2,7 @@ package test;
 
 import org.junit.Test;
 
+import commands.search.action.PrenameSearch;
 import data.Student;
 import list.Listable;
 import list.SinglyLindedList;
@@ -20,13 +21,15 @@ public class SearchTest {
 		Student s5 = new Student("Trumph", "Ted", 16, 300);
 		Student s6 = new Student("Tröger", "Ted", 1, 200);
 
-		SinglyLindedList<Student> list = new SinglyLindedList<Student>();
+		Listable<Student> list = new SinglyLindedList<Student>();
 		list.add(s1);
 		list.add(s2);
 		list.add(s3);
 		list.add(s4);
 		list.add(s5);
 		list.add(s6);
+		
+		System.out.println("searchString");
 
 		Search searchList = new Search();
 		Listable<Student> test = searchList.search(list, "Ted", SearchOptions.prename);
@@ -45,7 +48,7 @@ public class SearchTest {
 		Student s5 = new Student("Trumph", "Ted", 16, 300);
 		Student s6 = new Student("Tröger", "Ted", 1, 200);
 
-		SinglyLindedList<Student> list = new SinglyLindedList<Student>();
+		Listable<Student> list = new SinglyLindedList<Student>();
 		list.add(s1);
 		list.add(s2);
 		list.add(s3);
@@ -53,9 +56,12 @@ public class SearchTest {
 		list.add(s5);
 		list.add(s6);
 		
+		System.out.println("searchInt");
+		
 		Search searchList = new Search();
 		Listable<Student> test = searchList.search(list, 1, SearchOptions.course);
 		
 		test.printAll();
 	}
+	
 }

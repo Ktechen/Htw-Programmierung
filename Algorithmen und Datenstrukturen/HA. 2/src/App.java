@@ -16,7 +16,7 @@ public class App {
 	private static void run() {
 		Console console = new Console();
 		LinkedList<ICommand> commands = CommandFactory.createCommandList();
-		CommandInvoker invoker = new CommandInvoker(commands, console, "Select list type before starting the main menu:");
+		CommandInvoker invoker = new CommandInvoker(commands, console);
 		invoker.run();
 	}
 }

@@ -15,6 +15,9 @@ public class DoublyLinkedListAction implements ICommand {
 	//selfmade Doubly linked list
 	public static DoublyLinkedList<Student> list = new DoublyLinkedList<Student>();;
 	
+	/*
+	 * Load List of option and open console input
+	 */
 	@Override
 	public void execute() {
 		Console console = new Console();

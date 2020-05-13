@@ -35,6 +35,12 @@ public class CommandInvoker {
 		this.console = console;
 		this.headline = headline;
 	}
+	
+	public CommandInvoker(LinkedList<ICommand> commands, Console console) {
+		super();
+		this.commands = commands;
+		this.console = console;
+	}
 
 	public CommandInvoker() {
 		super();
@@ -59,7 +65,10 @@ public class CommandInvoker {
 
 		} while (true);
 	}
-
+	
+	/*
+	 * Interaction with Console menu
+	 */
 	private ICommand selectCommandByCommandLine() {
 		do {
 			// print all element of list

@@ -28,7 +28,7 @@ public class ClearAction implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Removes all of the Students from this list";
+		return "Removes all of the Students from this list (Tested? [x])";
 	}
 
 }

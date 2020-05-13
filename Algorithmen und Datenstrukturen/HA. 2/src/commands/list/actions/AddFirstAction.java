@@ -27,6 +27,6 @@ public class AddFirstAction extends InputAction implements ICommand{
 	
 	@Override
 	public String toString() {
-		return "Inserts the Student at the beginning of this list";
+		return "Inserts the Student at the beginning of this list (Tested? [x])";
 	}
 }

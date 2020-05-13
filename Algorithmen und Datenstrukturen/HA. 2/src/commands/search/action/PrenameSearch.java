@@ -6,16 +6,17 @@ import commands.ICommand;
 import commands.list.DoublyLinkedListAction;
 import commands.list.SinglyLinkedListAction;
 import data.Student;
+import list.DoublyLinkedList;
 import list.Listable;
+import list.SinglyLindedList;
 import search.Search;
 import search.SearchOptions;
 
 public class PrenameSearch implements ICommand {
 
-	private Listable<Student> list = null;
 	private Console console = new Console();
 	private Search newSearch = new Search();
-	
+	private Listable<Student> list = null;
 
 	@Override
 	public void execute() {
@@ -24,12 +25,16 @@ public class PrenameSearch implements ICommand {
 		} else {
 			list = SinglyLinkedListAction.list;
 		}
-
-		String search = console.readStringFromStdin("Please enter prename for the search: ", "Input is not valid !");
 		
-		Listable<Student> text = newSearch.search(list, search, SearchOptions.prename);
+		String search = console.readStringFromStdin("Please enter prename for the search: ", "Input is not valid !");
+
+		Listable<Student> text = new SinglyLindedList<Student>();
+		
+		text = newSearch.search(list, search, SearchOptions.prename);
 		System.out.println("Search: " + search);
+		
 		text.printAll();
+
 	}
 
 	@Override

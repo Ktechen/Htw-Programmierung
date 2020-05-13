@@ -9,6 +9,9 @@ import commands.ICommand;
 
 public class SearchAction implements ICommand{
 
+	/*
+	 * Load List of option and open console input
+	 */
 	@Override
 	public void execute() {
 		Console console = new Console();
@@ -19,7 +22,7 @@ public class SearchAction implements ICommand{
 
 	@Override
 	public String toString() {
-		return "Search for student(s) by different characteristics";
+		return "Search for student(s) by different characteristics (Tested? [x])";
 	}
 
 }

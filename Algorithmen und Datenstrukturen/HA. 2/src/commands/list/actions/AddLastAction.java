@@ -12,7 +12,7 @@ public class AddLastAction implements ICommand{
 	
 	@Override
 	public String toString() {
-		return "Appends the Student to the end of this list";
+		return "Appends the Student to the end of this list (Tested? [x])";
 	}
 
 }

@@ -25,7 +25,7 @@ public class SizeAction implements ICommand{
 
 	@Override
 	public String toString() {
-		return "Returns the number of Students in this list";
+		return "Returns the number of Students in this list (Tested? [x])";
 	}
 	
 

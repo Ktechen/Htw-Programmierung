@@ -15,6 +15,9 @@ public class SinglyLinkedListAction implements ICommand {
 	//selfmade Singly linked list
 	public static SinglyLindedList<Student> list = new SinglyLindedList<Student>();
 	
+	/*
+	 * Load List of option and open console input
+	 */
 	@Override
 	public void execute() {
 		Console console = new Console();

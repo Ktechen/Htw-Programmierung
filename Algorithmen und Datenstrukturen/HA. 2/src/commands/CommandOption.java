@@ -2,6 +2,9 @@ package commands;
 
 public class CommandOption {
 
+	/*
+	 * Which list is selected
+	 */
 	private static boolean whichList = false;
 	private static boolean whichSort = false;
 

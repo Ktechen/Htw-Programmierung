@@ -19,7 +19,7 @@ public class SortAction implements ICommand{
 
 	@Override
 	public String toString() {
-		return "Sort list by different properties";
+		return "Sort list by different properties (Tested? [x])";
 	}
 
 }

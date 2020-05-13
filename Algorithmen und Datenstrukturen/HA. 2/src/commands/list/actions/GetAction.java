@@ -29,6 +29,6 @@ public class GetAction implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Returns the Student at the specified position in this list.";
+		return "Returns the Student at the specified position in this list. (Tested? [x])";
 	}
 }

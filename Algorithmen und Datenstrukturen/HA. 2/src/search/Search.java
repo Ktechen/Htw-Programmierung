@@ -6,8 +6,6 @@ import list.SinglyLindedList;
 
 public class Search implements ISearchable<Student> {
 
-	private String NotFound = "No result pls try again :(";
-
 	/*
 	 * Search a String inside of List
 	 * 
@@ -16,41 +14,48 @@ public class Search implements ISearchable<Student> {
 	@Override
 	public Listable<Student> search(Listable<Student> list, String search, SearchOptions option) {
 
-		Listable<Student> newList = new SinglyLindedList<Student>();
-		int counter = 0;
+		SinglyLindedList<Student> newList = new SinglyLindedList<Student>();
 
-		for (int i = 0; i < list.size(); i++) {
+		if (search != null && list != null) {
 
-			Student student = list.get(i);
+			int counter = 0;
 
-			String value = search.toLowerCase().trim();
+			for (int i = 0; i < list.size(); i++) {
 
-			switch (option) {
-			case prename:
-				String prename = student.getPrename().toLowerCase().trim();
-				if (prename != null && student != null) {
+				Student student = list.get(i);
+
+				String value = search.toLowerCase().trim();
+
+				switch (option) {
+
+				case prename:
+					String prename = student.getPrename().toLowerCase().trim();
+
 					if (value.equals(prename)) {
 						// System.out.println("prename:" + list.get(i));
 						newList.add(counter, list.get(i));
 						counter++;
 					}
+
+					break;
+
+				case surname:
+					String surname = student.getSurname().toLowerCase().trim();
+
+					if (value.equals(surname)) {
+						// System.out.println("surname:" + list.get(i));
+						newList.add(counter, list.get(i));
+						counter++;
+					}
+
+					break;
+
+				default:
+					break;
 				}
-
-				break;
-			case surname:
-				String surname = student.getSurname().toLowerCase().trim();
-
-				if (value.equals(surname)) {
-					// System.out.println("surname:" + list.get(i));
-					newList.add(counter, list.get(i));
-					counter++;
-				}
-
-				break;
-
-			default:
-				break;
 			}
+		} else {
+			return null;
 		}
 
 		return newList;
@@ -64,40 +69,45 @@ public class Search implements ISearchable<Student> {
 	@Override
 	public Listable<Student> search(Listable<Student> list, int search, SearchOptions option) {
 
-		Listable<Student> newList = new SinglyLindedList<Student>();
-		int counter = 0;
+		SinglyLindedList<Student> newList = new SinglyLindedList<Student>();
 
-		for (int i = 0; i < list.size(); i++) {
+		if (list != null) {
+			int counter = 0;
 
-			Student student = list.get(i);
+			for (int i = 0; i < list.size(); i++) {
 
-			int value = search;
+				Student student = list.get(i);
 
-			switch (option) {
-			case course:
-				int course = student.getCourse();
+				int value = search;
 
-				if (value == course) {
-					// System.out.println("course:" + list.get(i));
-					newList.add(counter, list.get(i));
-					counter++;
+				switch (option) {
+				case course:
+					int course = student.getCourse();
+
+					if (value == course) {
+						// System.out.println("course:" + list.get(i));
+						newList.add(counter, list.get(i));
+						counter++;
+					}
+
+					break;
+				case matriculationNumber:
+					int matriculationNumber = student.getCourse();
+
+					if (value == matriculationNumber) {
+						// System.out.println("matriculationNumber:" + list.get(i));
+						newList.add(counter, list.get(i));
+						counter++;
+					}
+
+					break;
+
+				default:
+					break;
 				}
-
-				break;
-			case matriculationNumber:
-				int matriculationNumber = student.getCourse();
-
-				if (value == matriculationNumber) {
-					// System.out.println("matriculationNumber:" + list.get(i));
-					newList.add(counter, list.get(i));
-					counter++;
-				}
-
-				break;
-
-			default:
-				break;
 			}
+		} else {
+			return null;
 		}
 
 		return newList;

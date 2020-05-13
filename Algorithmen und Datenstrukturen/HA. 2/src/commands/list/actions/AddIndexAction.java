@@ -39,7 +39,7 @@ public class AddIndexAction extends InputAction implements ICommand {
 
 	@Override
 	public String toString() {
-		return "Inserts the Student at the specified position in this list";
+		return "Inserts the Student at the specified position in this list (Tested? [x])";
 	}
 
 }

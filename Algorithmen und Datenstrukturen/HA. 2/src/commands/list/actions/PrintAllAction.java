@@ -25,7 +25,7 @@ public class PrintAllAction implements ICommand{
 	
 	@Override
 	public String toString() {
-		return "Print all students to console from list";
+		return "Print all students to console from list (Tested? [x])";
 	}
 
 }

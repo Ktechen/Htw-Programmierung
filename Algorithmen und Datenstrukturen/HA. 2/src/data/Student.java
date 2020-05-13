@@ -26,7 +26,7 @@ public class Student {
 		this.matriculationNumber = -1;
 	}
 	
-	public Student(String surname, String prename, int course, int matriculationNumber) {
+	public Student(String prename, String surname, int course, int matriculationNumber) {
 		super();
 		this.surname = surname;
 		this.prename = prename;

@@ -24,7 +24,7 @@ public class MatriculationNumberSearch implements ICommand {
 			list = SinglyLinkedListAction.list;
 		}
 
-		String search = console.readStringFromStdin("Please enter Matriculation Number for the search: ", "Input is not valid !");
+		int search = console.readIntegerFromStdin("Please enter Matriculation Number for the search: ", "Input is not valid !");
 
 		Listable<Student> text = newSearch.search(list, search, SearchOptions.matriculationNumber);
 		System.out.println("Search: " + search);
