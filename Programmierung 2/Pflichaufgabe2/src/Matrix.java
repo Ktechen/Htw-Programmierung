@@ -1,119 +1,122 @@
 
 public class Matrix {
 
+	private int matrix[][] = null;
+	private int rows = 0; // zeilen
+	private int colums = 0; // spalten
 	private int dimension = 0;
-	private int spalten = 0;
-	private int zeilen = 0;
-	private int[][] array = null;
 
-	public Matrix(int dimension, int spalten, int zeilen) {
+	public Matrix(int[][] matrix) throws NullPointerException {
 		super();
 
-		if (dimension <= 0 && dimension >= 4) {
-			throw new IllegalArgumentException("Dimension is unknown");
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("Matrix is null or 0");
 		}
 
-		if (spalten == 0 || zeilen == 0) {
-			throw new IllegalArgumentException("Zeile oder Spalte ist null");
-		}
-
-		if (dimension < zeilen) {
-			throw new IllegalArgumentException("spalten x zeilen ist ungleich Dimension");
-		}
-
-		this.dimension = dimension;
-		this.spalten = spalten;
-		this.zeilen = zeilen;
-
-	}
-	
-	public Matrix(int dimension, int spalten) {
-		if (dimension >= 0) {
-			throw new IllegalArgumentException("Only for Vector");
-		}
-
-		this.dimension = dimension;
-		this.spalten = spalten;
+		this.matrix = matrix;
+		this.rows = matrix.length;
+		this.colums = columsLength(matrix);
+		this.dimension = dimensionLength();
 	}
 
 	public Matrix() {
 		super();
-		this.dimension = 1;
-		this.spalten = 0;
-		this.zeilen = 0;
+		this.rows = 2;
+		this.colums = 2;
+		this.dimension = 2;
+		this.matrix = new int[][] { { 1, 2 }, { 3, 4 } };
+	}
+
+	public int[][] getMatrix() {
+		return matrix;
+	}
+
+	public void setMatrix(int matrix[][]) {
+		this.matrix = matrix;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColums() {
+		return colums;
 	}
 
 	public int getDimension() {
 		return dimension;
 	}
 
-	public void setDimension(int dimension) {
-		this.dimension = dimension;
-	}
-
-	public int getSpalten() {
-		return spalten;
-	}
-
-	public void setSpalten(int spalten) {
-		this.spalten = spalten;
-	}
-
-	public int getZeilen() {
-		return zeilen;
-	}
-
-	public void setZeilen(int zeilen) {
-		this.zeilen = zeilen;
-	}
-
-	public int[][] getArray() {
-		return defaultMatrix();
-	}
-
-	public void setArray(int[][] array) {
-		this.array = array;
-	}
-	
 	/*
-	 * fill all element of Matrix in 0
+	 * Gibt die Dimension der Matrix zurück return dimension
 	 */
-	private int[][] defaultMatrix(){
-		int[][] array = new int[spalten][zeilen];
-		
-		for (int i = 0; i < array.length; i++) {
-			for (int e = 0; e < array[i].length; e++) {
-				array[i][e] = 0;
-			}
+	public int dimensionLength() {
+		if (rows == colums) {
+			return this.dimension = rows;
+		} else if (rows < colums) {
+			return this.dimension = colums;
+		} else {
+			return this.dimension = rows;
 		}
-		
-		return array;
 	}
 
-	public boolean equals(int[][] matrixA, int[][] matrixB) {
+	/*
+	 * Gibt die Länge der Spalten zurück return length
+	 */
+	public int columsLength(int[][] matrix) throws NullPointerException {
 
-		if (matrixA == null || matrixB == null) {
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("Matrix null or 0");
+		}
+
+		int counter = 0;
+		int length = 0;
+		int checkValue = 0;
+
+		for (int i = 0; i < matrix[counter].length; i++) {
+			checkValue = matrix[counter].length;
+
+			if (checkValue < length) {
+				length = matrix[counter].length;
+			}
+			counter++;
+		}
+
+		return length;
+	}
+
+	/*
+	 * Prüft ob zwei Matrizen gleich sind return boolean
+	 */
+	public boolean equals(int[][] matrix) throws NullPointerException {
+
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("Matrix null or 0");
+		}
+
+		int[][] currentMatrix = getMatrix();
+
+		// Prüfung der Zeilen length
+		if (currentMatrix.length != matrix.length) {
 			return false;
 		}
 
-		if (matrixA.length != matrixB.length) {
-			return false;
-		}
-
-		for (int i = 0; i < matrixA.length; i++) {
-			if (matrixA[i].length != matrixB[i].length) {
+		// Prüfung der Spalten length
+		for (int i = 0; i < currentMatrix.length; i++) {
+			if (currentMatrix[i].length != matrix[i].length) {
 				return false;
 			}
 		}
 
 		int counter = 0;
 
-		for (int i = 0; i < matrixA.length; i++) {
-			for (int e = 0; e < matrixA[i].length; e++) {
-				if (matrixA[i][e] == matrixB[i][e]) {
+		// Prüfung der Elemente
+		for (int i = 0; i < currentMatrix.length; i++) {
+			for (int e = 0; e < currentMatrix[i].length; e++) {
+				if (currentMatrix[i][e] == matrix[i][e]) {
 					counter++;
 
-					if (counter == (matrixA.length * matrixB.length)) {
+					if (counter == (currentMatrix.length * matrix.length)) {
 						return true;
 					}
 
@@ -126,101 +129,101 @@ public class Matrix {
 		return false;
 	}
 
-	public static int[][] add(int[][] matrixA, int[][] matrixB) throws NullPointerException, IllegalArgumentException {
+	/*
+	 * Addiert zwei Matrizen miteinander return new Matrix
+	 */
+	public int[][] add(int[][] matrix) throws NullPointerException, IllegalArgumentException {
 
-		if (matrixA == null || matrixB == null) {
+		int[][] currentMatrix = getMatrix();
+
+		if (matrix == null || matrix.length == 0) {
 			throw new NullPointerException("matrix a or b is null");
 		}
 
-		if (matrixA.length != matrixB.length) {
-			throw new IllegalArgumentException("matrixA ist ungleich matrixB");
+		if (getRows() != matrix.length) {
+			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Zeilen length haben");
 		}
 
-		for (int i = 0; i < matrixA.length; i++) {
-			if (matrixA[i].length != matrixB[i].length) {
-				throw new IllegalArgumentException("matrixA ist ungleich matrixB");
-			}
+		if (getColums() != columsLength(matrix)) {
+			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Spalten length haben");
 		}
 
-		int[][] newArray = new int[matrixA.length][matrixA[0].length];
+		int[][] newArray = new int[currentMatrix.length][];
 
-		for (int i = 0; i < matrixA.length; i++) {
-			for (int e = 0; e < matrixA[i].length; e++) {
-				newArray[i][e] = matrixA[i][e] + matrixB[i][e];
-			}
-		}
-
-		return newArray;
-
-	}
-
-	public static int multiplyScalar(int[][] matrixA, int[][] matrixB) {
-		return 0;
-	}
-
-	public static int[][] multiply(int[][] matrixA, int[][] matrixB) {
-		if (matrixA == null || matrixB == null) {
-			throw new NullPointerException("matrix a or b is null");
-		}
-
-		if (matrixA.length != matrixB.length) {
-			throw new IllegalArgumentException("matrixA ist ungleich matrixB");
-		}
-
-		for (int i = 0; i < matrixA.length; i++) {
-			if (matrixA[i].length != matrixB[i].length) {
-				throw new IllegalArgumentException("matrixA ist ungleich matrixB");
-			}
-		}
-
-		int[][] newArray = new int[matrixA.length][matrixA[0].length];
-
-		for (int i = 0; i < matrixA.length; i++) {
-			for (int e = 0; e < matrixA[i].length; e++) {
-				newArray[i][e] = matrixA[i][e] * matrixB[i][e];
+		for (int i = 0; i < currentMatrix.length; i++) {
+			for (int e = 0; e < currentMatrix[i].length; e++) {
+				newArray[i][e] = currentMatrix[i][e] + matrix[i][e];
 			}
 		}
 
 		return newArray;
 	}
 
-	private String arrayToString(int[] array) {
+	/*
+	 * Multipiziert eine Matrix mit einen Scalar return new Matrix
+	 * return new Matrix
+	 */
+	public int[][] multiplyScalar(int scalar) {
 
-		if (array != null && array.length != 0) {
-			return null;
-		}
+		int[][] currentMatrix = getMatrix();
 
-		String elem = "";
+		int[][] newArray = new int[currentMatrix.length][];
 
-		for (int i = 0; i < array.length; i++) {
-			elem += array[i] + " ";
-		}
-
-		return elem;
-	}
-
-	private String arrayToString(int[][] array) {
-
-		if (array != null && array.length != 0) {
-			return null;
-		}
-
-		String elem = "";
-
-		for (int i = 0; i < array.length; i++) {
-
-			for (int e = 0; e < array[i].length; e++) {
-				elem += array[i][e] + " ";
+		for (int i = 0; i < currentMatrix.length; i++) {
+			for (int e = 0; e < currentMatrix[i].length; e++) {
+				newArray[i][e] = currentMatrix[i][e] * scalar;
 			}
-
 		}
 
-		return elem;
+		return newArray;
 	}
 
+	/*
+	 * Multipiziert zwei Matrizen miteinander
+	 * return new Matrix
+	 */
+	public int[][] muliply(int[][] matrix) throws NullPointerException, IllegalArgumentException {
+
+		int[][] currentMatrix = getMatrix();
+
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("matrix a or b is null");
+		}
+
+		if (getRows() != matrix.length) {
+			throw new IllegalArgumentException("Matrix A: " + currentMatrix.length
+					+ " Zeilen length ist ungleich Matrix B: " + matrix.length + " Zeilen length ");
+		}
+
+		int[][] newArray = new int[currentMatrix.length][];
+
+		for (int i = 0; i < currentMatrix.length; i++) {
+			for (int e = 0; e < currentMatrix[i].length; e++) {
+				newArray[i][e] = currentMatrix[i][e] * matrix[i][e];
+			}
+		}
+
+		return newArray;
+	}
+
+	public String MatrixToString(int[][] matrix) {
+		String text = "";
+		
+		
+		for (int i = 0; i < matrix.length; i++) {
+			for (int e = 0; e < matrix[i].length; e++) {
+				text += " [" + matrix[i][e] + "] ";
+			}
+			text += "\n";
+		}
+		
+		return text;
+	}
+	
 	@Override
 	public String toString() {
-		return "Matrix [dimension=" + dimension + ", spalten=" + spalten + ", zeilen=" + zeilen + "]";
+		return "Matrix [matrix=" + MatrixToString(matrix) + ", rows=" + rows + ", colums=" + colums + ", dimension="
+				+ dimension + "]";
 	}
 
 }
