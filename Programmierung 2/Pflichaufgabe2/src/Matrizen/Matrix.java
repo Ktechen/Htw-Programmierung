@@ -7,7 +7,7 @@ public class Matrix {
 	private int colums = 0; // spalten
 	private int dimension = 0;
 
-	public Matrix(int[][] matrix) throws NullPointerException {
+	public Matrix(int[][] matrix) {
 		super();
 
 		if (matrix == null || matrix.length == 0) {

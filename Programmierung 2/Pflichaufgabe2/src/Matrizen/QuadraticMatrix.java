@@ -2,7 +2,7 @@ package Matrizen;
 
 public class QuadraticMatrix extends Matrix {
 
-	public QuadraticMatrix(int[][] matrix) throws IllegalArgumentException {
+	public QuadraticMatrix(int[][] matrix){
 		super(matrix);
 
 		if (matrix.length != minColums(matrix)) {
@@ -10,24 +10,23 @@ public class QuadraticMatrix extends Matrix {
 		}
 	}
 
-	private int minColums(int[][] matrix) throws IllegalArgumentException {
+	private int minColums(int[][] matrix) throws IllegalArgumentException, NullPointerException {
+
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("Matrix is null or 0");
+		}
 
 		int length = 0;
-		int checkLength = 0;
+		int counter = 0;
 
-		for (int i = 0; i < matrix.length; i++) {
-			for (int e = 0; e < matrix[i].length; e++) {
-				
-				length = matrix[i].length;
-				
-				if (length > checkLength) {
-					checkLength = length;
-				} else if (length == checkLength) {
-					checkLength = length;
-				} else {
-					throw new IllegalArgumentException("Die Matrix ist nicht Quadratisch");
-				}
+		while (counter < matrix.length) {
+			length = matrix[0].length;
+
+			if (length != matrix[counter].length) {
+				throw new IllegalArgumentException("Matrix ist nicht Quadratisch");
 			}
+
+			counter++;
 		}
 
 		return length;

@@ -155,23 +155,39 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Normalfall
-	 * Create eine Normale Matrix
+	 * Normalfall Create eine Normale Matrix
 	 */
 	@Test
 	public void createQuadratic() {
 		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
 		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
 	}
-	
+
 	/*
-	 * Worstecase
-	 * Call IllegalArgumentException
+	 * Worstecase Call IllegalArgumentException
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void createNoQuadratic() {
+	public void createNoQuadraticStartOfArray() {
+		int[][] matrix = { { 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	}
+
+	/*
+	 * Worstecase Call IllegalArgumentException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void createNoQuadraticMidOfArray() {
+		int[][] matrix = { { 2, 2, 2 }, { 2, 2 }, { 2, 2, 2 } };
+		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	}
+
+	/*
+	 * Worstecase Call IllegalArgumentException
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void createNoQuadraticEndOfArray() {
 		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2 } };
 		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
-
 	}
+
 }
