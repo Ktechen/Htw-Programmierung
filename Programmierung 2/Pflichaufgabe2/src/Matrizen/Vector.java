@@ -4,9 +4,28 @@ public class Vector extends Matrix {
 
 	private int[] vector = null;
 
+	public Vector(int[][] matrix) {
+		super(matrix);
+
+		for (int i = 1; i < matrix.length; i++) {
+			for (int e = 0; e < matrix[i].length; e++) {
+				if (matrix[i][e] != 0) {
+					throw new IllegalArgumentException(
+							"Ein Vector kann nicht " + getDimension() + " Dimension groß sein");
+				}
+			}
+		}
+
+		this.vector = convertToVector(matrix);
+	}
+	
 	public Vector(int[] vector) {
 		super();
-
+		
+		if(vector == null || vector.length == 0) {
+			throw new NullPointerException("Vector is null or 0");
+		}
+		
 		this.vector = vector;
 	}
 
@@ -21,6 +40,17 @@ public class Vector extends Matrix {
 
 	public void setVector(int[] vector) {
 		this.vector = vector;
+	}
+
+	private int[] convertToVector(int[][] matrix) {
+
+		int[] newVector = new int[matrix[0].length];
+		
+		for (int i = 0; i < matrix[0].length; i++) {
+			newVector[i] = matrix[0][i];
+		}
+
+		return newVector;
 	}
 
 	public int length() {
@@ -39,7 +69,7 @@ public class Vector extends Matrix {
 
 	}
 
-	private String vectorToString(int[] vector) {
+	public String vectorToString(int[] vector) {
 		String text = " [ ";
 
 		for (int i = 0; i < vector.length; i++) {

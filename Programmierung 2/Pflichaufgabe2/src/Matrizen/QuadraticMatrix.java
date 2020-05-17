@@ -10,6 +10,10 @@ public class QuadraticMatrix extends Matrix {
 		}
 	}
 
+	/*
+	 * Gibt denn kleinsten Zeilenwert zurück
+	 * 
+	 */
 	private int minColums(int[][] matrix) throws IllegalArgumentException, NullPointerException {
 
 		if (matrix == null || matrix.length == 0) {
@@ -32,6 +36,9 @@ public class QuadraticMatrix extends Matrix {
 		return length;
 	}
 
+	/*
+	 * Potenziert eine Matrize 
+	 */
 	public int[][] pow(int n) {
 
 		int[][] matrix = super.getMatrix();
