@@ -17,21 +17,24 @@ public class Vector extends Matrix {
 		}
 
 		this.vector = convertToVector(matrix);
+		setNameOfMatrix(Vector.class.getSimpleName());
 	}
-	
+
 	public Vector(int[] vector) {
 		super();
-		
-		if(vector == null || vector.length == 0) {
+
+		if (vector == null || vector.length == 0) {
 			throw new NullPointerException("Vector is null or 0");
 		}
-		
+
 		this.vector = vector;
+		setNameOfMatrix(Vector.class.getSimpleName());
 	}
 
 	public Vector() {
 		super();
 		this.vector = new int[] { 1, 2, 3 };
+		setNameOfMatrix(Vector.class.getSimpleName());
 	}
 
 	public int[] getVector() {
@@ -42,10 +45,13 @@ public class Vector extends Matrix {
 		this.vector = vector;
 	}
 
+	/*
+	 * Erstelle ein 1D aus einen 2D
+	 */
 	private int[] convertToVector(int[][] matrix) {
 
 		int[] newVector = new int[matrix[0].length];
-		
+
 		for (int i = 0; i < matrix[0].length; i++) {
 			newVector[i] = matrix[0][i];
 		}
@@ -53,35 +59,41 @@ public class Vector extends Matrix {
 		return newVector;
 	}
 
-	public int length() {
+	/*
+	 * Berechne denn Beitrag
+	 */
+	public double length() {
 
-		int value = 0;
+		double value = 0;
 
 		if (getVector().length == 1) {
 			return vector[0];
 		}
 
 		for (int i = 0; i < vector.length; i++) {
-			value += (int) Math.pow(vector[i], 2);
+			value += Math.pow(vector[i], 2);
 		}
 
-		return (int) Math.sqrt(value);
-
+		return Math.sqrt(value);
 	}
 
+	/*
+	 * Print Vector
+	 */
 	public String vectorToString(int[] vector) {
-		String text = " [ ";
+		String text = "";
 
 		for (int i = 0; i < vector.length; i++) {
-			text += vector[i];
+			text += " [" + vector[i] + "] ";
 		}
 
-		return text + " ] ";
+		return text;
 	}
 
 	@Override
 	public String toString() {
-		return "Vector [vector=" + vectorToString(vector) + "]";
+		return getNameOfMatrix() + vectorToString(vector) + "\n" + "[parameter: rows=" + getRows() + ", colums=" + getColums()
+				+ ", dimension=" + getDimension() + "]\n";
 	}
 
 }

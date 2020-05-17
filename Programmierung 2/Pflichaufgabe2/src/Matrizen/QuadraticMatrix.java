@@ -2,12 +2,22 @@ package Matrizen;
 
 public class QuadraticMatrix extends Matrix {
 
-	public QuadraticMatrix(int[][] matrix){
+	public QuadraticMatrix(int[][] matrix) {
 		super(matrix);
 
 		if (matrix.length != minColums(matrix)) {
 			throw new IllegalArgumentException("Die Matrix ist nicht Quadratisch");
 		}
+
+		setNameOfMatrix(QuadraticMatrix.class.getSimpleName());
+	}
+
+	public QuadraticMatrix() {
+		super();
+
+		setMatrix(new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
+
+		setNameOfMatrix(QuadraticMatrix.class.getSimpleName());
 	}
 
 	/*
@@ -37,7 +47,7 @@ public class QuadraticMatrix extends Matrix {
 	}
 
 	/*
-	 * Potenziert eine Matrize 
+	 * Potenziert eine Matrize
 	 */
 	public int[][] pow(int n) {
 

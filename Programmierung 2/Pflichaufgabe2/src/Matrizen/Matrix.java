@@ -6,6 +6,7 @@ public class Matrix {
 	private int rows = 0; // zeilen
 	private int colums = 0; // spalten
 	private int dimension = 0;
+	private String nameOfMatrix = null;
 
 	public Matrix(int[][] matrix) {
 		super();
@@ -18,6 +19,7 @@ public class Matrix {
 		this.rows = matrix.length;
 		this.colums = columsLength(matrix);
 		this.dimension = dimensionLength();
+		this.nameOfMatrix = Matrix.class.getSimpleName();
 	}
 
 	public Matrix() {
@@ -46,6 +48,14 @@ public class Matrix {
 
 	public int getDimension() {
 		return dimension;
+	}
+
+	public String getNameOfMatrix() {
+		return nameOfMatrix;
+	}
+
+	public void setNameOfMatrix(String nameOfMatrix) {
+		this.nameOfMatrix = nameOfMatrix;
 	}
 
 	/*
@@ -193,7 +203,7 @@ public class Matrix {
 					+ " Zeilen length ist ungleich Matrix B: " + matrix.length + " Zeilen length ");
 		}
 
-		int[][] newArray = new int[currentMatrix.length][];
+		int[][] newArray = new int[currentMatrix.length][columsLength(currentMatrix)];
 
 		for (int i = 0; i < currentMatrix.length; i++) {
 			for (int e = 0; e < currentMatrix[i].length; e++) {
@@ -204,18 +214,22 @@ public class Matrix {
 		return newArray;
 	}
 
+	/*
+	 * Print Matrix
+	 */
 	public String MatrixToString(int[][] matrix) throws NullPointerException {
 
 		if (matrix == null || matrix.length == 0) {
 			throw new NullPointerException("matrix a or b is null");
 		}
 
-		String text = "";
+		String text = " \n";
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int e = 0; e < matrix[i].length; e++) {
 				text += " [" + matrix[i][e] + "] ";
 			}
+			text += "\n";
 		}
 
 		return text;
@@ -223,8 +237,8 @@ public class Matrix {
 
 	@Override
 	public String toString() {
-		return "Matrix [matrix=" + MatrixToString(matrix) + ",\n" + " rows=" + rows + ", colums=" + colums
-				+ ", dimension=" + dimension + "]";
+		return nameOfMatrix + MatrixToString(matrix) + "\n" + "[parameter: rows=" + rows + ", colums=" + colums
+				+ ", dimension=" + dimension + "]\n";
 	}
 
 }

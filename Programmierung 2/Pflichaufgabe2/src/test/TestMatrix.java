@@ -155,39 +155,56 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Normalfall Create eine Normale Matrix
+	 * Normalfall Multiplizieren mit eine Scalar
 	 */
 	@Test
-	public void createQuadratic() {
-		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
-		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	public void multiplyScalar() {
+		int[][] matrixArr = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		int[][] matrixArrCheck = { { 4, 4, 4 }, { 4, 4, 4 }, { 4, 4, 4 } };
+
+		assertArrayEquals(matrix.multiplyScalar(2), matrixArrCheck);
 	}
 
 	/*
-	 * Worstecase Call IllegalArgumentException
+	 * Normalfall Multiplizieren mit einen anderen Array
 	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void createNoQuadraticStartOfArray() {
-		int[][] matrix = { { 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
-		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	@Test
+	public void multiply() {
+		int[][] matrixArr = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		int[][] matrixArrMulti = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		int[][] matrixArrCheck = { { 4, 4, 4 }, { 4, 4, 4 }, { 4, 4, 4 } };
+
+		assertArrayEquals(matrix.muliply(matrixArrMulti), matrixArrCheck);
 	}
 
 	/*
-	 * Worstecase Call IllegalArgumentException
+	 * Worstcase Es wird eine Null Array übergeben
 	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void createNoQuadraticMidOfArray() {
-		int[][] matrix = { { 2, 2, 2 }, { 2, 2 }, { 2, 2, 2 } };
-		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	@Test(expected = NullPointerException.class)
+	public void multiplyIsNull() {
+		int[][] matrixArr = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		int[][] matrixArrMulti = null;
+		matrix.muliply(matrixArrMulti);
 	}
 
 	/*
-	 * Worstecase Call IllegalArgumentException
+	 * Badcase A(3,3) B(2,4) 3 != 2
 	 */
-	@Test(expected = IllegalArgumentException.class)
-	public void createNoQuadraticEndOfArray() {
-		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2 } };
-		QuadraticMatrix quadraticMatrix = new QuadraticMatrix(matrix);
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void multiplyIsLengthNotEquals() {
+
+		int[][] matrixArr = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		int[][] matrixArrMulti = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+
+		matrix.muliply(matrixArrMulti);
 	}
 
 }
