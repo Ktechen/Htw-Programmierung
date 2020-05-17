@@ -194,7 +194,7 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Badcase A(3,3) B(2,4) 3 != 2
+	 * Badcase A(6,3) B(2,4) 3 != 2
 	 */
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void multiplyIsLengthNotEquals() {
