@@ -48,11 +48,12 @@ public class QuadraticMatrix extends Matrix {
 
 	/*
 	 * Potenziert eine Matrize
+	 * 
 	 */
 	public int[][] pow(int n) {
 
 		int[][] matrix = super.getMatrix();
-		int[][] newMatrix = new int[super.getRows()][super.getColums()];
+		int[][] newMatrix = new int[getRows()][getColums()];
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int e = 0; e < matrix[i].length; e++) {

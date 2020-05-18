@@ -12,12 +12,14 @@ public class Main {
 
 		int[][] vector1 = { { 1, 2, 3 } };
 
+		int[][][] run = { value0, value1, value2 };
+
 		try {
 			Matrix matrix = new Matrix(value2);
 			Matrix matrix1 = new QuadraticMatrix(value0);
 			Matrix matrix2 = new IdentityMatrix(value1);
 			Matrix vector = new Vector(vector1);
-
+			
 			System.out.println(matrix.toString());
 			System.out.println(matrix1.toString());
 			System.out.println(matrix2.toString());
@@ -28,6 +30,6 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 
-	}
 
+	}
 }

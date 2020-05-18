@@ -28,6 +28,7 @@ public class Matrix {
 		this.colums = 2;
 		this.dimension = 2;
 		this.matrix = new int[][] { { 1, 2 }, { 3, 4 } };
+		this.nameOfMatrix = Matrix.class.getSimpleName();
 	}
 
 	public int[][] getMatrix() {
@@ -198,6 +199,9 @@ public class Matrix {
 			throw new NullPointerException("matrix a or b is null");
 		}
 
+		/*
+		 * @ A(X,2) B(2,Y) 2 == 2 Check Y and X from matrix
+		 */
 		if (getColums() != matrix.length) {
 			throw new ArrayIndexOutOfBoundsException("Matrix A: " + getColums()
 					+ " Zeilen length ist ungleich Matrix B: " + matrix.length + " Zeilen length ");

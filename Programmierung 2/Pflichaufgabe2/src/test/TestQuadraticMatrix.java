@@ -1,5 +1,8 @@
 package test;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import Matrizen.QuadraticMatrix;
@@ -7,8 +10,7 @@ import Matrizen.QuadraticMatrix;
 public class TestQuadraticMatrix {
 
 	/*
-	 * Normalfall 
-	 * Erstellen einer Quadratmatrix
+	 * Normalfall Erstellen einer Quadratmatrix
 	 */
 	@Test
 	public void createQuadraticMatrix() {
@@ -17,9 +19,9 @@ public class TestQuadraticMatrix {
 
 		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
 	}
-	
+
 	/*
-	 *  
+	 * 
 	 * Es fehlt eine Element in einer Reihe
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -31,7 +33,7 @@ public class TestQuadraticMatrix {
 	}
 
 	/*
-	 *  
+	 * 
 	 * Es fehlt eine Element in einer Reihe
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -41,9 +43,9 @@ public class TestQuadraticMatrix {
 
 		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
 	}
-	
+
 	/*
-	 *  
+	 * 
 	 * Es fehlt eine Element in einer Reihe
 	 */
 	@Test(expected = IllegalArgumentException.class)
@@ -53,10 +55,9 @@ public class TestQuadraticMatrix {
 
 		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
 	}
-	
+
 	/*
-	 * Worstcase
-	 * Call NullPointerException
+	 * Worstcase Call NullPointerException
 	 */
 	@Test(expected = NullPointerException.class)
 	public void QuadraticMatrixIsNull() {
@@ -64,6 +65,32 @@ public class TestQuadraticMatrix {
 
 		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
 	}
-	
-	
+
+	/*
+	 * Normalfall Matrix wurde Potenziert
+	 */
+	@Test
+	public void pow() {
+		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+
+		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
+
+		int[][] test = Qmatrix.pow(2);
+		int[][] test1 = { { 4, 4, 4 }, { 4, 4, 4 }, { 4, 4, 4 } };
+
+		assertArrayEquals(test, test1);
+	}
+
+	@Test
+	public void powIs0() {
+		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+
+		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
+
+		int[][] test = Qmatrix.pow(0);
+		int[][] test1 = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+
+		assertArrayEquals(test, test1);
+	}
+
 }
