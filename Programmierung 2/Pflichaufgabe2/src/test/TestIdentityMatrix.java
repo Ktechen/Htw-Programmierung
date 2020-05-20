@@ -10,6 +10,9 @@ import Matrizen.QuadraticMatrix;
 
 public class TestIdentityMatrix {
 
+	/*
+	 * Normalfall Erstellen einer { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } } Matrix
+	 */
 	@Test
 	public void createIdentityMatrix() {
 
@@ -20,6 +23,9 @@ public class TestIdentityMatrix {
 		assertArrayEquals(identityMatrix.getMatrix(), matrix);
 	}
 
+	/*
+	 * Erstellen einer nicht Einheitsmatrix Worstecase call exception
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void createNoIdentityMatrixPart1() {
 
@@ -29,6 +35,9 @@ public class TestIdentityMatrix {
 
 	}
 
+	/*
+	 * Erstellen einer nicht Einheitsmatrix Worstecase call exception
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void createNoIdentityMatrixPart2() {
 
@@ -38,6 +47,9 @@ public class TestIdentityMatrix {
 
 	}
 
+	/*
+	 * Erstellen einer nicht Einheitsmatrix Worstecase call exception
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void createNoIdentityMatrixPart3() {
 
@@ -47,6 +59,9 @@ public class TestIdentityMatrix {
 
 	}
 
+	/*
+	 * Erstellen einer nicht Einheitsmatrix Worstecase call exception
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void createNoIdentityMatrixPart4() {
 
