@@ -1,5 +1,6 @@
 package Matrizen;
 
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -19,7 +20,18 @@ public class Main {
 		Matrix matrix1 = new QuadraticMatrix(value0);
 		Matrix matrix2 = new IdentityMatrix(value1);
 		Matrix vector = new Vector(vector1);
+		
+		Matrix matrix3 = new QuadraticMatrix();
+		
+		System.out.println(matrix3.toString());
 
+		vector.setMatrix(value0);
+		matrix1.setMatrix(value2);
+		
+		System.out.println(vector.toString());
+		System.out.println(matrix1.toString());
+		
+		/*
 		print(matrix0);
 		muliply(matrix, matrix0.getMatrix());
 
@@ -27,7 +39,7 @@ public class Main {
 		print(matrix1);
 		print(matrix2);
 		print(vector);
-		
+		*/
 	}
 
 	private static void print(Matrix matrix) {

@@ -15,11 +15,7 @@ public class Matrix {
 			throw new NullPointerException("Matrix is null or 0");
 		}
 
-		this.matrix = matrix;
-		this.rows = matrix.length;
-		this.colums = columsLength(matrix);
-		this.dimension = dimensionLength();
-		this.nameOfMatrix = Matrix.class.getSimpleName();
+		createMatrix(matrix);
 	}
 
 	public Matrix() {
@@ -35,16 +31,13 @@ public class Matrix {
 		return matrix;
 	}
 
-	public void setMatrix(int matrix[][]) throws NullPointerException {
+	public void setMatrix(int[][] matrix) throws NullPointerException {
 
 		if (matrix == null || matrix.length == 0) {
 			throw new NullPointerException("Matrix is null or 0");
 		}
 
-		this.rows = matrix.length;
-		this.colums = columsLength(matrix);
-		this.dimension = dimensionLength();
-		this.matrix = matrix;
+		createMatrix(matrix);
 	}
 
 	public int getRows() {
@@ -73,7 +66,19 @@ public class Matrix {
 	}
 
 	/*
+	 * Erstellen einer Matrix und weißt die Parameter zu
+	 */
+	private void createMatrix(int[][] matrix) {
+		this.rows = matrix.length;
+		this.colums = columsLength(matrix);
+		this.dimension = dimensionLength();
+		this.nameOfMatrix = Matrix.class.getSimpleName();
+		this.matrix = matrix;
+	}
+	
+	/**
 	 * Gibt die Dimension der Matrix zurück return dimension
+	 * @return Dimension
 	 */
 	public int dimensionLength() {
 		if (rows == colums) {
@@ -85,8 +90,9 @@ public class Matrix {
 		}
 	}
 
-	/*
+	/**
 	 * Gibt die Länge der Spalten zurück return length
+	 * @return length of Colums
 	 */
 	public int columsLength(int[][] matrix) throws NullPointerException {
 
@@ -109,8 +115,9 @@ public class Matrix {
 		return length;
 	}
 
-	/*
+	/**
 	 * Prüft ob zwei Matrizen gleich sind return boolean
+	 * @return boolean if matrix A equals Matrix B
 	 */
 	public boolean equals(int[][] matrix) throws NullPointerException {
 
@@ -153,8 +160,9 @@ public class Matrix {
 		return false;
 	}
 
-	/*
+	/**
 	 * Addiert zwei Matrizen miteinander return new Matrix
+	 * @return Matrix A + Matrix B
 	 */
 	public int[][] add(int[][] matrix) throws NullPointerException, ArrayIndexOutOfBoundsException {
 
@@ -183,8 +191,9 @@ public class Matrix {
 		return newArray;
 	}
 
-	/*
+	/**
 	 * Multipiziert eine Matrix mit einen Scalar return new Matrix return new Matrix
+	 * @return Matrix A * Scalar
 	 */
 	public int[][] multiplyScalar(int scalar) {
 
@@ -201,8 +210,9 @@ public class Matrix {
 		return newArray;
 	}
 
-	/*
+	/**
 	 * Multipiziert zwei Matrizen miteinander return new Matrix
+	 * @return Matrix A * Matrix B
 	 */
 	public int[][] muliply(int[][] matrix) throws NullPointerException, ArrayIndexOutOfBoundsException {
 
@@ -213,7 +223,7 @@ public class Matrix {
 		}
 
 		/*
-		 * @ A(X,2) B(2,Y) 2 == 2 Check Y and X from matrix
+		 * @ A(X,2) B(2,Y) 2 == 2 Check Colum.length and Row.length from matrix
 		 */
 		if (getColums() != matrix[0].length) {
 			throw new ArrayIndexOutOfBoundsException("Matrix des erstellen Object: " + getColums()
@@ -232,8 +242,9 @@ public class Matrix {
 		return newArray;
 	}
 
-	/*
+	/**
 	 * Print Matrix
+	 * @return print matrix
 	 */
 	public String MatrixToString(int[][] matrix) throws NullPointerException {
 

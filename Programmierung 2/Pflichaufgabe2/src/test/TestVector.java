@@ -53,4 +53,19 @@ public class TestVector {
 		assertTrue(vector.length() == value);
 	}
 	
+	/*
+	 * Normfall Gibt denn Betrag zurück
+	 */
+	@Test
+	public void lengthSizeEqualsOne() {
+
+		int[][] matrix = { { 1 } };
+
+		Vector vector = new Vector(matrix);
+
+		double value = matrix[0][0];
+
+		assertTrue(vector.length() == value);
+	}
+	
 }

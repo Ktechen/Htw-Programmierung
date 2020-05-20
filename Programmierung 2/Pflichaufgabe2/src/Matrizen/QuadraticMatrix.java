@@ -13,16 +13,14 @@ public class QuadraticMatrix extends Matrix {
 	}
 
 	public QuadraticMatrix() {
-		super();
-
-		setMatrix(new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
+		super(new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } });
 
 		setNameOfMatrix(QuadraticMatrix.class.getSimpleName());
 	}
 
-	/*
+	/**
 	 * Gibt denn kleinsten Zeilenwert zurück
-	 * 
+	 * @return min of Colums lanes
 	 */
 	private int minColums(int[][] matrix) throws IllegalArgumentException, NullPointerException {
 
@@ -46,13 +44,17 @@ public class QuadraticMatrix extends Matrix {
 		return length;
 	}
 
-	/*
+	/**
 	 * Potenziert eine Matrize
-	 * 
+	 * @return Math.pow(Matrix, n)
 	 */
-	public int[][] pow(int n) {
+	public int[][] pow(int n) throws IllegalArgumentException {
 
-		int[][] matrix = super.getMatrix();
+		if(n < 0) {
+			throw new IllegalArgumentException("Da die Matrix aus Ganzzahlen besteht ist das Ergebnis bei -n immer 0");
+		}
+		
+		int[][] matrix = getMatrix();
 		int[][] newMatrix = new int[getRows()][getColums()];
 
 		for (int i = 0; i < matrix.length; i++) {

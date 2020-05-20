@@ -1,5 +1,6 @@
 package Matrizen;
 
+
 public class Vector extends Matrix {
 
 	private int[] vector = null;
@@ -41,12 +42,23 @@ public class Vector extends Matrix {
 		return vector;
 	}
 
-	public void setVector(int[] vector) {
+	/**
+	 * @throws NullPointerException
+	 */
+	public void setVector(int[] vector) throws NullPointerException{
+		
+		if(vector == null || vector.length == 0) {
+			throw new NullPointerException("Vector is null or 0");
+		}
+		
+		setNameOfMatrix(Vector.class.getSimpleName());
 		this.vector = vector;
 	}
 
-	/*
+	/**
 	 * Erstelle ein 1D aus einen 2D
+	 * 
+	 * @return 1D Array from 2D Array
 	 */
 	private int[] convertToVector(int[][] matrix) {
 
@@ -59,8 +71,10 @@ public class Vector extends Matrix {
 		return newVector;
 	}
 
-	/*
+	/**
 	 * Berechne denn Beitrag
+	 * 
+	 * @return Sum of Vector
 	 */
 	public double length() {
 
@@ -77,8 +91,10 @@ public class Vector extends Matrix {
 		return Math.sqrt(value);
 	}
 
-	/*
+	/**
 	 * Print Vector
+	 * @param 1D Array from Vector
+	 * @return String of values in Vector
 	 */
 	public String vectorToString(int[] vector) {
 		String text = "";

@@ -81,6 +81,9 @@ public class TestQuadraticMatrix {
 		assertArrayEquals(test, test1);
 	}
 
+	/*
+	 * Normalfall erstellt die Einheitsmatrix
+	 */
 	@Test
 	public void powIs0() {
 		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
@@ -93,4 +96,18 @@ public class TestQuadraticMatrix {
 		assertArrayEquals(test, test1);
 	}
 
+	/*
+	 * Worstcase 
+	 * methode pow wird ein negativen werden übergeben
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void powIsNegative() {
+		int[][] matrix = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+
+		QuadraticMatrix Qmatrix = new QuadraticMatrix(matrix);
+
+		int[][] test = Qmatrix.pow(-2);
+		int[][] test1 = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 } };
+
+	}
 }
