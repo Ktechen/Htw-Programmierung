@@ -14,22 +14,49 @@ public class Main {
 
 		int[][][] run = { value0, value1, value2 };
 
+		Matrix matrix = new Matrix(value2);
+		Matrix matrix0 = new Matrix(value0);
+		Matrix matrix1 = new QuadraticMatrix(value0);
+		Matrix matrix2 = new IdentityMatrix(value1);
+		Matrix vector = new Vector(vector1);
+
+		print(matrix0);
+		muliply(matrix, matrix0.getMatrix());
+
+		print(matrix0);
+		print(matrix1);
+		print(matrix2);
+		print(vector);
+		
+	}
+
+	private static void print(Matrix matrix) {
+		System.out.println("Name: " + matrix.getNameOfMatrix());
+		System.out.println("Rows: " + matrix.getRows() + " : Colums:" + matrix.getColums());
+		System.out.println();
+	}
+
+	private static void muliply(Matrix matrix, int[][] addToMatrix) {
+		print(matrix);
+
 		try {
-			Matrix matrix = new Matrix(value2);
-			Matrix matrix1 = new QuadraticMatrix(value0);
-			Matrix matrix2 = new IdentityMatrix(value1);
-			Matrix vector = new Vector(vector1);
-			
-			System.out.println(matrix.toString());
-			System.out.println(matrix1.toString());
-			System.out.println(matrix2.toString());
-			System.out.println(vector.toString());
-		} catch (NullPointerException e) {
-			System.out.println(e.getMessage());
+
+			int[][] test = matrix.muliply(addToMatrix);
+
+			for (int i = 0; i < test.length; i++) {
+				for (int j = 0; j < test[i].length; j++) {
+					System.out.print(test[i][j] + " ");
+				}
+				System.out.println();
+			}
+
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println(e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
 		}
-
-
 	}
+
 }

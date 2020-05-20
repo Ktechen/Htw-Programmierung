@@ -19,7 +19,7 @@ public class IdentityMatrix extends QuadraticMatrix {
 
 			}
 		}
-
+		
 		setNameOfMatrix(IdentityMatrix.class.getSimpleName());
 	}
 

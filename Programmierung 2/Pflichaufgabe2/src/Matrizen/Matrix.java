@@ -35,7 +35,15 @@ public class Matrix {
 		return matrix;
 	}
 
-	public void setMatrix(int matrix[][]) {
+	public void setMatrix(int matrix[][]) throws NullPointerException {
+
+		if (matrix == null || matrix.length == 0) {
+			throw new NullPointerException("Matrix is null or 0");
+		}
+
+		this.rows = matrix.length;
+		this.colums = columsLength(matrix);
+		this.dimension = dimensionLength();
 		this.matrix = matrix;
 	}
 
@@ -55,7 +63,12 @@ public class Matrix {
 		return nameOfMatrix;
 	}
 
-	public void setNameOfMatrix(String nameOfMatrix) {
+	public void setNameOfMatrix(String nameOfMatrix) throws NullPointerException {
+
+		if (nameOfMatrix == null) {
+			throw new NullPointerException("String object is null");
+		}
+
 		this.nameOfMatrix = nameOfMatrix;
 	}
 
@@ -202,9 +215,10 @@ public class Matrix {
 		/*
 		 * @ A(X,2) B(2,Y) 2 == 2 Check Y and X from matrix
 		 */
-		if (getColums() != matrix.length) {
-			throw new ArrayIndexOutOfBoundsException("Matrix A: " + getColums()
-					+ " Zeilen length ist ungleich Matrix B: " + matrix.length + " Zeilen length ");
+		if (getColums() != matrix[0].length) {
+			throw new ArrayIndexOutOfBoundsException("Matrix des erstellen Object: " + getColums()
+					+ " Colums length ist ungleich Matrix die Multipiziert werden soll: " + matrix[0].length
+					+ " Row length ");
 		}
 
 		int[][] newArray = new int[currentMatrix.length][columsLength(currentMatrix)];

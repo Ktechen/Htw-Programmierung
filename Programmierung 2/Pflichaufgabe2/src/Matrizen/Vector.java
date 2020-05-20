@@ -11,7 +11,7 @@ public class Vector extends Matrix {
 			for (int e = 0; e < matrix[i].length; e++) {
 				if (matrix[i][e] != 0) {
 					throw new IllegalArgumentException(
-							"Ein Vector kann nicht " + getDimension() + " Dimension groß sein");
+							"Es wurde keine Vector erstellt");
 				}
 			}
 		}
