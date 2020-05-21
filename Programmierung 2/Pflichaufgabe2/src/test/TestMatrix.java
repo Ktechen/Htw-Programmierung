@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import Matrizen.Matrix;
-import Matrizen.QuadraticMatrix;
 
 public class TestMatrix {
 
@@ -84,6 +83,42 @@ public class TestMatrix {
 	}
 
 	/*
+	 * Normalfall Matrix A.length[2] != B.length[2]
+	 */
+	@Test
+	public void EqualsIsNotSameLengthPart1() {
+		int[][] matrixArr = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8 } };
+		int[][] matrixArr1 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		assertFalse(matrix.equals(matrixArr1));
+	}
+	
+	/*
+	 * Normalfall Matrix A.length[1] != B.length[1]
+	 */
+	@Test
+	public void EqualsIsNotSameLengthPart2() {
+		int[][] matrixArr = { { 1, 2, 3 }, { 4, 5 }, { 7, 8, 9 } };
+		int[][] matrixArr1 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		assertFalse(matrix.equals(matrixArr1));
+	}
+	
+	/*
+	 * Normalfall Matrix A.length[0] != B.length[0]
+	 */
+	@Test
+	public void EqualsIsNotSameLengthPart3() {
+		int[][] matrixArr = { { 1, 2 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		int[][] matrixArr1 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		Matrix matrix = new Matrix(matrixArr);
+
+		assertFalse(matrix.equals(matrixArr1));
+	}
+	
+	/*
 	 * Normalfall Is not Equals
 	 * 
 	 */
@@ -111,6 +146,7 @@ public class TestMatrix {
 
 	/*
 	 * Normalfall 2 + 2 = 4; :)
+	 * Addieren von zwei Matrizen
 	 */
 	@Test
 	public void add() {
@@ -123,6 +159,20 @@ public class TestMatrix {
 		int[][] expecteds = matrix.add(matrixArrAdd);
 
 		assertArrayEquals(expecteds, actuals);
+	}
+	
+	/*
+	 * Fehlerfall 
+	 * Voraussetzung für die Addition von Matrizen wird nicht erfüllt
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void addNoEqualsMatrix() {
+		int[][] matrixArr = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+		int[][] matrixArrAdd = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
+		
+		Matrix matrix = new Matrix(matrixArr);
+		
+		matrix.add(matrixArrAdd);
 	}
 
 	/*
@@ -205,6 +255,19 @@ public class TestMatrix {
 		int[][] matrixArrMulti = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
 
 		matrix.muliply(matrixArrMulti);
+	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void multiplyWithNoEqualsSize() {
+		int[][] matrixArr = { { 2, 2 }, { 2 }, { 2 } };
+		
+		Matrix matrix = new Matrix(matrixArr);
+		
+		int[][] matrixArrMulti = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
+		
+		
+		int[][] test = matrix.muliply(matrixArrMulti);
+		
 	}
 
 }

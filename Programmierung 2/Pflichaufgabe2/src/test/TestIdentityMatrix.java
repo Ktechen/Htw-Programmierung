@@ -5,8 +5,6 @@ import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
 
 import Matrizen.IdentityMatrix;
-import Matrizen.Matrix;
-import Matrizen.QuadraticMatrix;
 
 public class TestIdentityMatrix {
 
@@ -21,6 +19,17 @@ public class TestIdentityMatrix {
 		IdentityMatrix identityMatrix = new IdentityMatrix(matrix);
 
 		assertArrayEquals(identityMatrix.getMatrix(), matrix);
+	}
+	
+	/*
+	 * Worstcase call NullpointerException
+	 */
+	@Test(expected = NullPointerException.class)
+	public void createIdentityNullMatrix() {
+
+		int[][] matrix = null;
+
+		IdentityMatrix identityMatrix = new IdentityMatrix(matrix);
 	}
 
 	/*
