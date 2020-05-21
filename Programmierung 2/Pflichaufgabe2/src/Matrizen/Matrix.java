@@ -164,7 +164,7 @@ public class Matrix {
 	 * Addiert zwei Matrizen miteinander return new Matrix
 	 * @return Matrix A + Matrix B
 	 */
-	public int[][] add(int[][] matrix) throws NullPointerException, ArrayIndexOutOfBoundsException {
+	public int[][] add(int[][] matrix) throws NullPointerException, IllegalArgumentException {
 
 		int[][] currentMatrix = getMatrix();
 
@@ -173,11 +173,11 @@ public class Matrix {
 		}
 
 		if (getRows() != matrix.length) {
-			throw new ArrayIndexOutOfBoundsException("Matrix A und B müssen die Gleich Zeilen length haben");
+			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Zeilen length haben");
 		}
 
 		if (getColums() != columsLength(matrix)) {
-			throw new ArrayIndexOutOfBoundsException("Matrix A und B müssen die Gleich Spalten length haben");
+			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Spalten length haben");
 		}
 
 		int[][] newArray = new int[currentMatrix.length][columsLength(currentMatrix)];
@@ -225,7 +225,7 @@ public class Matrix {
 		/*
 		 * @ A(X,2) B(2,Y) 2 == 2 Check Colum.length and Row.length from matrix
 		 */
-		if (getColums() != matrix[0].length) {
+		if (getColums() != matrix.length) {
 			throw new ArrayIndexOutOfBoundsException("Matrix des erstellen Object: " + getColums()
 					+ " Colums length ist ungleich Matrix die Multipiziert werden soll: " + matrix[0].length
 					+ " Row length ");
@@ -246,7 +246,7 @@ public class Matrix {
 	 * Print Matrix
 	 * @return print matrix
 	 */
-	public String MatrixToString(int[][] matrix) throws NullPointerException {
+	private String MatrixToString(int[][] matrix) throws NullPointerException {
 
 		if (matrix == null || matrix.length == 0) {
 			throw new NullPointerException("matrix a or b is null");

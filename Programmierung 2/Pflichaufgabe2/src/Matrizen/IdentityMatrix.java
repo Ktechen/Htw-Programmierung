@@ -1,5 +1,6 @@
 package Matrizen;
 
+
 public class IdentityMatrix extends QuadraticMatrix {
 
 	public IdentityMatrix(int[][] matrix) {
