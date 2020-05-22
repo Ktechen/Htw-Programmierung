@@ -10,6 +10,11 @@ import org.junit.Test;
 
 import Matrizen.Matrix;
 
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class TestMatrix {
 
 	@Test
@@ -93,7 +98,7 @@ public class TestMatrix {
 
 		assertFalse(matrix.equals(matrixArr1));
 	}
-	
+
 	/*
 	 * Normalfall Matrix A.length[1] != B.length[1]
 	 */
@@ -105,7 +110,7 @@ public class TestMatrix {
 
 		assertFalse(matrix.equals(matrixArr1));
 	}
-	
+
 	/*
 	 * Normalfall Matrix A.length[0] != B.length[0]
 	 */
@@ -117,7 +122,7 @@ public class TestMatrix {
 
 		assertFalse(matrix.equals(matrixArr1));
 	}
-	
+
 	/*
 	 * Normalfall Is not Equals
 	 * 
@@ -145,8 +150,7 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Normalfall 2 + 2 = 4; :)
-	 * Addieren von zwei Matrizen
+	 * Normalfall 2 + 2 = 4; :) Addieren von zwei Matrizen
 	 */
 	@Test
 	public void add() {
@@ -160,18 +164,17 @@ public class TestMatrix {
 
 		assertArrayEquals(expecteds, actuals);
 	}
-	
+
 	/*
-	 * Fehlerfall 
-	 * Voraussetzung für die Addition von Matrizen wird nicht erfüllt
+	 * Fehlerfall Voraussetzung für die Addition von Matrizen wird nicht erfüllt
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void addNoEqualsMatrix() {
 		int[][] matrixArr = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
 		int[][] matrixArrAdd = { { 2, 2, 2 }, { 2, 2, 2 }, { 2, 2, 2 } };
-		
+
 		Matrix matrix = new Matrix(matrixArr);
-		
+
 		matrix.add(matrixArrAdd);
 	}
 
@@ -256,18 +259,17 @@ public class TestMatrix {
 
 		matrix.muliply(matrixArrMulti);
 	}
-	
+
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void multiplyWithNoEqualsSize() {
 		int[][] matrixArr = { { 2, 2 }, { 2 }, { 2 } };
-		
+
 		Matrix matrix = new Matrix(matrixArr);
-		
+
 		int[][] matrixArrMulti = { { 2, 2 }, { 2, 2 }, { 2, 2 } };
-		
-		
+
 		int[][] test = matrix.muliply(matrixArrMulti);
-		
+
 	}
 
 }

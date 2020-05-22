@@ -6,6 +6,11 @@ import org.junit.Test;
 
 import Matrizen.IdentityMatrix;
 
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class TestIdentityMatrix {
 
 	/*
@@ -20,7 +25,7 @@ public class TestIdentityMatrix {
 
 		assertArrayEquals(identityMatrix.getMatrix(), matrix);
 	}
-	
+
 	/*
 	 * Worstcase call NullpointerException
 	 */

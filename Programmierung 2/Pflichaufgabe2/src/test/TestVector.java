@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertArrayEquals;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -8,6 +9,11 @@ import org.junit.Test;
 
 import Matrizen.Vector;
 
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class TestVector {
 
 	/*
@@ -52,7 +58,7 @@ public class TestVector {
 
 		assertTrue(vector.length() == value);
 	}
-	
+
 	/*
 	 * Normfall Gibt denn Betrag zurück
 	 */
@@ -67,5 +73,5 @@ public class TestVector {
 
 		assertTrue(vector.length() == value);
 	}
-	
+
 }
