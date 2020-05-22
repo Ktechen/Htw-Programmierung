@@ -1,10 +1,5 @@
 package Matrizen;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class Matrix {
 
 	private int matrix[][] = null;
@@ -68,7 +63,7 @@ public class Matrix {
 	}
 
 	/*
-	 * Erstellen einer Matrix und weißt die Parameter zu
+	 * Erstellen einer Matrix und weiÃŸt die Parameter zu
 	 */
 	private void createMatrix(int[][] matrix) {
 		this.rows = matrix.length;
@@ -79,7 +74,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Gibt die Dimension der Matrix zurück return dimension
+	 * Gibt die Dimension der Matrix zurÃ¼ck return dimension
 	 * 
 	 * @return Dimension
 	 */
@@ -94,7 +89,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Gibt die Länge der Spalten zurück return length
+	 * Gibt die LÃ¤nge der Spalten zurÃ¼ck return length
 	 * 
 	 * @return length of Colums
 	 */
@@ -120,7 +115,7 @@ public class Matrix {
 	}
 
 	/**
-	 * Prüft ob zwei Matrizen gleich sind return boolean
+	 * PrÃ¼ft ob zwei Matrizen gleich sind return boolean
 	 * 
 	 * @return boolean if matrix A equals Matrix B
 	 */
@@ -132,12 +127,12 @@ public class Matrix {
 
 		int[][] currentMatrix = getMatrix();
 
-		// Prüfung der Zeilen length
+		// PrÃ¼fung der Zeilen length
 		if (currentMatrix.length != matrix.length) {
 			return false;
 		}
 
-		// Prüfung der Spalten length
+		// PrÃ¼fung der Spalten length
 		for (int i = 0; i < currentMatrix.length; i++) {
 			if (currentMatrix[i].length != matrix[i].length) {
 				return false;
@@ -146,7 +141,7 @@ public class Matrix {
 
 		int counter = 0;
 
-		// Prüfung der Elemente
+		// PrÃ¼fung der Elemente
 		for (int i = 0; i < currentMatrix.length; i++) {
 			for (int e = 0; e < currentMatrix[i].length; e++) {
 				if (currentMatrix[i][e] == matrix[i][e]) {
@@ -179,11 +174,11 @@ public class Matrix {
 		}
 
 		if (getRows() != matrix.length) {
-			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Zeilen length haben");
+			throw new IllegalArgumentException("Matrix A und B mÃ¼ssen die Gleich Zeilen length haben");
 		}
 
 		if (getColums() != columsLength(matrix)) {
-			throw new IllegalArgumentException("Matrix A und B müssen die Gleich Spalten length haben");
+			throw new IllegalArgumentException("Matrix A und B mÃ¼ssen die Gleich Spalten length haben");
 		}
 
 		int[][] newArray = new int[currentMatrix.length][columsLength(currentMatrix)];
