@@ -8,11 +8,6 @@ import org.junit.Test;
 
 import Matrizen.QuadraticMatrix;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class TestQuadraticMatrix {
 
 	/*
@@ -103,7 +98,7 @@ public class TestQuadraticMatrix {
 	}
 
 	/*
-	 * Worstcase methode pow wird ein negativen werden übergeben
+	 * Worstcase methode pow wird ein negativen werden Ã¼bergeben
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void powIsNegative() {
