@@ -1,5 +1,10 @@
 package Matrizen;
 
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class QuadraticMatrix extends Matrix {
 
 	public QuadraticMatrix(int[][] matrix) {
@@ -20,6 +25,7 @@ public class QuadraticMatrix extends Matrix {
 
 	/**
 	 * Gibt denn kleinsten Zeilenwert zurück
+	 * 
 	 * @return min of Colums lanes
 	 */
 	private int minColums(int[][] matrix) throws IllegalArgumentException, NullPointerException {
@@ -46,15 +52,21 @@ public class QuadraticMatrix extends Matrix {
 
 	/**
 	 * Potenziert eine Matrize
+	 * 
 	 * @return Math.pow(Matrix, n)
 	 */
 	public int[][] pow(int n) throws IllegalArgumentException {
 
-		if(n < 0) {
+		if (n < 0) {
 			throw new IllegalArgumentException("Da die Matrix aus Ganzzahlen besteht ist das Ergebnis bei -n immer 0");
 		}
 		
 		int[][] matrix = getMatrix();
+		
+		if(n == 1) {
+			return matrix;
+		}
+
 		int[][] newMatrix = new int[getRows()][getColums()];
 
 		for (int i = 0; i < matrix.length; i++) {

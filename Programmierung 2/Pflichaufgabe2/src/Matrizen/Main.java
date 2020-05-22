@@ -13,33 +13,9 @@ public class Main {
 
 		int[][] vector1 = { { 1, 2, 3 } };
 
-		int[][][] run = { value0, value1, value2 };
-
-		Matrix matrix = new Matrix(value2);
-		Matrix matrix0 = new Matrix(value0);
-		Matrix matrix1 = new QuadraticMatrix(value0);
-		Matrix matrix2 = new IdentityMatrix(value1);
 		Matrix vector = new Vector(vector1);
 		
-		Matrix matrix3 = new QuadraticMatrix();
-		
-		System.out.println(matrix3.toString());
-
-		vector.setMatrix(value0);
-		matrix1.setMatrix(value2);
-		
 		System.out.println(vector.toString());
-		System.out.println(matrix1.toString());
-		
-		/*
-		print(matrix0);
-		muliply(matrix, matrix0.getMatrix());
-
-		print(matrix0);
-		print(matrix1);
-		print(matrix2);
-		print(vector);
-		*/
 	}
 
 	private static void print(Matrix matrix) {

@@ -1,5 +1,10 @@
 package Matrizen;
 
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class Matrix {
 
 	private int matrix[][] = null;
@@ -20,11 +25,8 @@ public class Matrix {
 
 	public Matrix() {
 		super();
-		this.rows = 2;
-		this.colums = 2;
-		this.dimension = 2;
-		this.matrix = new int[][] { { 1, 2 }, { 3, 4 } };
-		this.nameOfMatrix = Matrix.class.getSimpleName();
+
+		createMatrix(new int[][] { { 1, 2 }, { 3, 4 } });
 	}
 
 	public int[][] getMatrix() {
@@ -75,9 +77,10 @@ public class Matrix {
 		this.nameOfMatrix = Matrix.class.getSimpleName();
 		this.matrix = matrix;
 	}
-	
+
 	/**
 	 * Gibt die Dimension der Matrix zurück return dimension
+	 * 
 	 * @return Dimension
 	 */
 	public int dimensionLength() {
@@ -92,6 +95,7 @@ public class Matrix {
 
 	/**
 	 * Gibt die Länge der Spalten zurück return length
+	 * 
 	 * @return length of Colums
 	 */
 	public int columsLength(int[][] matrix) throws NullPointerException {
@@ -117,6 +121,7 @@ public class Matrix {
 
 	/**
 	 * Prüft ob zwei Matrizen gleich sind return boolean
+	 * 
 	 * @return boolean if matrix A equals Matrix B
 	 */
 	public boolean equals(int[][] matrix) throws NullPointerException {
@@ -162,6 +167,7 @@ public class Matrix {
 
 	/**
 	 * Addiert zwei Matrizen miteinander return new Matrix
+	 * 
 	 * @return Matrix A + Matrix B
 	 */
 	public int[][] add(int[][] matrix) throws NullPointerException, IllegalArgumentException {
@@ -193,6 +199,7 @@ public class Matrix {
 
 	/**
 	 * Multipiziert eine Matrix mit einen Scalar return new Matrix return new Matrix
+	 * 
 	 * @return Matrix A * Scalar
 	 */
 	public int[][] multiplyScalar(int scalar) {
@@ -212,6 +219,7 @@ public class Matrix {
 
 	/**
 	 * Multipiziert zwei Matrizen miteinander return new Matrix
+	 * 
 	 * @return Matrix A * Matrix B
 	 */
 	public int[][] muliply(int[][] matrix) throws NullPointerException, ArrayIndexOutOfBoundsException {
@@ -244,7 +252,8 @@ public class Matrix {
 
 	/**
 	 * Print Matrix
-	 * @return print matrix
+	 * 
+	 * @return print matrix 2D
 	 */
 	private String MatrixToString(int[][] matrix) throws NullPointerException {
 

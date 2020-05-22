@@ -1,6 +1,10 @@
 package Matrizen;
 
-
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class IdentityMatrix extends QuadraticMatrix {
 
 	public IdentityMatrix(int[][] matrix) {

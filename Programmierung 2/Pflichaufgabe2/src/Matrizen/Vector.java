@@ -1,6 +1,10 @@
 package Matrizen;
 
-
+/**
+ * 
+ * @author Kevin Techen 0573111
+ *
+ */
 public class Vector extends Matrix {
 
 	private int[] vector = null;
@@ -96,7 +100,7 @@ public class Vector extends Matrix {
 	 * @param 1D Array from Vector
 	 * @return String of values in Vector
 	 */
-	public String vectorToString(int[] vector) {
+	private String vectorToString(int[] vector) {
 		String text = "";
 
 		for (int i = 0; i < vector.length; i++) {
