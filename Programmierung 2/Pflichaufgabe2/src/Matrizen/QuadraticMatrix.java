@@ -1,10 +1,5 @@
 package Matrizen;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class QuadraticMatrix extends Matrix {
 
 	public QuadraticMatrix(int[][] matrix) {
@@ -24,7 +19,7 @@ public class QuadraticMatrix extends Matrix {
 	}
 
 	/**
-	 * Gibt denn kleinsten Zeilenwert zurück
+	 * Gibt denn kleinsten Zeilenwert zurÃ¼ck
 	 * 
 	 * @return min of Colums lanes
 	 */
