@@ -1,10 +1,5 @@
 package Matrizen;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class Vector extends Matrix {
 
 	private int[] vector = null;
