@@ -10,11 +10,6 @@ import org.junit.Test;
 
 import Matrizen.Matrix;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class TestMatrix {
 
 	@Test
@@ -166,7 +161,7 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Fehlerfall Voraussetzung für die Addition von Matrizen wird nicht erfüllt
+	 * Fehlerfall Voraussetzung fÃ¼r die Addition von Matrizen wird nicht erfÃ¼llt
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void addNoEqualsMatrix() {
@@ -235,7 +230,7 @@ public class TestMatrix {
 	}
 
 	/*
-	 * Worstcase Es wird eine Null Array übergeben
+	 * Worstcase Es wird eine Null Array Ã¼bergeben
 	 */
 	@Test(expected = NullPointerException.class)
 	public void multiplyIsNull() {
