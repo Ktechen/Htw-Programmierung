@@ -9,11 +9,6 @@ import org.junit.Test;
 
 import Matrizen.Vector;
 
-/**
- * 
- * @author Kevin Techen 0573111
- *
- */
 public class TestVector {
 
 	/*
@@ -45,7 +40,7 @@ public class TestVector {
 	}
 
 	/*
-	 * Normalfall Gibt denn Betrag zurück
+	 * Normalfall Gibt denn Betrag zurÃ¼ck
 	 */
 	@Test
 	public void length() {
@@ -60,7 +55,7 @@ public class TestVector {
 	}
 
 	/*
-	 * Normfall Gibt denn Betrag zurück
+	 * Normfall Gibt denn Betrag zurÃ¼ck
 	 */
 	@Test
 	public void lengthSizeEqualsOne() {
