@@ -38,8 +38,7 @@ public class Person implements INutzer{
 
 	@Override
 	public void empfangeMeldung(String meldung) {
-		// TODO Auto-generated method stub
-		
+		System.out.println(meldung);
 	}
 
 }

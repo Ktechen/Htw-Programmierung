@@ -8,6 +8,14 @@ import user.INutzer;
 public interface IKuehlschrank {
 
 	/**
+	 * Legt ein neues Produkt an
+	 * @param produkt
+	 * @param n
+	 * @param datum
+	 */
+	public abstract void add(String produkt, int n, GregorianCalendar datum) throws NullPointerException, IllegalArgumentException;
+	
+	/**
 	 * liefert die Einstellung min. Anzahl eines Produktes
 	 * 
 	 * @param produkt
@@ -107,9 +115,11 @@ public interface IKuehlschrank {
 	public abstract String[] generiereEinkaufsliste(INutzer nutzer, GregorianCalendar morgen);
 
 	/**
-	 *  gibt alle Eingeschaften (Inhalt und Einstellungen) des Kuhlschranks in einer lesbaren Form als String zurueck
+	 * gibt alle Eingeschaften (Inhalt und Einstellungen) des Kuhlschranks in einer
+	 * lesbaren Form als String zurueck
+	 * 
 	 * @return
-	 */ 
+	 */
 	public abstract String toString();
 
 }

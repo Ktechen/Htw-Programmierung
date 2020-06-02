@@ -9,10 +9,8 @@ import user.INutzer;
 
 public class IntelliK implements IKuehlschrank {
 
-	private INutzer nutzer;
-	private GregorianCalendar calendar;
-	private Produkt[] minProdukt;
-	private Produkt[] currentProdukt;
+	private Produkt[] minProdukt = null;
+	private Produkt[] myProducts = null;
 
 	@Override
 	public int getMinAnzahl(String produkt) throws NullPointerException {
@@ -75,6 +73,30 @@ public class IntelliK implements IKuehlschrank {
 	}
 
 	@Override
+	public void add(String produkt, int n, GregorianCalendar datum)
+			throws NullPointerException, IllegalArgumentException {
+
+		if (produkt == null || datum == null) {
+			throw new NullPointerException("productname or date is null");
+		}
+
+		if (n < 0) {
+			throw new IllegalArgumentException("min is 0");
+		}
+
+		if (myProducts == null) {
+			myProducts = new Produkt[1];
+			myProducts[0] = new Produkt(produkt, n, datum);
+
+		} else {
+
+			myProducts = Arrays.copyOf(myProducts, myProducts.length + 1);
+			myProducts[myProducts.length - 1] = new Produkt(produkt, n, datum);
+
+		}
+	}
+
+	@Override
 	public int getAnzahl(String produkt) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -130,7 +152,7 @@ public class IntelliK implements IKuehlschrank {
 
 	@Override
 	public String toString() {
-		return "IntelliK Inhalt" + "\nMinimalanzahl: \n" + Arrays.toString(minProdukt);
+		return "IntelliK Inhalt: \n" + Arrays.toString(myProducts) + "\nMinimalanzahl: \n" + Arrays.toString(minProdukt);
 	}
 
 }

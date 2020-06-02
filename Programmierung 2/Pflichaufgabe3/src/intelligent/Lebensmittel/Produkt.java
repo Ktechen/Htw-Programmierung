@@ -4,8 +4,19 @@ import java.util.GregorianCalendar;
 
 public class Produkt implements ILebensmittel {
 
+	/**
+	 * Names des Produktes
+	 */
 	private String nameOfProdukt;
+
+	/**
+	 * Anzahl der Produkt element
+	 */
 	private int anzahl;
+
+	/**
+	 * Ablaufdatum
+	 */
 	private GregorianCalendar date;
 
 	/**
@@ -34,6 +45,12 @@ public class Produkt implements ILebensmittel {
 		this.date = date;
 	}
 
+	/**
+	 * Lege denn Name und die Anzahl fest aber ohne das Ablaufdatum
+	 * 
+	 * @param nameOfProdukt
+	 * @param anzahl
+	 */
 	public Produkt(String nameOfProdukt, int anzahl) {
 
 		if (nameOfProdukt == null) {
@@ -86,7 +103,7 @@ public class Produkt implements ILebensmittel {
 			throw new NullPointerException("Date is null oder es wurde kein Datum gesetzt");
 		}
 
-		return null;
+		return getDate();
 	}
 
 	@Override
@@ -107,10 +124,12 @@ public class Produkt implements ILebensmittel {
 	public String toString() {
 
 		if (date == null) {
-			return "Produkt [name=" + nameOfProdukt + " minAnzahl=" + anzahl + "]";
+			return "name=" + nameOfProdukt + " minAnzahl=" + anzahl;
 		}
 
-		return "Produkt [name=" + nameOfProdukt + " anzahl=" + anzahl + " date=" + date + "]\n";
+		String dateFormat = String.format("%tD", date);
+
+		return "Produkt [name=" + nameOfProdukt + " anzahl=" + anzahl + " Ablaufdatum=" + dateFormat + "]\n";
 	}
 
 }
