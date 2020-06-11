@@ -37,9 +37,9 @@ public class CommandFactory {
 	 */
 	public static LinkedList<ICommand> createCommandList() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new SinglyLinkedListAction());
 		list.add(new DoublyLinkedListAction());
-		list.add(new ExitCmd());
 		return list;
 	}
 
@@ -49,8 +49,10 @@ public class CommandFactory {
 	 * @return list of options
 	 */
 	public static LinkedList<ICommand> createCommandSinglyList() {
-
+		CommandOption.setWhichList(false);
+		
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new AddAction());
 		list.add(new AddIndexAction());
 		list.add(new AddFirstAction());
@@ -62,7 +64,6 @@ public class CommandFactory {
 		list.add(new ClearAction());
 		list.add(new SearchAction());
 		list.add(new SortAction());
-		list.add(new ExitCmd());
 		return list;
 	}
 
@@ -75,6 +76,7 @@ public class CommandFactory {
 		CommandOption.setWhichList(true);
 
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new AddAction());
 		list.add(new AddIndexAction());
 		list.add(new AddFirstAction());
@@ -86,7 +88,6 @@ public class CommandFactory {
 		list.add(new ClearAction());
 		list.add(new SearchAction());
 		list.add(new SortAction());
-		list.add(new ExitCmd());
 		return list;
 	}
 
@@ -97,9 +98,11 @@ public class CommandFactory {
 	 */
 	public static LinkedList<ICommand> createCommandSort() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new BubbleSortAction());
 		list.add(new SelectionSortAction());
-		list.add(new ExitCmd());
+		list.add(new SinglyLinkedListAction());
+		list.add(new DoublyLinkedListAction());
 		return list;
 	}
 
@@ -112,11 +115,13 @@ public class CommandFactory {
 		CommandOption.setWhichSort(false);
 
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new PrenameSort());
 		list.add(new SurnameSort());
 		list.add(new CourseSort());
 		list.add(new MatriculationNumberSort());
-		list.add(new ExitCmd());
+		list.add(new SinglyLinkedListAction());
+		list.add(new DoublyLinkedListAction());
 		return list;
 	}
 
@@ -129,11 +134,13 @@ public class CommandFactory {
 		CommandOption.setWhichSort(true);
 
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new PrenameSort());
 		list.add(new SurnameSort());
 		list.add(new CourseSort());
 		list.add(new MatriculationNumberSort());
-		list.add(new ExitCmd());
+		list.add(new SinglyLinkedListAction());
+		list.add(new DoublyLinkedListAction());
 		return list;
 	}
 
@@ -144,10 +151,13 @@ public class CommandFactory {
 	 */
 	public static LinkedList<ICommand> createCommandSearch() {
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
+		list.add(new ExitCmd());
 		list.add(new PrenameSearch());
 		list.add(new SurnameSearch());
 		list.add(new CourseSearch());
 		list.add(new MatriculationNumberSearch());
+		list.add(new SinglyLinkedListAction());
+		list.add(new DoublyLinkedListAction());
 		return list;
 	}
 
