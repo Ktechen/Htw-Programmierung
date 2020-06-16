@@ -1,6 +1,6 @@
 package user;
 
-public interface INutzer {
+public interface INutzer extends INutzerProperty{
 	
 	
 	/** 
@@ -8,6 +8,7 @@ public interface INutzer {
 	 * 
 	 * @required setMyProdukt
 	 * @return Liste der essbaren Produkte
+	 * @throws NullPointerException
 	 */
 	public abstract String[] getEssbar();
 	
@@ -16,8 +17,9 @@ public interface INutzer {
 	 * beantwortet die Frage, ob ein Produkt vom Nutzer essbar ist, oder nicht
 	 * @param produkt Produkt, von welchem erfragt wird, ob es essbar ist
 	 * @return true, wenn produkt essbar ist
+	 * @throws NullPointerException
 	 */
-	public abstract boolean istEssbar(String produkt);
+	public abstract boolean istEssbar(String produkt) throws NullPointerException;
 	
 
 	/**

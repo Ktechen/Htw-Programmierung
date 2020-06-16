@@ -9,6 +9,11 @@ import lebensmittel.Produkt;
 import user.INutzer;
 import user.Person;
 
+/**
+ * @version 1.0
+ * @author Kevin Techen
+ *
+ */
 public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 
 	private Person msg = new Person();
@@ -27,6 +32,7 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	 *      Produkt("Milch", 5) });
 	 * 
 	 * @param minProduct (new Produkt("Milch", 5))
+	 * @throws NullPointerException
 	 */
 	public IntelliK(Produkt[] minProduct) {
 		super(minProduct);
@@ -44,6 +50,7 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	 *      GregorianCalendar()) });
 	 * 
 	 * @param minProduct (new Produkt("Milch", 5))
+	 * @throws NullPointerException
 	 */
 	public IntelliK(Produkt[] minProduct, Produkt[] myProducts) {
 		super(minProduct, myProducts);
@@ -68,9 +75,9 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 
 		for (int i = 0; i < getMinProduct().length; i++) {
 
-			String name = getMinProduct()[i].getName();
+			String name = getMinProduct()[i].getName().toLowerCase();
 
-			if (name.toLowerCase().compareTo(produkt.toLowerCase()) == 0) {
+			if (name.compareTo(produkt.toLowerCase()) == 0) {
 				value = getMinProduct()[i].getAnzahl();
 			}
 		}
@@ -79,7 +86,11 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	}
 
 	@Override
-	public void setMinAnzahl(String produkt, int n) throws IllegalArgumentException {
+	public void setMinAnzahl(String produkt, int n) throws IllegalArgumentException, NullPointerException {
+
+		if (produkt == null) {
+			throw new NullPointerException("produkt is null");
+		}
 
 		if (n < 0) {
 			throw new IllegalArgumentException("min is 0");
@@ -245,7 +256,11 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	}
 
 	@Override
-	public int getAnzahl(String produkt) {
+	public int getAnzahl(String produkt) throws NullPointerException {
+
+		if (produkt == null) {
+			throw new NullPointerException("produkt is null");
+		}
 
 		int counter = 0;
 
@@ -274,6 +289,8 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 			throw new NullPointerException("produkt is null");
 		}
 
+		// TODO Fixen von Reduanzen Produkten
+
 		for (int i = 0; i < getMyProducts().length; i++) {
 
 			String name = getMyProducts()[i].getName().toLowerCase();
@@ -286,40 +303,66 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 		return null;
 	}
 
-	@Override
-	public boolean zuKaufen(String produkt) {
+	/**
+	 * Prüft ein Produkt nach Haltbarkeit und Anzahl
+	 * 
+	 * @param min
+	 * @param max
+	 * @param date
+	 * @return boolean
+	 */
+	private boolean zuKaufenCheckProdukt(String produkt, GregorianCalendar date) {
 
 		int min = getMinAnzahl(produkt);
 		int anzahl = getAnzahl(produkt);
+		GregorianCalendar ValueDate = getDate(produkt);
 
-		if (anzahl < min) {
-			return true;
+		for (int i = 0; i < getMyProducts().length; i++) {
+
+			if (min < anzahl || ValueDate.before(date)) {
+				return true;
+			}
 		}
-
-		msg.empfangeMeldung("Fragen, ob Eier gekauft werden sollen");
 
 		return false;
 	}
 
 	@Override
-	public boolean zuKaufen(String produkt, GregorianCalendar datum) {
+	public boolean zuKaufen(String produkt) throws NullPointerException {
 
-		int min = getMinAnzahl(produkt);
-		int anzahl = getAnzahl(produkt);
-		GregorianCalendar date = getDate(produkt);
+		if (produkt == null) {
+			throw new NullPointerException("produkt is null");
+		}
+
+		msg.empfangeMeldung("Fragen, ob " + produkt + " gekauft werden sollen");
+
+		return zuKaufenCheckProdukt(produkt, new GregorianCalendar());
+	}
+
+	@Override
+	public boolean zuKaufen(String produkt, GregorianCalendar datum) throws NullPointerException {
+
+		if (produkt == null) {
+			throw new NullPointerException("produkt is null");
+		}
+
+		if (datum == null) {
+			throw new NullPointerException("datum is null");
+		}
 
 		String s = String.format("%tD", datum);
 		msg.empfangeMeldung("Fragen, ob " + produkt + " am " + s + " gekauft werden sollen");
 
-		if (min < anzahl && date.before(datum)) {
-			return true;
-		}
+		return zuKaufenCheckProdukt(produkt, datum);
 
-		return false;
 	}
 
 	@Override
-	public int getAbgelaufenAnzahl(GregorianCalendar datum) {
+	public int getAbgelaufenAnzahl(GregorianCalendar datum) throws NullPointerException {
+
+		if (datum == null) {
+			throw new NullPointerException("datum is null");
+		}
 
 		int counter = 0;
 
@@ -339,6 +382,14 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	@Override
 	public int getAbgelaufenAnzahl(INutzer nutzer, GregorianCalendar heute) {
 
+		if (nutzer == null) {
+			throw new NullPointerException("nutzer is null");
+		}
+
+		if (heute == null) {
+			throw new NullPointerException("heute is null");
+		}
+
 		int counter = 0;
 
 		for (int i = 0; i < getMyProducts().length; i++) {
@@ -348,7 +399,7 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 			if (getMyProducts()[i].getPerson() != null) {
 				String person = getMyProducts()[i].getPerson().getUsername();
 
-				if (date.before(heute) && person == ((Person) nutzer).getUsername()) {
+				if (date.before(heute) && person == nutzer.getUsername()) {
 					counter++;
 				}
 			}
@@ -356,14 +407,17 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 		}
 
 		String s = String.format("%tD", heute);
-		msg.empfangeMeldung(
-				((Person) nutzer).getUsername() + " fragt, wie viele seiner Produkte am " + s + " ablaufen");
+		msg.empfangeMeldung(nutzer.getUsername() + " fragt, wie viele seiner Produkte am " + s + " ablaufen");
 
 		return counter;
 	}
 
 	@Override
-	public ILebensmittel[] getAbgelaufenListe(GregorianCalendar datum) {
+	public ILebensmittel[] getAbgelaufenListe(GregorianCalendar datum) throws NullPointerException {
+
+		if (datum == null) {
+			throw new NullPointerException("datum is null");
+		}
 
 		ILebensmittel[] arr = new ILebensmittel[getMyProducts().length];
 		int counter = 0;
@@ -386,6 +440,14 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	@Override
 	public ILebensmittel[] getAbgelaufenListe(INutzer nutzer, GregorianCalendar datum) {
 
+		if (nutzer == null) {
+			throw new NullPointerException("nutzer is null");
+		}
+
+		if (datum == null) {
+			throw new NullPointerException("datum is null");
+		}
+
 		ILebensmittel[] arr = new ILebensmittel[getMyProducts().length];
 		int counter = 0;
 
@@ -395,8 +457,7 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 
 				String name = getMyProducts()[i].getPerson().getUsername().toLowerCase();
 
-				// TODO remove casting
-				if (name.compareTo(((Person) nutzer).getUsername().toLowerCase()) == 0) {
+				if (name.compareTo(nutzer.getUsername().toLowerCase()) == 0) {
 
 					if (date.after(datum)) {
 
@@ -412,8 +473,22 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 		return arr;
 	}
 
-	@Override
-	public String[] generiereEinkaufsliste(INutzer nutzer) {
+	/**
+	 * Generiert eine Liste von zu Kaufen Lebensmitteln
+	 * 
+	 * @param nutzer
+	 * @param date
+	 * @return String[]
+	 */
+	private String[] generierung(INutzer nutzer, GregorianCalendar date) throws NullPointerException {
+
+		if (nutzer == null) {
+			throw new NullPointerException("nutzer is null");
+		}
+
+		if (date == null) {
+			throw new NullPointerException("date is null");
+		}
 
 		String[] arr = new String[getMyProducts().length];
 
@@ -424,10 +499,10 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 			if (getMyProducts()[i].getPerson() != null) {
 
 				String name = getMyProducts()[i].getPerson().getUsername().toLowerCase();
-				GregorianCalendar date = getMyProducts()[i].getDate();
+				GregorianCalendar ValueDate = getMyProducts()[i].getDate();
 
-				if (name.compareTo(((Person) nutzer).getUsername().toLowerCase()) == 0) {
-					if (date.before(new GregorianCalendar())) {
+				if (name.compareTo(nutzer.getUsername().toLowerCase()) == 0) {
+					if (ValueDate.before(date)) {
 						arr[counter] = getMyProducts()[i].getName();
 						counter++;
 					}
@@ -442,31 +517,13 @@ public class IntelliK extends Kuehlschrank implements IKuehlschrank {
 	}
 
 	@Override
+	public String[] generiereEinkaufsliste(INutzer nutzer) {
+		return generierung(nutzer, new GregorianCalendar());
+	}
+
+	@Override
 	public String[] generiereEinkaufsliste(INutzer nutzer, GregorianCalendar morgen) {
-		String[] arr = new String[getMyProducts().length];
-
-		int counter = 0;
-
-		for (int i = 0; i < arr.length; i++) {
-
-			if (getMyProducts()[i].getPerson() != null) {
-
-				String name = getMyProducts()[i].getPerson().getUsername().toLowerCase();
-				GregorianCalendar date = getMyProducts()[i].getDate();
-
-				if (name.compareTo(((Person) nutzer).getUsername().toLowerCase()) == 0) {
-					if (date.before(morgen)) {
-						arr[counter] = getMyProducts()[i].getName();
-						counter++;
-					}
-				}
-
-			}
-		}
-
-		arr = Option.arrayClearNull(arr);
-
-		return arr;
+		return generierung(nutzer, morgen);
 	}
 
 	@Override

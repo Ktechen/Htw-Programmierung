@@ -2,15 +2,26 @@ package arrayOption;
 
 import lebensmittel.ILebensmittel;
 
+/**
+ * 
+ * @author Kevin Techen
+ * @version 1.0
+ */
 public class Option {
+	
 	/**
 	 * Entfernt die Null element innerhalt des Arrays
 	 * 
-	 * @param arr
-	 * @return arr without null
+	 * @param ILebensmittel[] arr
+	 * @return ILebensmittel[]
+	 * @throws NullPointerException
 	 */
 	public static ILebensmittel[] arrayClearNull(ILebensmittel[] arr) {
 
+		if(arr == null) {
+			throw new NullPointerException("arr is null");
+		}
+		
 		int size = 0;
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] != null) {
@@ -19,9 +30,12 @@ public class Option {
 		}
 
 		ILebensmittel[] newArr = new ILebensmittel[size];
-		for (int i = 0; i < newArr.length; i++) {
-			if (arr[i] != null) {
-				newArr[i] = arr[i];
+		
+		int pos = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if(arr[i] != null) {
+				newArr[pos] = arr[i];
+				pos++;
 			}
 		}
 
@@ -31,11 +45,16 @@ public class Option {
 	/**
 	 * Entfernt die Null element innerhalt des Arrays
 	 * 
-	 * @param arr
-	 * @return arr without null
+	 * @param String[] arr
+	 * @return String[]
+	 * @throws NullPointerException
 	 */
 	public static String[] arrayClearNull(String[] arr) {
 
+		if(arr == null) {
+			throw new NullPointerException("arr is null");
+		}
+		
 		int size = 0;
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[i] != null) {

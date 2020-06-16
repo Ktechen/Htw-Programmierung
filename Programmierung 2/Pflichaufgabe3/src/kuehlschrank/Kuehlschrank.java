@@ -4,6 +4,11 @@ import java.util.GregorianCalendar;
 
 import lebensmittel.Produkt;
 
+/**
+ * @version 1.0
+ * @author Kevin Techen
+ *
+ */
 public abstract class Kuehlschrank {
 
 	private Produkt[] minProduct = null;
@@ -36,7 +41,11 @@ public abstract class Kuehlschrank {
 		this.myProducts = null;
 	}
 
-
+	/**
+	 * Legt einen Kuehlschrank an mit min benötigen Produkten
+	 * @param minProduct
+	 * @throws NullPointerException
+	 */
 	public Kuehlschrank(Produkt[] minProduct) {
 		super();
 
@@ -47,7 +56,13 @@ public abstract class Kuehlschrank {
 		this.minProduct = minProduct;
 	}
 
-
+	/**
+	 * Legt einen Kuehlschrank an mit benötigen Produkten und vorhandenen Produkten
+	 * 
+	 * @param minProduct
+	 * @param myProducts
+	 * @throws NullPointerException
+	 */
 	public Kuehlschrank(Produkt[] minProduct, Produkt[] myProducts) {
 		super();
 
@@ -66,6 +81,8 @@ public abstract class Kuehlschrank {
 	 * @param produkt
 	 * @param n
 	 * @param datum
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
 	 */
 	public abstract void add(String produkt, int n, GregorianCalendar datum)
 			throws NullPointerException, IllegalArgumentException;
@@ -80,6 +97,8 @@ public abstract class Kuehlschrank {
 	 * @param produkt
 	 * @param n
 	 * @param datum
+	 * @throws NullPointerException
+	 * @throws IllegalArgumentException
 	 */
 	public abstract void add(String nutzer, String produkt, int n, GregorianCalendar datum)
 			throws NullPointerException, IllegalArgumentException;

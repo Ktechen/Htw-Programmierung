@@ -7,9 +7,15 @@ import kuehlschrank.IntelliK;
 import lebensmittel.Produkt;
 import user.Person;
 
+/**
+ * @version 1.0
+ * @author Kevin Techen
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
+		
 		// Person-Objekt Marie erzeugen
 		Person person1 = new Person("Marie");
 
@@ -69,6 +75,7 @@ public class Main {
 		System.out.println(Arrays.toString(intelliK.getAbgelaufenListe(new GregorianCalendar())));
 
 		// Tim möchte seine Einkaufsliste (für jetzt) erhalten
+		System.out.println();
 		System.out.println(person2.getUsername() + " möchte seine Einkaufsliste (für jetzt) erhalten");
 		System.out.println(Arrays.toString(intelliK.generiereEinkaufsliste(person2)) + "\n");
 
@@ -86,5 +93,15 @@ public class Main {
 		System.out.println("\nGet Essbar?");
 		System.out.println(Arrays.toString(person2.getEssbar()));
 
+		// Prüfen wann ein Produkt abläuft
+		String s = String.format("%s läuft ab am %tD", intelliK.getMyProducts()[0].getName(),
+				intelliK.getMyProducts()[0].getVerfallsDatum());
+		System.out.println("\n" + s);
+		
+		// Prüfen ob ein Produkt abläuft
+		String m = String.format("%s ist abgelaufen ? %b", intelliK.getMyProducts()[0].getName(),
+				intelliK.getMyProducts()[0].istAbgelaufen(intelliK.getMyProducts()[0].getVerfallsDatum()));
+		
+		System.out.println("\n" + m);
 	}
 }

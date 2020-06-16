@@ -80,11 +80,58 @@ public class TestIntellik {
 		k.add("Kevin", "Eier", 2, new GregorianCalendar());
 		k.add("Kevin", "Eier", 4, new GregorianCalendar());
 
-		for (int i = 0; i < k.getMyProducts().length; i++) {
-			System.out.println(k);
-		}
-		
 		assertTrue(k.getMyProducts().length == 1 && k.getMyProducts()[0].getAnzahl() == 6);
+	}
+
+	@Test
+	public void getAnzahl() {
+		IntelliK k = new IntelliK(new Produkt[] { new Produkt("Milch", 4) },
+				new Produkt[] { new Produkt("Eier", 1, new GregorianCalendar()),
+						new Produkt("Eier", 5, new GregorianCalendar()),
+						new Produkt("Eier", 2, new GregorianCalendar()) });
+
+		assertTrue(k.getAnzahl("Eier") == 8);
+	}
+
+	@Test
+	public void getAnzahlNameNotEqual() {
+		IntelliK k = new IntelliK(new Produkt[] { new Produkt("Milch", 4) },
+				new Produkt[] { new Produkt("eieR", 1, new GregorianCalendar()),
+						new Produkt("eIer", 5, new GregorianCalendar()),
+						new Produkt("EiEr", 2, new GregorianCalendar()) });
+
+		assertTrue(k.getAnzahl("Eier") == 8);
+	}
+
+	@Test
+	public void zukaufenCurrentDatePart1() {
+		IntelliK k = new IntelliK(new Produkt[] { new Produkt("Milch", 4), new Produkt("Eier", 2) },
+				new Produkt[] { new Produkt("Milch", 1, new GregorianCalendar(2020, 07, 31)),
+						new Produkt("eIer", 5, new GregorianCalendar(2020, 03, 22)),
+						new Produkt("Milch", 2, new GregorianCalendar(2020, 02, 24)) });
+
+		assertTrue(k.zuKaufen("eier"));
+	}
+
+	@Test
+	public void zukaufenCurrentDatePart2() {
+		IntelliK k = new IntelliK(new Produkt[] { new Produkt("Milch", 4), new Produkt("Eier", 2) },
+				new Produkt[] { new Produkt("Eier", 1, new GregorianCalendar(2020, 07, 31)),
+						new Produkt("Milch", 5, new GregorianCalendar(2020, 03, 22)),
+						new Produkt("Kuchen", 2, new GregorianCalendar(2020, 02, 24)) });
+
+		assertTrue(k.zuKaufen("milch"));
+	}
+
+	@Test
+	public void zukaufenCurrentDatePartDoubleProdukts() {
+		IntelliK k = new IntelliK(new Produkt[] { new Produkt("Milch", 4), new Produkt("Eier", 2) },
+				new Produkt[] { new Produkt("Eier", 1, new GregorianCalendar(2020, 07, 31)),
+						new Produkt("Milch", 5, new GregorianCalendar(2020, 03, 22)),
+						new Produkt("Kuchen", 2, new GregorianCalendar(2020, 07, 27)),
+						new Produkt("Kuchen", 2, new GregorianCalendar(2020, 02, 24)), });
+
+		assertTrue(k.zuKaufen("Kuchen"));
 	}
 
 }

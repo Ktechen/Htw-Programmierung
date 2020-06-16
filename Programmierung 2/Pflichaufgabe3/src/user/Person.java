@@ -4,6 +4,11 @@ import java.util.Arrays;
 import arrayOption.Option;
 import lebensmittel.Produkt;
 
+/**
+ * @version 1.0
+ * @author Kevin Techen
+ *
+ */
 public class Person implements INutzer {
 
 	private String username;
@@ -26,6 +31,7 @@ public class Person implements INutzer {
 	 * Erstelle einen Benutzer mit username
 	 * 
 	 * @param username
+	 * @throws NullPointerException
 	 */
 	public Person(String username) {
 		super();
@@ -43,6 +49,7 @@ public class Person implements INutzer {
 	 * @param username = name of user
 	 * @param iDontEat bekommt Lebensmittel die der Benutzer nicht Essen möchte oder
 	 *                 kann
+	 * @throws NullPointerException
 	 */
 	public Person(String username, Produkt[] iDontEat) {
 		super();
@@ -60,23 +67,58 @@ public class Person implements INutzer {
 		this.iDontEat = iDontEat;
 	}
 
+	@Override
 	public String getUsername() {
 		return username;
 	}
 
+	/**
+	 * Set User value
+	 * @param username
+	 * @throws NullPointerException
+	 */
 	public void setUsername(String username) {
+		
+		if(username == null) {
+			throw new NullPointerException("username is null");
+		}
+		
 		this.username = username;
 	}
 
+	/**
+	 * Get iDontEat
+	 * @return Produkt[]
+	 */
 	public Produkt[] getiDontEat() {
 		return iDontEat;
 	}
 
+	/**
+	 * Set iDontEat[]
+	 * @param iDontEat
+	 * @throws NullPointerException
+	 */
 	public void setiDontEat(Produkt[] iDontEat) {
+		
+		if(iDontEat == null) {
+			throw new NullPointerException("iDontEat is null");
+		}
+		
 		this.iDontEat = iDontEat;
 	}
 
+	/**
+	 * Set MyUserProdukts
+	 * @param myUserProdukt
+	 * @throws NullPointerException
+	 */
 	public void setMyUserProdukt(Produkt[] myUserProdukt) {
+		
+		if(myUserProdukt == null) {
+			throw new NullPointerException("myUserProdukt is null");
+		}
+		
 		this.myUserProdukt = myUserProdukt;
 	}
 
@@ -105,8 +147,12 @@ public class Person implements INutzer {
 	}
 
 	@Override
-	public boolean istEssbar(String produkt) {
+	public boolean istEssbar(String produkt) throws NullPointerException{
 
+		if(produkt == null) {
+			throw new NullPointerException("produkt is null");
+		}
+		
 		if (iDontEat == null) {
 			return true;
 		}
