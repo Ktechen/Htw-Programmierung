@@ -1,4 +1,4 @@
-package main;
+package commands.system;
 
 import java.util.LinkedList;
 
@@ -7,16 +7,19 @@ import commands.CommandFactory;
 import commands.CommandInvoker;
 import commands.ICommand;
 
-public class Main {
+public class createCommandList implements ICommand {
 
-	public static void main(String[] args) {
-		run();
-	}
-	
-	private static void run() {
+	@Override
+	public void execute() {
 		Console console = new Console();
 		LinkedList<ICommand> commands = CommandFactory.createCommand();
 		CommandInvoker invoker = new CommandInvoker(commands, console);
 		invoker.run();
 	}
+	
+	@Override
+	public String toString() {
+		return "Back to main";
+	}
+
 }
