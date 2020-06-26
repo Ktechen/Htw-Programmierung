@@ -68,15 +68,16 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 		if (node != null) {
 
 			if (node.right != null && node.left != null) {
-				if (!(node.data.compareTo(node.left.data) > 0 && node.data.compareTo(node.right.data) < 0)) {
+				if (!((node.data.compareTo(node.left.data) > 0) && (node.data.compareTo(node.right.data) < 0))) {
 					sorted = false;
 					return;
 				}
 			}
 
 			if (node.left != null) {
-				if (!(root == node || root.data.compareTo(node.left.data) < 0 && node.data.compareTo(root.data) > 0
-						|| node.data.compareTo(node.left.data) > 0 && root.data.compareTo(node.left.data) > 0)) {
+				if (!((root == node)
+						|| (root.data.compareTo(node.left.data) < 0) && (node.data.compareTo(root.data) > 0)
+						|| (node.data.compareTo(node.left.data) > 0) && (root.data.compareTo(node.left.data) > 0))) {
 					sorted = false;
 					return;
 				}
@@ -84,8 +85,8 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 			}
 
 			if (node.right != null) {
-				if (!(root == node
-						|| node.data.compareTo(node.right.data) < 0 && root.data.compareTo(node.right.data) > 0)) {
+				if (!((root == node)
+						|| (node.data.compareTo(node.right.data) < 0) && (root.data.compareTo(node.right.data) > 0))) {
 					sorted = false;
 					return;
 				}
