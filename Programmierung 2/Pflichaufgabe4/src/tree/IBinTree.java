@@ -27,9 +27,9 @@ public interface IBinTree<T> {
 	 * @throws NullPointerException
 	 */
 	public abstract boolean removeNode(T value) throws NullPointerException;
-
+	
 	/**
-	 * Return size from Tree
+	 * Clear Tree
 	 */
-	public abstract int size();
+	public abstract void clear();
 }
