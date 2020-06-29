@@ -15,10 +15,11 @@ import tree.BinTreeGen;
 
 public class TestBinTreeGem {
 
-	private BinTreeGen<Integer> treeUnSorted;
 	private BinTreeGen<Integer> treeOne;
 	private BinTreeGen<Integer> treeTwo;
 	private BinTreeGen<Integer> treeThree;
+	private BinTreeGen<Integer> treeFour;
+	private BinTreeGen<Integer> treeFive;
 
 	@Before
 	public void initTreeOne() {
@@ -64,7 +65,7 @@ public class TestBinTreeGem {
 	}
 
 	@Before
-	public void initTreeUnSorted() {
+	public void initTreefour() {
 		BinNodeGen<Integer> a = new BinNodeGen<Integer>(9);
 		BinNodeGen<Integer> b = new BinNodeGen<Integer>(1);
 		BinNodeGen<Integer> c = new BinNodeGen<Integer>(a, b, 10);
@@ -72,49 +73,71 @@ public class TestBinTreeGem {
 		BinNodeGen<Integer> e = new BinNodeGen<Integer>(c, d, 3);
 
 		BinTreeGen<Integer> tree = new BinTreeGen<Integer>(e);
-		treeUnSorted = tree;
+		treeFour = tree;
 	}
 
-	/* ##################
-	 * 	   isSorted()
-	 * ##################
+	@Before
+	public void initTreeFive() {
+		BinNodeGen<Integer> a = new BinNodeGen<Integer>(10);
+		BinNodeGen<Integer> b = new BinNodeGen<Integer>(300);
+		BinNodeGen<Integer> c = new BinNodeGen<Integer>(a, b, 2);
+		BinNodeGen<Integer> d = new BinNodeGen<Integer>(5);
+		BinNodeGen<Integer> e = new BinNodeGen<Integer>(c, d, 42);
+		BinNodeGen<Integer> f = new BinNodeGen<Integer>(8);
+		BinNodeGen<Integer> l = new BinNodeGen<Integer>(10);
+		BinNodeGen<Integer> g = new BinNodeGen<Integer>(f, l, 9);
+		BinNodeGen<Integer> h = new BinNodeGen<Integer>(e, g, 7);
+
+		BinTreeGen<Integer> tree = new BinTreeGen<Integer>(h);
+		treeFive = tree;
+	}
+
+	/*
+	 * ################## search() ##################
 	 */
+	
 	@Test
-	public void sort() {
+	public void search() {
 		assertTrue(treeTwo.searchNode(2));
 	}
 
 	@Test
-	public void sortNotFound() {
+	public void searchNotFound() {
 		assertFalse(treeTwo.searchNode(17));
 	}
+	
+	/*
+	 * ################## isSorted() ##################
+	 */
 
 	@Test
-	public void isSorted() {
+	public void isSortedTreeOne() {
 		assertTrue(treeOne.isSorted());
-	}
-
-	@Test
-	public void isUnsorted() {
-		assertFalse(treeUnSorted.isSorted());
-	}
-
-	@Test
-	public void isUnsortedPart2() {
-		assertFalse(treeThree.isSorted());
 	}
 
 	@Test
 	public void isSortedTreeTwo() {
 		assertFalse(treeTwo.isSorted());
 	}
-
-	/*
-	 * ##################
-	 * 		print()
-	 * ##################
-	 */
 	
+	@Test
+	public void isSortedTreeThree() {
+		assertFalse(treeThree.isSorted());
+	}
+	
+	@Test
+	public void isSortedTreeFour() {
+		assertFalse(treeFour.isSorted());
+	}
+
+	@Test
+	public void isSortedTreeFive() {
+		assertFalse(treeFive.isSorted());
+	}
+	/*
+	 * ################## print() ##################
+	 */
+
 	@Test
 	public void printTree() {
 		treeOne.printTree();
@@ -123,9 +146,7 @@ public class TestBinTreeGem {
 	}
 
 	/*
-	 * ##################
-	 * 		search()
-	 * ##################
+	 * ################## search() ##################
 	 */
 	@Test
 	public void searchTree() {
@@ -136,6 +157,7 @@ public class TestBinTreeGem {
 	public void clear() {
 		treeOne = null;
 		treeTwo = null;
-		treeUnSorted = null;
+		treeThree = null;
+		treeFour = null;
 	}
 }
