@@ -1,10 +1,7 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
 
 import org.junit.After;
 import org.junit.Before;
@@ -152,12 +149,32 @@ public class TestBinTreeGem {
 	public void searchTree() {
 		assertTrue(treeOne.searchNode(4));
 	}
+	
+	/*
+	 * ################## removeNode() ##################
+	 */
+	
+	@Test(expected = NullPointerException.class)
+	public void removeNodeValueNull() {
+		treeOne.removeNode(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void removeNodeNotSorted() {
+		treeFive.removeNode(10);
+	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void removeNodeValueNotFound() {
+		treeOne.removeNode(42);
+	}
+	
 	@After
 	public void clear() {
 		treeOne = null;
 		treeTwo = null;
 		treeThree = null;
 		treeFour = null;
+		treeFive = null;
 	}
 }

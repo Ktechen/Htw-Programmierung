@@ -27,7 +27,23 @@ public interface IBinTree<T> {
 	 * @throws NullPointerException
 	 */
 	public abstract boolean removeNode(T value) throws NullPointerException;
-	
+
+	/**
+	 * Print tree like:
+	 * 
+	 * <p>
+	 * ---( 2 )
+	 * <p>
+	 * ------( 4 )
+	 * <p>
+	 * ----( 7 )
+	 * <p>
+	 * ------------( 6 )
+	 * <p>
+	 * -----( 9 )
+	 */
+	public abstract void printTree();
+
 	/**
 	 * Clear Tree
 	 */

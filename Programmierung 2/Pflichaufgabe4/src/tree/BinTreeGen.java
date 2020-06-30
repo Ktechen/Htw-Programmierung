@@ -51,6 +51,7 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	/**
 	 * Print a Tree with sequence like Root | R | L
 	 */
+	@Override
 	public void printTree() {
 		counterTree = 0;
 		printTree(root);
@@ -61,6 +62,7 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	/**
 	 * Check if sorted
 	 * 
+	 * @TODO Fix right side problem
 	 * @param root
 	 */
 	private void isSorted(BinNodeGen<T> node) {
@@ -91,11 +93,11 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 			}
 
 			/*
+			 * 
 			 * Check if right higher then Node and Root or root == node
 			 */
 			if (node.right != null) {
 				if (!((root == node)
-						|| (root.data.compareTo(node.right.data) < 0) && (node.data.compareTo(node.right.data) > 0)
 						|| (root.data.compareTo(node.right.data) > 0) && (node.data.compareTo(node.right.data) < 0))) {
 					sorted = false;
 					return;
@@ -159,38 +161,29 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	 * @param value
 	 * @return boolean
 	 */
-	private boolean removeNode(BinNodeGen<T> node, T value) {
+	private BinNodeGen<T> removeNode(BinNodeGen<T> node, T value) {
 
-		if (root != null) {
-
-			if (node.data.compareTo(value) == 0) {
-
-				boolean left = false;
-				boolean right = false;
-
-				if (node.left == null && node.right == null) {
-
-				}
-
-				if (node.left != null && node.right != null) {
-
-				}
-
+		if (node != null) {
+			if (value.compareTo(node.data) < 0) {
+				node.left = removeNode(node.left, value);
+			} else if (value.compareTo(node.data) > 0) {
+				node.right = removeNode(node.right, value);
 			} else {
 
-				// Check which side of Tree is the value
-				if (node.data.compareTo(value) < 0) {
-
-					removeNode(node.left, value);
-				} else {
-
-					removeNode(node.left, value);
+				if (node.left == null) {
+					return node.right;
 				}
-			}
 
+				if (node.right == null) {
+					return node.left;
+				}
+
+				node.data = maxValue(node.right);
+				node.right = removeNode(node.right, node.data);
+			}
 		}
 
-		return true;
+		return node;
 	}
 
 	@Override
@@ -217,20 +210,35 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 			return true;
 		}
 
-		return false;
+		// tree have child
+		root = removeNode(root, value);
+
+		isSorted(root);
+
+		if (sorted == false) {
+			return false;
+		}
+
+		return true;
 	}
 
-	private T minValue(BinNodeGen<T> node) {
+	/**
+	 * Return max Value of Tree
+	 * 
+	 * @param node
+	 * @return node.data
+	 */
+	private T maxValue(BinNodeGen<T> node) {
 
 		if (node.left != null) {
-			return minValue(node.left);
+			return maxValue(node.left);
 		}
 
 		return node.data;
 	}
 
-	public T minValue() {
-		return minValue(root);
+	public T maxValue() {
+		return maxValue(root);
 	}
 
 	@Override

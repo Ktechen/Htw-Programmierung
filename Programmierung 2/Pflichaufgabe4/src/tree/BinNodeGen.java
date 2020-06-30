@@ -16,7 +16,7 @@ public class BinNodeGen<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Create a leave from Tree without left or right side
+	 * Create a leaves from Tree without left or right side
 	 * 
 	 * @param data
 	 * @throws NullPointerException
@@ -33,7 +33,7 @@ public class BinNodeGen<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Create a leave from Tree
+	 * Create a leaves from Tree
 	 * 
 	 * @param left
 	 * @param right
