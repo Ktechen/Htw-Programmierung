@@ -10,8 +10,9 @@ import commands.hash.Search;
 import commands.hash.SortByMatriculation;
 import commands.sort.BubbleSort;
 import commands.sort.InsertSort;
-import commands.sort.QuickSort;
+import commands.sort.HeapSort;
 import commands.sort.SelectionSort;
+import commands.sort.ShowData;
 import commands.system.ExitCmd;
 import commands.system.createCommandList;
 
@@ -42,13 +43,13 @@ public class CommandFactory {
 	public static LinkedList<ICommand> createCommandSort() {
 
 		LinkedList<ICommand> list = new LinkedList<ICommand>();
-
 		list.add(new ExitCmd());
 		list.add(new BubbleSort());
 		list.add(new InsertSort());
 		list.add(new SelectionSort());
-		list.add(new QuickSort());
+		list.add(new HeapSort());
 		list.add(new createCommandList());
+		list.add(new ShowData());
 		return list;
 	}
 

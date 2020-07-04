@@ -30,20 +30,37 @@ public class HashArray {
 	public boolean compareKeys(int idx, int key) {
 		return this.hashArray[idx].key == key;
 	}
-	
+
 	public void markAsDeleted(int idx) {
 		this.hashArray[idx].markAsDeleted = true;
 		this.hashArray[idx].key = Integer.MIN_VALUE;
 	}
-	
+
 	public boolean isFree(int idx) {
 		return this.hashArray[idx] == null;
 	}
 
 	public int get(int idx) {
-		return this.hashArray[idx].key;
+
+		if (idx >= 0) {
+
+			if (idx <= size) {
+
+				if (hashArray[idx] != null) {
+					return this.hashArray[idx].key;
+				} else {
+					throw new NullPointerException("key is null");
+				}
+
+			} else {
+				throw new ArrayIndexOutOfBoundsException("Index out of Range");
+			}
+
+		}
+
+		throw new NullPointerException("key is null");
 	}
-	
+
 	public void set(int idx, int key) {
 		this.hashArray[idx] = new Item(key);
 	}
@@ -56,8 +73,8 @@ public class HashArray {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("[");
-		for(Item item : hashArray) {
-			if (item == null ) {
+		for (Item item : hashArray) {
+			if (item == null) {
 				builder.append("**, ");
 			} else {
 				builder.append(item.markAsDeleted ? "##, " : item.key + ", ");

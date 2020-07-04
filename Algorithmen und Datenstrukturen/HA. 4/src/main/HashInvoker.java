@@ -1,7 +1,14 @@
 package main;
 
+import hash.Hash;
+import probing.DoubleHashing;
+import probing.QuadraticProbing;
+
 public class HashInvoker {
 
+	private static final int size = 10;
+	public static ADSHashTable table = new ADSHashTable(size, new Hash(size), new QuadraticProbing());
+	
 	private static final String sMsgRemoveKey = "Remove key '%d' from the hash table.";
 	private static final String sMsgSearchForKey = "Search for key '%d' in the hash table.";
 	private static final String sMsgSearchKeyFound = "Found key '%d' in hash table.";
@@ -16,7 +23,7 @@ public class HashInvoker {
 			flush(e);
 		}
 	}
-	
+
 	static public void clearTable(HashArray array) {
 		print(String.format(sMsgClear));
 		array.clear();

@@ -1,13 +1,27 @@
 package commands.hash;
 
+import cli.Console;
 import commands.ICommand;
+import main.HashInvoker;
 
-public class Get implements ICommand{
+public class Get implements ICommand {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
-		
+		Console console = new Console();
+		int key = console.readIntegerFromStdin("Value: ", "Invalid Value !");
+
+		try {
+			HashInvoker.getValue(HashInvoker.table.getHashArray(), key);
+
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage());
+
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println(e.getMessage());
+
+		}
+
 	}
 
 	@Override

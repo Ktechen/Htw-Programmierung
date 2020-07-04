@@ -16,6 +16,10 @@ public class ADSHashTable {
 	private HashArray hashArray;
 	private boolean debug = false;
 
+	public HashArray getHashArray() {
+		return hashArray;
+	}
+
 	public ADSHashTable(int size, IHash hashAlgorithm, IProbing probingAlgorithm) {
 		super();
 		this.size = size;
