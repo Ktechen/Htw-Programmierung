@@ -10,16 +10,11 @@ public class Get implements ICommand {
 	public void execute() {
 		Console console = new Console();
 		int key = console.readIntegerFromStdin("Value: ", "Invalid Value !");
-
+		
 		try {
-			HashInvoker.getValue(HashInvoker.table.getHashArray(), key);
-
-		} catch (NullPointerException e) {
+			HashInvoker.getIndexOfValue(HashInvoker.table.getHashArray(), key);
+		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-
-		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println(e.getMessage());
-
 		}
 
 	}
