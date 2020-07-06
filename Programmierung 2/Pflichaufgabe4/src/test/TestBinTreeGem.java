@@ -119,7 +119,7 @@ public class TestBinTreeGem {
 	
 	@Test
 	public void isSortedTreeThree() {
-		assertFalse(treeThree.isSorted());
+		assertTrue(treeThree.isSorted());
 	}
 	
 	@Test

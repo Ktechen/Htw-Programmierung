@@ -82,8 +82,9 @@ public class Main {
 
 		check(tree7, 10);
 
-		removeItem(tree7, 2);
+		removeItem(tree, 2);
 
+		System.out.println("\n");
 	}
 
 	private static <T> void check(IBinTree<T> tree, T value) {
