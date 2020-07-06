@@ -17,7 +17,7 @@ public class Main {
 		BinNodeGen<Integer> g = new BinNodeGen<Integer>(f, null, 9);
 		BinNodeGen<Integer> h = new BinNodeGen<Integer>(e, g, 7);
 		BinTreeGen<Integer> tree = new BinTreeGen<Integer>(h);
-		
+
 		check(tree, 3);
 
 		BinNodeGen<Integer> a2 = new BinNodeGen<Integer>(2);
@@ -85,6 +85,8 @@ public class Main {
 		removeItem(tree, 2);
 
 		System.out.println("\n");
+		
+		System.out.println(tree.toString());
 	}
 
 	private static <T> void check(IBinTree<T> tree, T value) {

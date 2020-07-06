@@ -2,9 +2,9 @@ package tree;
 
 public class BinNodeGen<T extends Comparable<T>> {
 
-	protected BinNodeGen<T> left = null;
-	protected BinNodeGen<T> right = null;
-	protected T data = null;
+	BinNodeGen<T> left = null;
+    BinNodeGen<T> right = null;
+	T data = null;
 
 	/**
 	 * Default Constructor

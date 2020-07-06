@@ -10,6 +10,10 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	private T leftMaxData;
 	private T rightMinData;
 
+	public BinNodeGen<T> getRoot() {
+		return root;
+	}
+
 	/**
 	 * Binary Tree
 	 */
@@ -139,27 +143,29 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	 * @param root
 	 * @param value
 	 */
-	private void searchNode(BinNodeGen<T> root, T value) {
+	private void searchNode(BinNodeGen<T> node, T value) {
 
-		if (root != null) {
+		if (node != null) {
 
-			if (value.compareTo(root.data) == 0) {
+			if (value.compareTo(node.data) == 0) {
 				founded = true;
 				return;
 			}
 
-			if (founded == false && root.left != null) {
-				searchNode(root.left, value);
+			if (founded == false && node.left != null) {
+				searchNode(node.left, value);
 			}
 
-			if (founded == false && root.right != null) {
-				searchNode(root.right, value);
+			if (founded == false && node.right != null) {
+				searchNode(node.right, value);
 			}
 		}
 	}
 
 	@Override
 	public boolean searchNode(T value) throws NullPointerException {
+
+		founded = false;
 
 		if (value == null) {
 			throw new NullPointerException("value is null");
@@ -256,9 +262,8 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	/*
 	 * Return min Value of tree.data
 	 */
-	public T maxValue() {
-		T data = maxValue(root);
-		return data;
+	public T getMaxValue() {
+		return leftMaxData;
 	}
 
 	/**
@@ -279,9 +284,8 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	/*
 	 * Return min Value of tree.data
 	 */
-	public T minValue() {
-		T data = minValue(root);
-		return data;
+	public T getMinValue() {
+		return rightMinData;
 	}
 
 	@Override
@@ -291,6 +295,9 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 
 	@Override
 	public String toString() {
-		return "root: " + root.data;
+		
+		printTree();
+		
+		return "Tree end";
 	}
 }

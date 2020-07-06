@@ -14,13 +14,13 @@ public interface IBinTree<T> {
 	 * Check if value inside of tree
 	 * 
 	 * @param value
-	 * @return boolean
+	 * @return boolean 
 	 * @throws NullPointerException
 	 */
 	public abstract boolean searchNode(T value) throws NullPointerException;
 
 	/**
-	 * Remove a Node from Tree and after this process Tree is sorted
+	 * Remove a Node from Tree and after this process this Tree is sorted
 	 * 
 	 * @param value
 	 * @return boolean
@@ -29,8 +29,10 @@ public interface IBinTree<T> {
 	public abstract boolean removeNode(T value) throws NullPointerException;
 
 	/**
-	 * Print tree like:
+	 * Print tree:
 	 * 
+	 * <p>
+	 * <hr>Example:
 	 * <p>
 	 * ---( 2 )
 	 * <p>
