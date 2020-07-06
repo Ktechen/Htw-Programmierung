@@ -6,23 +6,16 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 	private boolean founded = false;
 	private boolean sorted = true;
 	private int counterTree = 0;
-	private final T LEFT_MIN_DATA;
-	private final T RIGHT_MIN_DATA;
 
-	public T getLEFT_MIN_DATA() {
-		return LEFT_MIN_DATA;
-	}
-
-	public T getRIGHT_MIN_DATA() {
-		return RIGHT_MIN_DATA;
-	}
+	private T leftMaxData;
+	private T rightMinData;
 
 	/**
 	 * Binary Tree
 	 */
 	public BinTreeGen() {
-		this.LEFT_MIN_DATA = null;
-		this.RIGHT_MIN_DATA = null;
+		this.leftMaxData = null;
+		this.rightMinData = null;
 		this.root = null;
 	}
 
@@ -39,8 +32,15 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 		}
 
 		this.root = root;
-		this.LEFT_MIN_DATA = maxValue(root.left);
-		this.RIGHT_MIN_DATA = minValue(root.right);
+
+		if (root.left != null) {
+			this.leftMaxData = maxValue(root.left);
+		}
+
+		if (root.left != null) {
+			this.rightMinData = minValue(root.right);
+		}
+
 	}
 
 	/**
@@ -82,6 +82,13 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 
 		if (node != null) {
 
+			// Node == root and have not nodes or leaves
+			if ((node == root) && (node.left == null && node.right == null)) {
+				sorted = true;
+				return;
+			}
+
+			// check is left < node and right > node
 			if (node.left != null && node.right != null) {
 				if (!((node.data.compareTo(node.left.data) > 0) && (node.data.compareTo(node.right.data) < 0))) {
 					sorted = false;
@@ -89,6 +96,7 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 				}
 			}
 
+			// check is left == null and right > node
 			if (node.left == null && node.right != null) {
 				if (!(node.data.compareTo(node.right.data) < 0)) {
 					sorted = false;
@@ -96,6 +104,7 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 				}
 			}
 
+			// check is right == null and left < node
 			if (node.left != null && node.right == null) {
 				if (!(node.data.compareTo(node.left.data) > 0)) {
 					sorted = false;
@@ -103,7 +112,11 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 				}
 			}
 
-			if (!((root.data.compareTo(LEFT_MIN_DATA) > 0) && (root.data.compareTo(RIGHT_MIN_DATA) < 0))) {
+			/*
+			 * check max value at left side of tree and min value at right side of tree left
+			 * < root and root < right
+			 */
+			if (!((root.data.compareTo(leftMaxData) > 0) && (root.data.compareTo(rightMinData) < 0))) {
 				sorted = false;
 				return;
 			}
