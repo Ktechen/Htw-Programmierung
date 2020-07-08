@@ -120,7 +120,7 @@ public class BinTreeGen<T extends Comparable<T>> implements IBinTree<T> {
 			 * check max value at left side of tree and min value at right side of tree left
 			 * < root and root < right
 			 */
-			if (!((root.data.compareTo(leftMaxData) > 0) && (root.data.compareTo(rightMinData) < 0))) {
+			if ((!(root.data.compareTo(leftMaxData) > 0) || !(root.data.compareTo(rightMinData) < 0))) {
 				sorted = false;
 				return;
 			}
