@@ -1,7 +1,7 @@
 # Programmierung 3
 
 # Project:
-##![alt text](https://github.com/Ktechen/prog3_beleg "Link")
+##[Project-Link](https://github.com/Ktechen/prog3_beleg)
 
 ## JUnit Mock Testing
 ## IoC
