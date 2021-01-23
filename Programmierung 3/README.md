@@ -11,3 +11,4 @@
 ## Gui
 ## Version controll
 ## NET
+## lamda / functional programming
