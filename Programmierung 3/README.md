@@ -9,6 +9,6 @@
 ## Events
 ## Threads
 ## Gui
-## Version controll
+## Version control
 ## NET
 ## lamda / functional programming
