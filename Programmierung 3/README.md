@@ -1,7 +1,7 @@
 # Programmierung 3
 
 ## Project: [Link](https://github.com/Ktechen/prog3)
-[Java](http://openbook.rheinwerk-verlag.de/javainsel/)
+[Learn JAVA - rheinwerk-verlag.de](http://openbook.rheinwerk-verlag.de/javainsel/)
 
 ## JUnit Mock Testing
 ## IoC
