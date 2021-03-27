@@ -1,7 +1,9 @@
 # Htw-Programmierung
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Name        | Semester        |
+| ------------- |:-------------:| 
+| Programmierung 1      | 1 | 
+| Programmierung 2      | 2 |   
+| Algorithmen und Datenstrukturens | 2 |   
+| Programmierung 3 | 3 |   
+| MA Grundlagen mobiler Anwendungen | 3 |   
