@@ -1,7 +1,7 @@
 # Htw-Programmierung
 
 | Name        | Semester        | Sprache        |
-| ------------- |:-------------:| JAVA        |
+| ------------- | ------------ | |------------|        |
 | Programmierung 1      | 1 | JAVA        |
 | Programmierung 2      | 2 |   JAVA        |
 | Algorithmen und Datenstrukturens | 2 |   JAVA        |
