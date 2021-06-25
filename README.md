@@ -8,5 +8,5 @@
 | Programmierung 3 | 3 |   JAVA        |
 | MA Grundlagen mobiler Anwendungen | 3 |   JAVA        |
 | Webentwicklung | 4 |   Ruby on Rails        |
-| Drahlose Netze | 4 |   C++        |
+| Drahlose Netze | 4 |   C++, Java        |
 | Computergrafik | 4 |   C#        |
