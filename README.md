@@ -1,6 +1,6 @@
 # Htw-Programmierung
 
-|  Nr.1   | Name        | Semester        | Sprache        |
+|  Nr.   | Name        | Semester        | Sprache        |
 |-------------| ------------- | ------------ | ------------|        
 |1| Programmierung 1      | 1 | JAVA        |
 |2| Programmierung 2      | 2 |   JAVA        |
