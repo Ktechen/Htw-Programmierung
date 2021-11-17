@@ -11,7 +11,7 @@
 |07| Drahlose Netze                    | 4 |   C++, Java     |
 |08| Computergrafik                    | 4 |   C#, C++       |
 |09| IoT                               | 5 |   C, Assembler  |
-|10| Technik mobilersysteme            | 5 |   -             |
+|10| Technik mobilersysteme            | 5 |   C/C++         |
 |11| IPhone                            | 5 |   Swift         |
 |12| Komponentenbasierte Entwicklung   | 5 |   Java          |
 |13| Mobile  Anwendungen               | 5 |   C++, Java     |
