@@ -10,7 +10,7 @@
 |06| Webentwicklung                    | 4 |   Ruby on Rails |
 |07| Drahlose Netze                    | 4 |   C++, Java     |
 |08| Computergrafik                    | 4 |   C#, C++       |
-|09| MM Entwicklung Multimediasystemen | 4 |   C#            |
+|09| Entwicklung Multimediasystemen    | 4 |   C#            |
 |10| IoT                               | 5 |   C, Assembler  |
 |11| Technik mobilersysteme            | 5 |   C/C++         |
 |12| IPhone                            | 5 |   Swift         |
